@@ -1,50 +1,33 @@
 /* ===================================================
-   CSS VARIABLES (仕様書 v2.0 準拠)
+   CSS VARIABLES
    =================================================== */
 :root {
-  /* ベース */
   --color-snow: #FAFBFC;
   --color-cloud: #F1F4F8;
-
-  /* メインブルー（5段階） */
   --color-blue-1: #EBF5FF;
   --color-blue-2: #B8D8F2;
   --color-blue-3: #5BA4D9;
   --color-blue-4: #2E7AB8;
   --color-blue-5: #1A5A8A;
-
-  /* ダークネイビー */
   --color-navy-1: #1A2744;
   --color-navy-2: #0F1A30;
-
-  /* ゴールド */
   --color-gold-light: #F2D894;
   --color-gold: #E3B85A;
-
-  /* CTA */
   --color-cta-light: #3B8FD9;
   --color-cta-dark: #1E6FA0;
-
-  /* テキスト */
   --color-text-main: #1F2937;
   --color-text-sub: #6B7280;
   --color-text-white: #FFFFFF;
-
-  /* フォント */
   --font-jp: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
   --font-display: 'Playfair Display', serif;
   --font-en: 'Inter', sans-serif;
-
-  /* グラデーション */
   --grad-cta: linear-gradient(135deg, #3B8FD9 0%, #1E6FA0 100%);
-
-  /* シャドウ */
   --shadow-cta: 0 8px 24px rgba(30, 111, 160, 0.30);
   --shadow-cta-hover: 0 12px 32px rgba(30, 111, 160, 0.45);
 }
 
 /* ===================================================
-   RESET & BASE
+   RESET
    =================================================== */
 *, *::before, *::after {
   margin: 0;
@@ -63,11 +46,10 @@ body {
   background: var(--color-snow);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ===================================================
-   HEADER（固定ヘッダー）
+   HEADER
    =================================================== */
 .header {
   position: fixed;
@@ -83,15 +65,13 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(184, 216, 242, 0.3);
-  transition: all 0.3s ease;
 }
 
 .header__logo {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  background: linear-gradient(135deg, var(--color-blue-4) 0%, var(--color-blue-3) 100%);
+  background: linear-gradient(135deg, var(--color-blue-4), var(--color-blue-3));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -103,12 +83,12 @@ body {
   font-weight: 700;
   color: var(--color-text-white);
   background: var(--grad-cta);
-  border: none;
   padding: 10px 20px;
   border-radius: 9999px;
+  text-decoration: none;
+  border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-decoration: none;
 }
 
 .header__cta:hover {
@@ -117,24 +97,22 @@ body {
 }
 
 /* ===================================================
-   HERO SECTION（スマホファースト）
+   HERO - スマホファースト
+   スマホ: テキスト上部 → 女性 → CTA下部（縦3分割）
+   PC:    左にテキスト全部 → 右に女性（横2分割）
    =================================================== */
 .hero {
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   overflow: hidden;
 }
 
-/* --- 背景レイヤー群 --- */
-
-/* レイヤー1: グラデーション背景 */
+/* 背景グラデーション */
 .hero__gradient {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background: linear-gradient(
     180deg,
     #EBF5FF 0%,
@@ -143,10 +121,9 @@ body {
     #2E7AB8 80%,
     #1A5A8A 100%
   );
-  z-index: 0;
 }
 
-/* レイヤー2: 動画 */
+/* 動画レイヤー */
 .hero__video-layer {
   position: absolute;
   inset: 0;
@@ -161,7 +138,7 @@ body {
   opacity: 0.6;
 }
 
-/* レイヤー3: 粒子アニメーション用Canvas */
+/* 粒子Canvas */
 .hero__particles {
   position: absolute;
   inset: 0;
@@ -169,46 +146,80 @@ body {
   pointer-events: none;
 }
 
-/* --- コンテンツ --- */
-
+/* ===================================================
+   HERO コンテンツ（スマホ: 縦3分割）
+   =================================================== */
 .hero__content {
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  padding-top: 72px;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-top: 64px;
 }
 
-/* テキストエリア（スマホ: 上部） */
-.hero__text {
-  flex: 0 0 auto;
-  padding: 40px 24px 24px;
+/* --- テキスト上部（バッジ・キャッチ・サブコピー） --- */
+.hero__text-top {
+  padding: 24px 24px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-/* 信頼バッジ */
+/* --- 人物エリア --- */
+.hero__visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.hero__person {
+  position: relative;
+  width: 85%;
+  max-width: 420px;
+  animation: fadeInUp 1s ease 0.6s both;
+}
+
+.hero__person img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* --- CTAエリア下部 --- */
+.hero__text-bottom {
+  padding: 12px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ===================================================
+   HERO 各パーツ
+   =================================================== */
+
+/* バッジ */
 .hero__badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 6px 16px;
   border-radius: 9999px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 100%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.65));
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.5);
   font-size: 11px;
   font-weight: 500;
   color: var(--color-blue-5);
-  margin-bottom: 24px;
-  animation: fadeInDown 0.8s ease both;
-  animation-delay: 0.3s;
+  margin-bottom: 16px;
+  animation: fadeInDown 0.8s ease 0.3s both;
 }
 
 .hero__badge-dot {
@@ -219,28 +230,23 @@ body {
   box-shadow: 0 0 6px rgba(227, 184, 90, 0.6);
 }
 
-/* メインキャッチ */
+/* キャッチ */
 .hero__catch {
-  font-family: var(--font-jp);
   font-weight: 900;
-  font-size: clamp(26px, 7vw, 32px);
+  font-size: clamp(30px, 8vw, 36px);    /* 24px→26px, 6.5vw→7vw, 30px→32px */
   line-height: 1.5;
   color: var(--color-text-white);
   text-shadow: 0 2px 20px rgba(15, 26, 48, 0.15);
-  margin-bottom: 12px;
-  animation: fadeInUp 0.8s ease both;
-  animation-delay: 0.5s;
+  margin-bottom: 8px;
+  animation: fadeInUp 0.8s ease 0.5s both;
 }
 
 /* サブコピー */
 .hero__sub {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.7;
   color: rgba(255,255,255,0.9);
-  margin-bottom: 28px;
-  animation: fadeInUp 0.8s ease both;
-  animation-delay: 0.7s;
+  animation: fadeInUp 0.8s ease 0.7s both;
 }
 
 /* CTAボタン */
@@ -253,15 +259,15 @@ body {
   font-weight: 700;
   color: var(--color-text-white);
   background: var(--grad-cta);
-  border: none;
   padding: 16px 40px;
   border-radius: 9999px;
   box-shadow: var(--shadow-cta);
+  text-decoration: none;
+  border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-decoration: none;
-  animation: fadeInUp 0.8s ease both;
-  animation-delay: 0.9s;
+  margin-bottom: 12px;
+  animation: fadeInUp 0.8s ease 0.9s both;
 }
 
 .hero__cta:hover {
@@ -279,14 +285,12 @@ body {
 
 /* 安心テキスト */
 .hero__trust-text {
-  margin-top: 16px;
-  font-size: 11px;
+  font-size: 12px;
   color: rgba(255,255,255,0.7);
   display: flex;
   align-items: center;
   gap: 12px;
-  animation: fadeInUp 0.8s ease both;
-  animation-delay: 1.1s;
+  animation: fadeInUp 0.8s ease 1.1s both;
 }
 
 .hero__trust-text span {
@@ -295,122 +299,21 @@ body {
   gap: 4px;
 }
 
-/* 人物エリア（スマホ: 下部） */
-.hero__visual {
-  flex: 1;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.hero__person img {
-  width: 100%;/* 人物画像 */
-.hero__person {
-  position: relative;
-  width: 80%;
-  max-width: 360px;
-  margin-bottom: -1px;
-  animation: fadeInUp 1s ease both;
-  animation-delay: 0.6s;
-}
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
-
-/* 人物の後ろに光のグロー */
-.hero__person-glow {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(242, 216, 148, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-  animation: glowPulse 4s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-  50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
-}
-
-/* スクロールインジケーター */
-.hero__scroll {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  animation: fadeInUp 0.8s ease both;
-  animation-delay: 1.5s;
-}
-
-.hero__scroll-text {
-  font-size: 10px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 0.1em;
-}
-
-.hero__scroll-line {
-  width: 1px;
-  height: 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero__scroll-line::after {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.7) 100%);
-  animation: scrollLine 2s ease infinite;
-}
-
-@keyframes scrollLine {
-  0%   { top: -100%; }
-  100% { top: 100%; }
-}
-
 /* ===================================================
-   アニメーション定義
+   ANIMATIONS
    =================================================== */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ===================================================
-   PC レスポンシブ（1024px〜）
+   PC（1024px〜）
    =================================================== */
 @media (min-width: 1024px) {
   .header {
@@ -426,13 +329,13 @@ body {
     padding: 12px 28px;
   }
 
+  /* PCは横並び */
   .hero__content {
     flex-direction: row;
     align-items: center;
     padding-top: 0;
   }
 
-  /* PC: グラデーション方向を左→右に変更 */
   .hero__gradient {
     background: linear-gradient(
       105deg,
@@ -444,8 +347,8 @@ body {
     );
   }
 
-  /* テキスト: 左側 */
-  .hero__text {
+  /* 左側：テキスト上部 */
+  .hero__text-top {
     flex: 0 0 50%;
     padding: 0 0 0 80px;
     text-align: left;
@@ -458,7 +361,17 @@ body {
   }
 
   .hero__sub {
-    font-size: 16px;
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  /* PCではCTAをテキスト上部の下に移動 */
+  .hero__text-bottom {
+    position: absolute;
+    bottom: 80px;
+    left: 80px;
+    padding: 0;
+    align-items: flex-start;
   }
 
   .hero__cta {
@@ -466,47 +379,42 @@ body {
     padding: 20px 48px;
   }
 
-  /* 人物: 右側 */
-  .hero__visual {
-    flex: 0 0 50%;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
-  .hero__person {
-    width: 70%;
-    max-width: 420px;
-  }
-
-  .hero__person-glow {
-    width: 500px;
-    height: 500px;
-  }
-
-  .hero__scroll {
-    left: 80px;
-    transform: none;
-  }
+ .hero__visual {
+  flex: 0 0 55%;            /* 50% → 55% */
+  align-items: flex-end;
+  justify-content: flex-end; /* center → flex-end（右寄せ） */
+  padding: 0;
+  padding-top: 70px;
+  padding-right: 40px;      /* 右に余白を少し */
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
-/* タブレット（768px〜1023px） */
+.hero__person {
+  width: 85%;
+  max-width: 580px;          /* 520px → 580px */
+}
+.hero__trust-text {
+  font-size: 14px;
+}
+}
+
+/* タブレット */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .hero__text {
-    padding: 48px 40px 24px;
+  .hero__text-top {
+    padding: 40px 40px 16px;
   }
 
   .hero__catch {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .hero__person {
-    max-width: 320px;
+    max-width: 280px;
   }
 }
 
-/* ===================================================
-   reduced-motion 対応
-   =================================================== */
+/* reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
