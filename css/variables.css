@@ -1,0 +1,54 @@
+/* ===================================================
+   variables.css
+   色・フォント・グラデーション・シャドウの定義
+   全セクションで共通して使う変数だけをここに置く
+   =================================================== */
+:root {
+  /* ベース */
+  --color-snow: #FAFBFC;
+  --color-cloud: #F1F4F8;
+
+  /* メインブルー（5段階） */
+  --color-blue-1: #EBF5FF;
+  --color-blue-2: #B8D8F2;
+  --color-blue-3: #5BA4D9;
+  --color-blue-4: #2E7AB8;
+  --color-blue-5: #1A5A8A;
+
+  /* ダークネイビー */
+  --color-navy-1: #1A2744;
+  --color-navy-2: #0F1A30;
+
+  /* ゴールド */
+  --color-gold-light: #F2D894;
+  --color-gold: #E3B85A;
+
+  /* CTA */
+  --color-cta-light: #3B8FD9;
+  --color-cta-dark: #1E6FA0;
+
+  /* サブアクセント（限定使用） */
+  --color-coral-light: #F0916A;
+  --color-coral: #E8835C;
+
+  /* テキスト */
+  --color-text-main: #1F2937;
+  --color-text-sub: #6B7280;
+  --color-text-white: #FFFFFF;
+
+  /* フォント */
+  --font-jp: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+  --font-display: 'Playfair Display', serif;
+  --font-en: 'Inter', sans-serif;
+  --font-decorative: 'Cormorant Garamond', serif;
+
+  /* グラデーション */
+  --grad-cta: linear-gradient(135deg, #3B8FD9 0%, #1E6FA0 100%);
+  --grad-gold: linear-gradient(135deg, #F2D894 0%, #E3B85A 100%);
+  --grad-coral: linear-gradient(135deg, #F0916A 0%, #E8835C 100%);
+
+  /* シャドウ */
+  --shadow-cta: 0 8px 24px rgba(30, 111, 160, 0.30);
+  --shadow-cta-hover: 0 12px 32px rgba(30, 111, 160, 0.45);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+}

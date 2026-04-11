@@ -17,8 +17,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS（役割ごとに分離） -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/section-01-hero.css">
+  <!-- 今後セクション追加時はここに1行ずつ追加 -->
+  <!-- <link rel="stylesheet" href="css/section-02-question.css"> -->
 </head>
 <body>
 
@@ -43,7 +47,6 @@
 
     <div class="hero__content">
 
-      <!-- テキスト上部（バッジ・キャッチ・サブコピー） -->
       <div class="hero__text-top">
         <div class="hero__badge">
           <span class="hero__badge-dot"></span>
@@ -60,14 +63,12 @@
         </p>
       </div>
 
-      <!-- 人物画像 -->
       <div class="hero__visual">
         <div class="hero__person">
           <img src="fv-woman.webp" alt="Crypto Novaを使う人物イメージ">
         </div>
       </div>
 
-      <!-- CTAエリア下部 -->
       <div class="hero__text-bottom">
         <a href="#cta" class="hero__cta">
           今すぐアプリを見る
@@ -93,7 +94,7 @@
   </section>
 
   <!-- JavaScript -->
-  <script src="particles.js"></script>
+  <script src="js/particles.js"></script>
 
 </body>
 </html>
