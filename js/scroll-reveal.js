@@ -35,5 +35,8 @@ document.querySelectorAll('.failure-point').forEach(section => {
 document.querySelectorAll('.failure-answer').forEach(section => {
   observer.observe(section);
 });
+document.querySelectorAll('.failure-patterns').forEach(section => {
+  observer.observe(section);
+});
 // 今後セクション追加時はここに追加
 // document.querySelectorAll('.anxiety').forEach(section => observer.observe(section));

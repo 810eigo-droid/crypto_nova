@@ -1,0 +1,286 @@
+/* ===================================================
+   section-07-failure-patterns.css
+   Section 7: やってはいけない3つの行動
+   =================================================== */
+
+.failure-patterns {
+  position: relative;
+  padding: 80px 24px;
+  background:
+    linear-gradient(
+      180deg,
+      #FFFFFF 0%,
+      #FFF5F2 50%,
+      #FFEBE5 100%
+    );
+  overflow: hidden;
+}
+
+.failure-patterns::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(232, 131, 92, 0.15) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.failure-patterns::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(240, 145, 106, 0.12) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.failure-patterns__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- タイトル --- */
+.failure-patterns__title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.failure-patterns__heading {
+  font-family: var(--font-jp);
+  font-size: clamp(24px, 6vw, 32px);
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--color-text-main);
+  margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.failure-patterns.is-visible .failure-patterns__heading {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.failure-patterns__heading-accent {
+  display: inline-block;
+  color: #D96B42;
+  font-size: 1.3em;
+  position: relative;
+}
+
+.failure-patterns__heading-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #E8835C, #D96B42);
+  border-radius: 2px;
+}
+
+/* --- カード並び（スマホ：縦積み） --- */
+.failure-patterns__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+/* --- カード（スマホ：画像左・テキスト右の横並び） --- */
+.failure-patterns__card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow:
+    0 15px 40px rgba(232, 131, 92, 0.15),
+    0 6px 15px rgba(232, 131, 92, 0.08);
+  border: 2px solid rgba(232, 131, 92, 0.25);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.failure-patterns.is-visible .failure-patterns__card:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.failure-patterns.is-visible .failure-patterns__card:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
+.failure-patterns.is-visible .failure-patterns__card:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+
+.failure-patterns__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    45deg,
+    #E8835C 0px,
+    #E8835C 12px,
+    #F0916A 12px,
+    #F0916A 24px
+  );
+}
+
+/* --- カード画像 --- */
+.failure-patterns__card-image {
+  display: block;
+  width: 120px;
+  height: 120px;
+  flex: 0 0 auto;
+  margin: 0;
+  border-radius: 12px;
+  animation: cardImageFloat 4s ease-in-out infinite;
+}
+
+.failure-patterns__card:nth-child(2) .failure-patterns__card-image {
+  animation-delay: 1s;
+}
+
+.failure-patterns__card:nth-child(3) .failure-patterns__card-image {
+  animation-delay: 2s;
+}
+
+@keyframes cardImageFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* --- カードテキスト --- */
+.failure-patterns__card-text {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+/* --- 締め文 --- */
+.failure-patterns__closing {
+  text-align: center;
+  padding: 32px 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 235, 229, 0.9) 100%
+  );
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 2px solid rgba(232, 131, 92, 0.25);
+  box-shadow: 0 15px 40px rgba(232, 131, 92, 0.12);
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.failure-patterns.is-visible .failure-patterns__closing {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1s;
+}
+
+.failure-patterns__closing-main {
+  font-size: 18px;
+  font-weight: 900;
+  color: #D96B42;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.failure-patterns__closing-main strong {
+  font-size: 1.15em;
+  color: #C9553A;
+}
+
+/* ===================================================
+   PC（768px〜）
+   カードを横3列、画像の下にテキスト
+   =================================================== */
+@media (min-width: 768px) {
+  .failure-patterns {
+    padding: 100px 48px;
+  }
+
+  .failure-patterns__title {
+    margin-bottom: 56px;
+  }
+
+  .failure-patterns__heading {
+    font-size: clamp(32px, 3.5vw, 42px);
+  }
+
+  .failure-patterns__cards {
+    flex-direction: row;
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+
+  .failure-patterns__card {
+    flex: 1;
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .failure-patterns__card-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .failure-patterns__card-text {
+    font-size: 18px;
+  }
+
+  .failure-patterns__closing {
+    padding: 40px 56px;
+  }
+
+  .failure-patterns__closing-main {
+    font-size: 22px;
+  }
+}
