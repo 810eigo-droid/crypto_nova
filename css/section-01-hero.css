@@ -146,7 +146,124 @@
   color: rgba(255,255,255,0.9);
   animation: fadeInUp 0.8s ease 0.7s both;
 }
+/* ===================================================
+   サブコピー ハイライト：全部盛りアニメーション
+   1. 一文字ずつ跳ねながら黄色に変化
+   2. 虹色グラデーションが流れ続ける
+   3. 時々キラッと光る
+   =================================================== */
 
+.hero__sub-highlight {
+  display: inline-block;
+  font-weight: 700;
+  position: relative;
+}
+
+/* 各文字の基本設定 */
+.hero__sub-highlight .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  background: linear-gradient(
+    90deg,
+    #FFE94A 0%,
+    #FFA500 25%,
+    #FFD700 50%,
+    #FFF176 75%,
+    #FFE94A 100%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation:
+    charBounce 0.6s ease forwards,
+    rainbowFlow 4s linear 3.5s infinite;
+}
+
+/* 「分析アプリ」だけ大きく強調 */
+.hero__sub-highlight .char--emphasis {
+  font-size: 1.2em;
+  font-weight: 900;
+}
+
+/* 一文字ずつ遅延させる */
+.hero__sub-highlight .char:nth-child(1)  { animation-delay: 1.5s, 3.5s; }
+.hero__sub-highlight .char:nth-child(2)  { animation-delay: 1.6s, 3.5s; }
+.hero__sub-highlight .char:nth-child(3)  { animation-delay: 1.7s, 3.5s; }
+.hero__sub-highlight .char:nth-child(4)  { animation-delay: 1.8s, 3.5s; }
+.hero__sub-highlight .char:nth-child(5)  { animation-delay: 1.9s, 3.5s; }
+.hero__sub-highlight .char:nth-child(6)  { animation-delay: 2.0s, 3.5s; }
+.hero__sub-highlight .char:nth-child(7)  { animation-delay: 2.1s, 3.5s; }
+.hero__sub-highlight .char:nth-child(8)  { animation-delay: 2.2s, 3.5s; }
+.hero__sub-highlight .char:nth-child(9)  { animation-delay: 2.3s, 3.5s; }
+.hero__sub-highlight .char:nth-child(10) { animation-delay: 2.4s, 3.5s; }
+.hero__sub-highlight .char:nth-child(11) { animation-delay: 2.5s, 3.5s; }
+.hero__sub-highlight .char:nth-child(12) { animation-delay: 2.6s, 3.5s; }
+.hero__sub-highlight .char:nth-child(13) { animation-delay: 2.7s, 3.5s; }
+.hero__sub-highlight .char:nth-child(14) { animation-delay: 2.8s, 3.5s; }
+.hero__sub-highlight .char:nth-child(15) { animation-delay: 3.0s, 3.5s; }
+.hero__sub-highlight .char:nth-child(16) { animation-delay: 3.1s, 3.5s; }
+.hero__sub-highlight .char:nth-child(17) { animation-delay: 3.2s, 3.5s; }
+.hero__sub-highlight .char:nth-child(18) { animation-delay: 3.3s, 3.5s; }
+.hero__sub-highlight .char:nth-child(19) { animation-delay: 3.4s, 3.5s; }
+
+/* 跳ねて登場 */
+@keyframes charBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 虹色が流れ続ける */
+@keyframes rainbowFlow {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 300% 0;
+  }
+}
+
+/* キラッと光るシャイン効果 */
+.hero__sub-highlight::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: shine 5s ease 5s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  20% {
+    left: 200%;
+  }
+  100% {
+    left: 200%;
+  }
+}
 /* --- CTAボタン --- */
 .hero__cta {
   display: inline-flex;

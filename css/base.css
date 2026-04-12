@@ -42,6 +42,24 @@ body {
 }
 
 .header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__logo-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(227, 184, 90, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.header__logo:hover .header__logo-icon {
+  transform: rotate(15deg);
+}
+
+.header__logo-text {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 700;
@@ -96,9 +114,14 @@ body {
     padding: 16px 48px;
   }
 
-  .header__logo {
-    font-size: 24px;
-  }
+  .header__logo-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.header__logo-text {
+  font-size: 24px;
+}
 
   .header__cta {
     font-size: 14px;
