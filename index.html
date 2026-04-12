@@ -21,7 +21,8 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/section-01-hero.css">
-  <link rel="stylesheet" href="css/section-02-question.css">  <!-- ← 追加 -->
+  <link rel="stylesheet" href="css/section-02-question.css"> 
+  <link rel="stylesheet" href="css/section-03-anxiety.css"> 
   <!-- 今後セクション追加時はここに1行ずつ追加 -->
   <!-- <link rel="stylesheet" href="css/section-02-question.css"> -->
 </head>
@@ -102,9 +103,10 @@
   <section class="question" id="question">
     <div class="question__inner">
 
-      <div class="question__visual">
-        <img src="section02-man.webp" alt="仮想通貨のチャンスを逃したと感じる男性" loading="lazy">
-      </div>
+  <div class="question__visual">
+  <div class="question__visual-deco"></div>
+  <img src="section02-man.webp" alt="仮想通貨のチャンスを逃したと感じる男性" loading="lazy">
+</div>
 
       <div class="question__text">
         <p class="question__lead">
@@ -122,6 +124,35 @@
           そう思ったことはありませんか？
         </p>
       </div>
+
+    </div>
+  </section>
+  <!-- SECTION 3: 3つの不安 -->
+  <section class="anxiety" id="anxiety">
+    <div class="anxiety__inner">
+
+      <p class="anxiety__lead">でも同時に、</p>
+
+      <div class="anxiety__cards">
+
+        <div class="anxiety__card">
+          <img src="section03-icon-01.webp" alt="なんだか怪しい" class="anxiety__card-image" loading="lazy">
+          <p class="anxiety__card-title">なんだか怪しい</p>
+        </div>
+
+        <div class="anxiety__card">
+          <img src="section03-icon-02.webp" alt="何を買えばいいか分からない" class="anxiety__card-image" loading="lazy">
+          <p class="anxiety__card-title">何を買えばいいか<br>分からない</p>
+        </div>
+
+        <div class="anxiety__card">
+          <img src="section03-icon-03.webp" alt="そもそも買い方が分からない" class="anxiety__card-image" loading="lazy">
+          <p class="anxiety__card-title">そもそも買い方が<br>分からない</p>
+        </div>
+
+      </div>
+
+      <p class="anxiety__closing">そんな理由で、一歩踏み出せない。</p>
 
     </div>
   </section>

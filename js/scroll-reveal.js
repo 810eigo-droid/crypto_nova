@@ -23,5 +23,9 @@ document.querySelectorAll('.question').forEach(section => {
   observer.observe(section);
 });
 
+document.querySelectorAll('.anxiety').forEach(section => {
+  observer.observe(section);
+});
+
 // 今後セクション追加時はここに追加
 // document.querySelectorAll('.anxiety').forEach(section => observer.observe(section));

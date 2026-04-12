@@ -189,25 +189,27 @@
 }
 
 /* 一文字ずつ遅延させる */
-.hero__sub-highlight .char:nth-child(1)  { animation-delay: 1.5s, 3.5s; }
-.hero__sub-highlight .char:nth-child(2)  { animation-delay: 1.6s, 3.5s; }
-.hero__sub-highlight .char:nth-child(3)  { animation-delay: 1.7s, 3.5s; }
-.hero__sub-highlight .char:nth-child(4)  { animation-delay: 1.8s, 3.5s; }
-.hero__sub-highlight .char:nth-child(5)  { animation-delay: 1.9s, 3.5s; }
-.hero__sub-highlight .char:nth-child(6)  { animation-delay: 2.0s, 3.5s; }
-.hero__sub-highlight .char:nth-child(7)  { animation-delay: 2.1s, 3.5s; }
-.hero__sub-highlight .char:nth-child(8)  { animation-delay: 2.2s, 3.5s; }
-.hero__sub-highlight .char:nth-child(9)  { animation-delay: 2.3s, 3.5s; }
-.hero__sub-highlight .char:nth-child(10) { animation-delay: 2.4s, 3.5s; }
-.hero__sub-highlight .char:nth-child(11) { animation-delay: 2.5s, 3.5s; }
-.hero__sub-highlight .char:nth-child(12) { animation-delay: 2.6s, 3.5s; }
-.hero__sub-highlight .char:nth-child(13) { animation-delay: 2.7s, 3.5s; }
-.hero__sub-highlight .char:nth-child(14) { animation-delay: 2.8s, 3.5s; }
-.hero__sub-highlight .char:nth-child(15) { animation-delay: 3.0s, 3.5s; }
-.hero__sub-highlight .char:nth-child(16) { animation-delay: 3.1s, 3.5s; }
-.hero__sub-highlight .char:nth-child(17) { animation-delay: 3.2s, 3.5s; }
-.hero__sub-highlight .char:nth-child(18) { animation-delay: 3.3s, 3.5s; }
-.hero__sub-highlight .char:nth-child(19) { animation-delay: 3.4s, 3.5s; }
+/* 一文字ずつ遅延 */
+.hero__sub-highlight .char:nth-child(1)  { animation-delay: 0.3s, 2s; }
+.hero__sub-highlight .char:nth-child(2)  { animation-delay: 0.38s, 2s; }
+.hero__sub-highlight .char:nth-child(3)  { animation-delay: 0.46s, 2s; }
+.hero__sub-highlight .char:nth-child(4)  { animation-delay: 0.54s, 2s; }
+.hero__sub-highlight .char:nth-child(5)  { animation-delay: 0.62s, 2s; }
+.hero__sub-highlight .char:nth-child(6)  { animation-delay: 0.70s, 2s; }
+.hero__sub-highlight .char:nth-child(7)  { animation-delay: 0.78s, 2s; }
+.hero__sub-highlight .char:nth-child(8)  { animation-delay: 0.86s, 2s; }
+.hero__sub-highlight .char:nth-child(9)  { animation-delay: 0.94s, 2s; }
+.hero__sub-highlight .char:nth-child(10) { animation-delay: 1.02s, 2s; }
+.hero__sub-highlight .char:nth-child(11) { animation-delay: 1.10s, 2s; }
+.hero__sub-highlight .char:nth-child(12) { animation-delay: 1.18s, 2s; }
+.hero__sub-highlight .char:nth-child(13) { animation-delay: 1.26s, 2s; }
+.hero__sub-highlight .char:nth-child(14) { animation-delay: 1.34s, 2s; }
+/* 「分析アプリ」：少し間を空けて強調登場 */
+.hero__sub-highlight .char:nth-child(15) { animation-delay: 1.5s, 2s; }
+.hero__sub-highlight .char:nth-child(16) { animation-delay: 1.58s, 2s; }
+.hero__sub-highlight .char:nth-child(17) { animation-delay: 1.66s, 2s; }
+.hero__sub-highlight .char:nth-child(18) { animation-delay: 1.74s, 2s; }
+.hero__sub-highlight .char:nth-child(19) { animation-delay: 1.82s, 2s; }
 
 /* 跳ねて登場 */
 @keyframes charBounce {

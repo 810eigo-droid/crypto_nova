@@ -30,12 +30,116 @@
   max-width: 400px;
   flex: 0 0 auto;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+}
+
+/* 大きな円形の背景（濃い青のグラデーション） */
+.question__visual::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(46, 122, 184, 0.4) 0%,
+    rgba(26, 90, 138, 0.6) 100%
+  );
+  z-index: 0;
+  box-shadow:
+    0 30px 80px rgba(26, 90, 138, 0.4),
+    inset 0 0 80px rgba(26, 90, 138, 0.3);
+}
+
+/* 細い濃紺の円フレーム */
+.question__visual::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 108%;
+  padding-bottom: 108%;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 90, 138, 0.5);
+  z-index: 0;
+  box-shadow:
+    0 0 40px rgba(26, 90, 138, 0.3),
+    inset 0 0 30px rgba(26, 90, 138, 0.2);
 }
 
 .question__visual img {
   display: block;
   width: 100%;
   height: auto;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 25px 50px rgba(26, 90, 138, 0.5));
+}
+
+/* 装飾：濃い青の円が浮遊（影のような存在感） */
+.question__visual-deco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.question__visual-deco::before {
+  content: '';
+  position: absolute;
+  top: 8%;
+  right: -3%;
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(
+    circle,
+    rgba(46, 122, 184, 0.7) 0%,
+    rgba(26, 90, 138, 0.4) 70%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: decoFloat 4s ease-in-out infinite;
+}
+
+.question__visual-deco::after {
+  content: '';
+  position: absolute;
+  bottom: 12%;
+  left: -5%;
+  width: 45px;
+  height: 45px;
+  background: radial-gradient(
+    circle,
+    rgba(46, 122, 184, 0.6) 0%,
+    rgba(26, 90, 138, 0.3) 70%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: decoFloat 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes decoFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.1);
+    opacity: 1;
+  }
 }
 
 /* --- テキスト --- */
@@ -104,21 +208,21 @@
   transform: translateY(0);
 }
 
-.question.is-visible .question__typewriter .char:nth-child(1)  { transition-delay: 1.5s; }
-.question.is-visible .question__typewriter .char:nth-child(2)  { transition-delay: 1.65s; }
-.question.is-visible .question__typewriter .char:nth-child(3)  { transition-delay: 1.8s; }
-.question.is-visible .question__typewriter .char:nth-child(4)  { transition-delay: 1.95s; }
-.question.is-visible .question__typewriter .char:nth-child(5)  { transition-delay: 2.1s; }
-.question.is-visible .question__typewriter .char:nth-child(6)  { transition-delay: 2.25s; }
-.question.is-visible .question__typewriter .char:nth-child(7)  { transition-delay: 2.4s; }
-.question.is-visible .question__typewriter .char:nth-child(8)  { transition-delay: 2.55s; }
-.question.is-visible .question__typewriter .char:nth-child(9)  { transition-delay: 2.7s; }
-.question.is-visible .question__typewriter .char:nth-child(10) { transition-delay: 2.85s; }
-.question.is-visible .question__typewriter .char:nth-child(11) { transition-delay: 3.0s; }
+.question.is-visible .question__typewriter .char:nth-child(1)  { transition-delay: 0.3s; }
+.question.is-visible .question__typewriter .char:nth-child(2)  { transition-delay: 0.38s; }
+.question.is-visible .question__typewriter .char:nth-child(3)  { transition-delay: 0.46s; }
+.question.is-visible .question__typewriter .char:nth-child(4)  { transition-delay: 0.54s; }
+.question.is-visible .question__typewriter .char:nth-child(5)  { transition-delay: 0.62s; }
+.question.is-visible .question__typewriter .char:nth-child(6)  { transition-delay: 0.70s; }
+.question.is-visible .question__typewriter .char:nth-child(7)  { transition-delay: 0.78s; }
+.question.is-visible .question__typewriter .char:nth-child(8)  { transition-delay: 0.86s; }
+.question.is-visible .question__typewriter .char:nth-child(9)  { transition-delay: 0.94s; }
+.question.is-visible .question__typewriter .char:nth-child(10) { transition-delay: 1.02s; }
+.question.is-visible .question__typewriter .char:nth-child(11) { transition-delay: 1.10s; }
 
 .question.is-visible .question__typewriter .char.dots {
-  transition-delay: 3.5s;
-  transition-duration: 0.8s;
+  transition-delay: 1.4s;
+  transition-duration: 0.6s;
 }
 
 .question__typewriter::after {
@@ -136,7 +240,7 @@
 
 .question.is-visible .question__typewriter::after {
   width: 100%;
-  transition-delay: 4.2s;
+  transition-delay: 2s;
 }
 
 .question__closing {
@@ -170,7 +274,7 @@
 .question.is-visible .question__closing {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 5s;
+  transition-delay: 0.6s;
 }
 
 /* ===================================================
