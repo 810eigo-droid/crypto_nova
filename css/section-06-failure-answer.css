@@ -1,0 +1,249 @@
+/* ===================================================
+   section-06-failure-answer.css
+   Section 6: 失敗の答え（核心）
+   =================================================== */
+
+.failure-answer {
+  position: relative;
+  padding: 80px 24px;
+  background:
+    /* 微細な格子模様 */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 80px,
+      rgba(255, 255, 255, 0.02) 80px,
+      rgba(255, 255, 255, 0.02) 81px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 80px,
+      rgba(255, 255, 255, 0.02) 80px,
+      rgba(255, 255, 255, 0.02) 81px
+    ),
+    /* 光の層 */
+    radial-gradient(
+      ellipse at center,
+      rgba(123, 196, 232, 0.3) 0%,
+      transparent 70%
+    ),
+    /* ベース：濃い青 */
+    linear-gradient(
+      135deg,
+      #0F1A30 0%,
+      #1A2744 30%,
+      #1A5A8A 70%,
+      #2E7AB8 100%
+    );
+  overflow: hidden;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 背景装飾：散らばる迷子の要素（？マーク、矢印） */
+.failure-answer__deco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.failure-answer__deco-item {
+  position: absolute;
+  font-family: var(--font-en);
+  color: rgba(255, 255, 255, 0.08);
+  font-weight: 900;
+  user-select: none;
+  animation: decoFloat 6s ease-in-out infinite;
+}
+
+.failure-answer__deco-item:nth-child(1) {
+  top: 10%;
+  left: 8%;
+  font-size: 80px;
+  animation-delay: 0s;
+}
+
+.failure-answer__deco-item:nth-child(2) {
+  top: 20%;
+  right: 12%;
+  font-size: 60px;
+  animation-delay: 1s;
+}
+
+.failure-answer__deco-item:nth-child(3) {
+  bottom: 15%;
+  left: 15%;
+  font-size: 70px;
+  animation-delay: 2s;
+}
+
+.failure-answer__deco-item:nth-child(4) {
+  bottom: 20%;
+  right: 8%;
+  font-size: 90px;
+  animation-delay: 0.5s;
+}
+
+.failure-answer__deco-item:nth-child(5) {
+  top: 50%;
+  left: 5%;
+  font-size: 50px;
+  animation-delay: 1.5s;
+}
+
+.failure-answer__deco-item:nth-child(6) {
+  top: 45%;
+  right: 5%;
+  font-size: 55px;
+  animation-delay: 2.5s;
+}
+
+@keyframes decoFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+    opacity: 0.6;
+  }
+}
+
+.failure-answer__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* --- 上部のアイコン（指差し）--- */
+.failure-answer__pointer {
+  display: inline-block;
+  font-size: 60px;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: scale(0) rotate(-30deg);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.failure-answer.is-visible .failure-answer__pointer {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  transition-delay: 0.2s;
+}
+
+/* --- メインの答え --- */
+.failure-answer__main {
+  font-size: clamp(24px, 6.5vw, 44px);
+  font-weight: 900;
+  line-height: 1.7;
+  color: #FFFFFF;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.failure-answer.is-visible .failure-answer__main {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+
+/* 強調したい部分：「何を見ればいいか分からないまま」 */
+.failure-answer__highlight {
+  display: inline-block;
+  position: relative;
+  padding: 0 8px;
+  color: #FFE138;
+}
+
+.failure-answer__highlight::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 199, 0, 0.4) 0%,
+    rgba(255, 199, 0, 0.2) 100%
+  );
+  z-index: -1;
+  border-radius: 4px;
+}
+
+/* --- 下部の補足テキスト --- */
+.failure-answer__sub {
+  margin-top: 48px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.failure-answer.is-visible .failure-answer__sub {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.6s;
+}
+
+/* ===================================================
+   PC（768px〜）
+   =================================================== */
+@media (min-width: 768px) {
+  .failure-answer {
+    padding: 120px 48px;
+    min-height: auto;
+  }
+
+  .failure-answer__pointer {
+    font-size: 80px;
+    margin-bottom: 32px;
+  }
+
+  .failure-answer__main {
+    font-size: clamp(36px, 4.5vw, 60px);
+  }
+
+  .failure-answer__deco-item:nth-child(1) {
+    font-size: 120px;
+  }
+
+  .failure-answer__deco-item:nth-child(2) {
+    font-size: 90px;
+  }
+
+  .failure-answer__deco-item:nth-child(3) {
+    font-size: 100px;
+  }
+
+  .failure-answer__deco-item:nth-child(4) {
+    font-size: 130px;
+  }
+
+  .failure-answer__deco-item:nth-child(5) {
+    font-size: 70px;
+  }
+
+  .failure-answer__deco-item:nth-child(6) {
+    font-size: 80px;
+  }
+
+  .failure-answer__sub {
+    font-size: 16px;
+    margin-top: 64px;
+  }
+}
