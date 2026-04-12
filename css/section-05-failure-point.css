@@ -1,0 +1,230 @@
+/* ===================================================
+   section-05-failure-point.css
+   Section 5: 失敗の共通点（問題提起・タメ）
+   =================================================== */
+
+.failure-point {
+  position: relative;
+  padding: 120px 24px;
+  background:
+    /* 微細な縦のストライプ */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 80px,
+      rgba(46, 122, 184, 0.02) 80px,
+      rgba(46, 122, 184, 0.02) 81px
+    ),
+    /* 上から下へのグラデーション */
+    linear-gradient(
+      180deg,
+      #FFFFFF 0%,
+      #F5FAFF 50%,
+      #EBF5FF 100%
+    );
+  overflow: hidden;
+  text-align: center;
+}
+
+/* 背景装飾：パルスする円 */
+.failure-point::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(46, 122, 184, 0.08) 0%,
+    rgba(46, 122, 184, 0.04) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: failurePulse 4s ease-in-out infinite;
+}
+
+@keyframes failurePulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.failure-point__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --- 上部の小さな見出しラベル --- */
+.failure-point__label {
+  display: inline-block;
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-blue-4);
+  letter-spacing: 0.2em;
+  padding: 8px 24px;
+  background: #FFFFFF;
+  border: 2px solid var(--color-blue-3);
+  border-radius: 9999px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 24px rgba(30, 111, 160, 0.15);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.failure-point.is-visible .failure-point__label {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+/* --- メインの見出し --- */
+.failure-point__heading {
+  font-size: clamp(24px, 6vw, 38px);
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--color-blue-5);
+  margin-bottom: 48px;
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.failure-point.is-visible .failure-point__heading {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
+/* 見出しの下に装飾線 */
+.failure-point__heading::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-blue-3) 30%,
+    var(--color-blue-4) 70%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  margin: 24px auto 0;
+  transition: width 1.2s ease;
+}
+
+.failure-point.is-visible .failure-point__heading::after {
+  width: 80%;
+  transition-delay: 1.2s;
+}
+
+/* --- 「それは…」の溜め演出 --- */
+.failure-point__teaser {
+  font-size: clamp(28px, 7vw, 44px);
+  font-weight: 900;
+  color: var(--color-blue-5);
+  letter-spacing: 0.05em;
+  display: inline-block;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.failure-point.is-visible .failure-point__teaser {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.8s;
+}
+
+/* 「…」の点滅アニメーション */
+.failure-point__dots {
+  display: inline-block;
+  animation: dotsPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes dotsPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* --- 下向き矢印（次のセクションへ誘導） --- */
+.failure-point__arrow {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 64px auto 0;
+  border-right: 4px solid var(--color-blue-4);
+  border-bottom: 4px solid var(--color-blue-4);
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 1s ease;
+  animation: arrowBounce 2s ease-in-out infinite;
+}
+
+.failure-point.is-visible .failure-point__arrow {
+  opacity: 0.6;
+  transition-delay: 2.8s;
+}
+
+@keyframes arrowBounce {
+  0%, 100% {
+    transform: rotate(45deg) translateY(0);
+  }
+  50% {
+    transform: rotate(45deg) translateY(8px);
+  }
+}
+
+/* ===================================================
+   PC（768px〜）
+   =================================================== */
+@media (min-width: 768px) {
+  .failure-point {
+    padding: 180px 48px;
+  }
+
+  .failure-point::before {
+    width: 900px;
+    height: 900px;
+  }
+
+  .failure-point__label {
+    font-size: 14px;
+    padding: 10px 32px;
+    margin-bottom: 40px;
+  }
+
+  .failure-point__heading {
+    font-size: clamp(36px, 4vw, 52px);
+    margin-bottom: 64px;
+  }
+
+  .failure-point__teaser {
+    font-size: clamp(44px, 5vw, 64px);
+  }
+
+  .failure-point__arrow {
+    width: 50px;
+    height: 50px;
+    margin-top: 80px;
+  }
+}
