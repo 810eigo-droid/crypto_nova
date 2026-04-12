@@ -21,12 +21,17 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/section-01-hero.css">
+  <link rel="stylesheet" href="css/section-02-question.css">  <!-- ← 追加 -->
   <!-- 今後セクション追加時はここに1行ずつ追加 -->
   <!-- <link rel="stylesheet" href="css/section-02-question.css"> -->
 </head>
 <body>
 
-  <!-- HEADER -->
+  
+
+  <!-- SECTION 1: HERO -->
+  <section class="hero" id="hero">
+    <!-- HEADER -->
   <header class="header">
   <div class="header__logo">
     <img src="icon.webp" alt="Crypto Nova" class="header__logo-icon">
@@ -34,9 +39,6 @@
   </div>
   <a href="#cta" class="header__cta">今すぐ始める</a>
 </header>
-
-  <!-- SECTION 1: HERO -->
-  <section class="hero" id="hero">
 
     <div class="hero__gradient"></div>
 
@@ -96,8 +98,38 @@
 
   </section>
 
+  <!-- SECTION 2: 問いかけ -->
+  <section class="question" id="question">
+    <div class="question__inner">
+
+      <div class="question__visual">
+        <img src="section02-man.webp" alt="仮想通貨のチャンスを逃したと感じる男性" loading="lazy">
+      </div>
+
+      <div class="question__text">
+        <p class="question__lead">
+          ビットコインのように、<br>
+          大きく成長した仮想通貨を見て、
+        </p>
+
+        <p class="question__emphasis">
+  <span class="question__typewriter">
+    <span class="char">も</span><span class="char">っ</span><span class="char">と</span><span class="char">早</span><span class="char">く</span><span class="char">知</span><span class="char">っ</span><span class="char">て</span><span class="char">い</span><span class="char">れ</span><span class="char">ば</span><span class="char dots">…</span>
+  </span>
+</p>
+
+        <p class="question__closing">
+          そう思ったことはありませんか？
+        </p>
+      </div>
+
+    </div>
+  </section>
+
   <!-- JavaScript -->
   <script src="js/particles.js"></script>
+  <script src="js/scroll-reveal.js"></script>  <!-- ← 追加 -->
+
 
 </body>
 </html>
