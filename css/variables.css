@@ -22,6 +22,10 @@
   /* ゴールド */
   --color-gold-light: #F2D894;
   --color-gold: #E3B85A;
+  
+  /* ポップイエロー（差し色）*/
+--color-yellow: #FFD93D;
+--color-yellow-light: #FFE873;
 
   /* CTA */
   --color-cta-light: #3B8FD9;
