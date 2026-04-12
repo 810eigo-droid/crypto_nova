@@ -7,14 +7,33 @@
 .alone {
   position: relative;
   padding: 100px 24px;
-  background: linear-gradient(
-    180deg,
-    #F1F4F8 0%,
-    #EBF5FF 30%,
-    #F5FAFF 50%,
-    #FFFFFF 80%,
-    #FFFFFF 100%
-  );
+  background:
+    /* 模様レイヤー：斜めのストライプ（超薄い） */
+    repeating-linear-gradient(
+      135deg,
+      transparent 0px,
+      transparent 60px,
+      rgba(255, 255, 255, 0.03) 60px,
+      rgba(255, 255, 255, 0.03) 61px
+    ),
+    /* 光の層：柔らかい光 */
+    radial-gradient(
+      ellipse at top right,
+      rgba(123, 196, 232, 0.4) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at bottom left,
+      rgba(26, 90, 138, 0.3) 0%,
+      transparent 60%
+    ),
+    /* ベースの青グラデーション */
+    linear-gradient(
+      180deg,
+      #2E7AB8 0%,
+      #3FA3D1 50%,
+      #2E7AB8 100%
+    );
   overflow: hidden;
 }
 
@@ -183,21 +202,20 @@
   display: inline-block;
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-blue-4);
+  color: #FFFFFF;
   letter-spacing: 0.15em;
   padding: 8px 24px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(91, 164, 217, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 9999px;
-  box-shadow: 0 8px 24px rgba(30, 111, 160, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   margin-bottom: 32px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-
 .alone.is-visible .alone__prefix {
   opacity: 1;
   transform: translateY(0);
@@ -439,7 +457,7 @@
 
 .alone__submessage {
   font-size: 15px;
-  color: var(--color-text-sub);
+  color: rgba(255, 255, 255, 0.85);
   font-weight: 500;
   opacity: 0;
   transform: translateY(20px);
@@ -493,11 +511,15 @@
   }
 
   .alone__banner {
-    flex: 0 0 auto;
-    max-width: 520px;
-    padding: 80px 40px;
-    border-radius: 40px;
-  }
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    #0F1A30 0%,
+    #1A2744 40%,
+    #1A5A8A 100%
+  );
+  /* ... 他の設定はそのまま ... */
+}
 
   .alone__main {
     font-size: clamp(32px, 3.5vw, 48px);
