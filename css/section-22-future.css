@@ -1,0 +1,502 @@
+/* ============================================
+   Section 22: 未来提示（想像してみてください）
+   朝焼け系（薄水色 → 淑ゴールド）
+   静かなセクション、余白多め、動きはゆっくり
+   ============================================ */
+
+.future {
+  position: relative;
+  background:
+    linear-gradient(180deg,
+      #EBF5FF 0%,
+      #DCEEF8 25%,
+      #F5E8D0 65%,
+      #FCEFD4 100%);
+  padding: 100px 24px 120px;
+  overflow: hidden;
+}
+
+/* 上下のグラデライン区切り */
+.future::before,
+.future::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(227, 184, 90, 0.6) 50%, transparent 100%);
+}
+.future::before { top: 0; }
+.future::after { bottom: 0; }
+
+/* sp-only ヘルパー */
+.future .sp-only { display: inline; }
+
+/* ============================================
+   朝焼けの光線（背景）
+   ============================================ */
+.future__sunrays {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.future__sunray {
+  position: absolute;
+  background: linear-gradient(180deg,
+    rgba(255, 220, 140, 0.4) 0%,
+    rgba(255, 220, 140, 0.15) 50%,
+    rgba(255, 220, 140, 0) 100%);
+  transform-origin: top center;
+  animation: futureSunrayPulse 8s ease-in-out infinite;
+}
+
+.future__sunray--1 {
+  top: -20%;
+  right: 5%;
+  width: 180px;
+  height: 140%;
+  transform: rotate(15deg);
+  animation-delay: 0s;
+}
+
+.future__sunray--2 {
+  top: -20%;
+  right: 25%;
+  width: 120px;
+  height: 130%;
+  transform: rotate(20deg);
+  opacity: 0.7;
+  animation-delay: -3s;
+}
+
+.future__sunray--3 {
+  top: -20%;
+  right: 50%;
+  width: 90px;
+  height: 130%;
+  transform: rotate(10deg);
+  opacity: 0.5;
+  animation-delay: -6s;
+}
+
+@keyframes futureSunrayPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ============================================
+   光の粒（ふわふわ漂う）
+   ============================================ */
+.future__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.future__particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(255, 220, 140, 0.9) 0%, rgba(255, 220, 140, 0) 70%);
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: futureParticleRise 12s linear infinite;
+  opacity: 0;
+}
+
+.future__particle--1 { left: 8%;  bottom: -10px; animation-delay: 0s; }
+.future__particle--2 { left: 22%; bottom: -10px; width: 8px; height: 8px; animation-delay: -2s; }
+.future__particle--3 { left: 38%; bottom: -10px; animation-delay: -4s; }
+.future__particle--4 { left: 52%; bottom: -10px; width: 5px; height: 5px; animation-delay: -6s; }
+.future__particle--5 { left: 65%; bottom: -10px; width: 7px; height: 7px; animation-delay: -8s; }
+.future__particle--6 { left: 78%; bottom: -10px; animation-delay: -10s; }
+.future__particle--7 { left: 90%; bottom: -10px; width: 5px; height: 5px; animation-delay: -1s; }
+.future__particle--8 { left: 15%; bottom: -10px; width: 9px; height: 9px; animation-delay: -7s; }
+
+@keyframes futureParticleRise {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-110vh) translateX(20px); opacity: 0; }
+}
+
+/* ============================================
+   インナー
+   ============================================ */
+.future__inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  z-index: 2;
+  text-align: center;
+}
+
+/* バッジ */
+.future__badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 240, 200, 0.7) 100%);
+  border: 1px solid rgba(227, 184, 90, 0.5);
+  border-radius: 30px;
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #8B6914;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin-bottom: 30px;
+  box-shadow: 0 4px 16px rgba(227, 184, 90, 0.15);
+}
+
+/* イントロ文 */
+.future__intro {
+  margin: 0 0 60px;
+  font-family: var(--font-jp);
+  font-size: 18px;
+  font-weight: 600;
+  color: #3A4A6B;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   メインコンテンツ
+   ============================================ */
+.future__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 70px;
+}
+
+/* ============================================
+   人物画像
+   ============================================ */
+.future__char-wrap {
+  position: relative;
+  width: 220px;
+  flex-shrink: 0;
+}
+
+/* 後ろの光の輪 */
+.future__char-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130%;
+  padding-bottom: 130%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 220, 140, 0.5) 0%,
+    rgba(255, 220, 140, 0.2) 40%,
+    rgba(255, 220, 140, 0) 70%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(20px);
+  animation: futureAuraPulse 5s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes futureAuraPulse {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* カードフレーム */
+.future__char-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(227, 184, 90, 0.5);
+  box-shadow:
+    0 12px 40px rgba(120, 90, 30, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+    0 0 30px rgba(255, 220, 140, 0.4);
+  z-index: 1;
+  animation: futureCharFloat 5s ease-in-out infinite;
+}
+
+@keyframes futureCharFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.future__char-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(1.05) saturate(1.05);
+}
+
+/* 四隅のコーナー装飾 */
+.future__char-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--color-gold);
+  border-style: solid;
+  z-index: 2;
+  filter: drop-shadow(0 0 4px rgba(227, 184, 90, 0.6));
+}
+.future__char-corner--tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+.future__char-corner--tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+.future__char-corner--bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+.future__char-corner--br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+/* 周りの星 */
+.future__char-sparkle {
+  position: absolute;
+  color: var(--color-gold);
+  font-size: 18px;
+  pointer-events: none;
+  text-shadow: 0 0 12px rgba(255, 220, 140, 0.9);
+  animation: futureSparkle 3s ease-in-out infinite;
+  z-index: 3;
+}
+.future__char-sparkle--1 {
+  top: -8px; left: -10px;
+  animation-delay: 0s;
+}
+.future__char-sparkle--2 {
+  top: 30%; right: -14px;
+  animation-delay: 1s;
+  font-size: 14px;
+}
+.future__char-sparkle--3 {
+  bottom: 8%; left: -8px;
+  animation-delay: 2s;
+  font-size: 22px;
+}
+
+@keyframes futureSparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(180deg); }
+}
+
+/* ============================================
+   仮定の3チェック
+   ============================================ */
+.future__assumptions {
+  width: 100%;
+  max-width: 460px;
+}
+
+.future__assumptions-lead {
+  margin: 0 0 24px;
+  font-family: var(--font-jp);
+  font-size: 19px;
+  font-weight: 700;
+  color: #2A3A5A;
+  text-align: center;
+}
+
+.future__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.future__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 248, 230, 0.75) 100%);
+  border: 1px solid rgba(227, 184, 90, 0.35);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(120, 90, 30, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.future__item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 20px rgba(120, 90, 30, 0.12);
+}
+
+.future__check {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #F2D894 0%, #E3B85A 100%);
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 14px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(227, 184, 90, 0.5);
+}
+
+.future__text {
+  font-family: var(--font-jp);
+  font-size: 16px;
+  font-weight: 700;
+  color: #2A3A5A;
+  line-height: 1.5;
+}
+
+/* ============================================
+   締めの問い
+   ============================================ */
+.future__question {
+  position: relative;
+  padding: 40px 20px 20px;
+}
+
+.future__question-mark {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 120px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #F2D894 0%, #E3B85A 50%, #C49A3D 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  opacity: 0.18;
+  z-index: 0;
+  filter: drop-shadow(0 4px 12px rgba(227, 184, 90, 0.4));
+  pointer-events: none;
+}
+
+.future__question-text {
+  position: relative;
+  margin: 0;
+  font-family: var(--font-jp);
+  font-size: 24px;
+  font-weight: 800;
+  color: #1F2D4D;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  z-index: 1;
+  text-shadow: 0 2px 16px rgba(255, 255, 255, 0.8);
+}
+
+.future__question-q {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.3em;
+  background: linear-gradient(135deg, #E3B85A 0%, #C49A3D 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 4px;
+  vertical-align: -2px;
+}
+
+/* ============================================
+   PC（768px以上）
+   ============================================ */
+@media (min-width: 768px) {
+
+  .future {
+    padding: 140px 40px 160px;
+  }
+
+  .future .sp-only { display: none; }
+
+  /* 光線を大きく */
+  .future__sunray--1 { width: 280px; right: 8%; }
+  .future__sunray--2 { width: 200px; right: 28%; }
+  .future__sunray--3 { width: 150px; right: 52%; }
+
+  /* バッジ */
+  .future__badge {
+    font-size: 13px;
+    padding: 9px 24px;
+    margin-bottom: 36px;
+  }
+
+  /* イントロ */
+  .future__intro {
+    font-size: 24px;
+    margin-bottom: 90px;
+  }
+
+  /* メイン2カラム */
+  .future__main {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 100px;
+  }
+
+  /* 人物画像大きく */
+  .future__char-wrap {
+    width: 320px;
+  }
+
+  .future__char-sparkle--1 { font-size: 24px; }
+  .future__char-sparkle--2 { font-size: 18px; }
+  .future__char-sparkle--3 { font-size: 28px; }
+
+  .future__char-corner {
+    width: 22px;
+    height: 22px;
+  }
+  .future__char-corner--tl { top: 12px; left: 12px; }
+  .future__char-corner--tr { top: 12px; right: 12px; }
+  .future__char-corner--bl { bottom: 12px; left: 12px; }
+  .future__char-corner--br { bottom: 12px; right: 12px; }
+
+  /* 仮定リスト */
+  .future__assumptions {
+    text-align: left;
+    max-width: 480px;
+  }
+
+  .future__assumptions-lead {
+    text-align: left;
+    font-size: 22px;
+    margin-bottom: 28px;
+  }
+
+  .future__item {
+    padding: 22px 26px;
+    gap: 18px;
+  }
+
+  .future__check {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .future__text {
+    font-size: 19px;
+  }
+
+  /* 締めの問い */
+  .future__question {
+    padding: 60px 20px 30px;
+  }
+
+  .future__question-mark {
+    font-size: 200px;
+    top: -30px;
+  }
+
+  .future__question-text {
+    font-size: 38px;
+  }
+}
