@@ -1,0 +1,717 @@
+/* ===================================================
+   section-14-features.css
+   Section 14-15: 特徴②SNSに振り回されない + 特徴③初心者でも始めやすい
+   白背景 + ポップ + インフォグラフィック
+   =================================================== */
+
+.features {
+  position: relative;
+  padding: 100px 24px;
+  background:
+    /* ドットグリッドテクスチャ */
+    radial-gradient(
+      circle at 1px 1px,
+      rgba(91, 164, 217, 0.15) 1px,
+      transparent 1px
+    ),
+    /* ベースグラデーション */
+    linear-gradient(
+      180deg,
+      #FAFBFC 0%,
+      #F1F4F8 50%,
+      #FAFBFC 100%
+    );
+  background-size: 24px 24px, 100% 100%;
+  overflow: hidden;
+}
+
+/* 背景の大きなぼかし円 */
+.features::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(91, 164, 217, 0.15) 0%,
+    rgba(91, 164, 217, 0) 70%
+  );
+  pointer-events: none;
+  animation: featuresBgFloat1 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+.features::after {
+  content: '';
+  position: absolute;
+  bottom: 5%;
+  right: -10%;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 225, 56, 0.2) 0%,
+    rgba(255, 225, 56, 0) 70%
+  );
+  pointer-events: none;
+  animation: featuresBgFloat2 9s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes featuresBgFloat1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(40px, -30px); }
+}
+
+@keyframes featuresBgFloat2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-30px, 40px); }
+}
+
+/* ===================================================
+   インナー
+   =================================================== */
+.features__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ===================================================
+   バッジ
+   =================================================== */
+.features__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--color-blue-5);
+  letter-spacing: 0.15em;
+  padding: 10px 24px;
+  background: #FFFFFF;
+  border: 2px solid rgba(91, 164, 217, 0.4);
+  border-radius: 9999px;
+  box-shadow:
+    0 8px 24px rgba(46, 122, 184, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  margin-bottom: 24px;
+  }
+
+.features__badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFE138, #FFC700);
+  box-shadow: 0 0 10px rgba(255, 199, 0, 0.7);
+  animation: featuresBadgeDot 1.8s ease-in-out infinite;
+}
+
+@keyframes featuresBadgeDot {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* ===================================================
+   特徴タイトル
+   =================================================== */
+.features__title {
+  font-family: var(--font-jp);
+  font-size: clamp(26px, 6.5vw, 42px);
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--color-text-main);
+  margin: 0 0 48px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.features.is-visible .features__title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.features__title-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.2em;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFE138, #FFC700);
+  color: #FFFFFF;
+  font-size: 0.7em;
+  vertical-align: -0.15em;
+  box-shadow:
+    0 8px 20px rgba(255, 199, 0, 0.4),
+    0 0 30px rgba(255, 199, 0, 0.3),
+    inset -3px -3px 8px rgba(230, 168, 0, 0.3),
+    inset 2px 2px 6px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ===================================================
+   Section 14 - ベン図ビジュアライゼーション
+   =================================================== */
+.features__venn {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  height: 320px;
+  margin: 0 auto 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.features.is-visible .features__venn {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.7s;
+}
+
+/* 円共通 */
+.features__venn-circle {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.4s ease;
+}
+
+/* 左の円：AIモデル（青） */
+.features__venn-circle--ai {
+  left: 50%;
+  top: 50%;
+  transform: translate(-95%, -50%);
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(123, 189, 229, 0.85) 0%,
+    rgba(63, 163, 209, 0.75) 50%,
+    rgba(30, 111, 160, 0.7) 100%
+  );
+  box-shadow:
+    0 20px 50px rgba(30, 111, 160, 0.4),
+    inset -10px -10px 25px rgba(30, 111, 160, 0.3),
+    inset 5px 5px 15px rgba(255, 255, 255, 0.5);
+  animation: vennFloatLeft 5s ease-in-out infinite;
+}
+
+@keyframes vennFloatLeft {
+  0%, 100% { transform: translate(-95%, -50%); }
+  50% { transform: translate(-98%, -52%); }
+}
+
+/* 右の円：統計モデル（黄色） */
+.features__venn-circle--stats {
+  left: 50%;
+  top: 50%;
+  transform: translate(-5%, -50%);
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 245, 160, 0.9) 0%,
+    rgba(255, 225, 56, 0.8) 50%,
+    rgba(255, 199, 0, 0.75) 100%
+  );
+  box-shadow:
+    0 20px 50px rgba(255, 199, 0, 0.45),
+    inset -10px -10px 25px rgba(230, 168, 0, 0.3),
+    inset 5px 5px 15px rgba(255, 255, 255, 0.6);
+  animation: vennFloatRight 5s ease-in-out 0.5s infinite;
+}
+
+@keyframes vennFloatRight {
+  0%, 100% { transform: translate(-5%, -50%); }
+  50% { transform: translate(-2%, -48%); }
+}
+
+.features__venn-label {
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.features__venn-circle--ai .features__venn-label {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1E6FA0;
+}
+
+.features__venn-circle--stats .features__venn-label {
+  background: rgba(255, 255, 255, 0.9);
+  color: #B88600;
+}
+
+.features__venn-name {
+  font-family: var(--font-jp);
+  font-size: 18px;
+  font-weight: 900;
+  color: #FFFFFF;
+  text-shadow: 0 2px 8px rgba(15, 26, 48, 0.4);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.features__venn-circle--stats .features__venn-name {
+  color: #5A3E00;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+/* 中央の交差部：Crypto Nova */
+.features__venn-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F1F4F8 100%);
+  border: 3px solid rgba(255, 199, 0, 0.7);
+  box-shadow:
+    0 15px 40px rgba(15, 26, 48, 0.3),
+    0 0 0 6px rgba(255, 255, 255, 0.4),
+    0 0 30px rgba(255, 199, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  animation: vennCenterPulse 3s ease-in-out infinite;
+}
+
+@keyframes vennCenterPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow:
+      0 15px 40px rgba(15, 26, 48, 0.3),
+      0 0 0 6px rgba(255, 255, 255, 0.4),
+      0 0 30px rgba(255, 199, 0, 0.5),
+      inset 0 2px 4px rgba(255, 255, 255, 0.9);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.06);
+    box-shadow:
+      0 18px 50px rgba(15, 26, 48, 0.35),
+      0 0 0 8px rgba(255, 255, 255, 0.5),
+      0 0 50px rgba(255, 199, 0, 0.7),
+      inset 0 2px 4px rgba(255, 255, 255, 0.9);
+  }
+}
+
+.features__venn-center-label {
+  font-family: var(--font-en);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--color-text-sub);
+  margin-bottom: 2px;
+}
+
+.features__venn-center-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1E6FA0, #3B8FD9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+/* 背景の「×」マーク */
+.features__venn-cross {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-en);
+  font-size: 200px;
+  font-weight: 900;
+  color: rgba(91, 164, 217, 0.08);
+  z-index: 0;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ===================================================
+   Section 14 説明文
+   =================================================== */
+.features__description {
+  max-width: 640px;
+  margin: 0 auto 96px; 
+}
+
+.features__description-text {
+  font-family: var(--font-jp);
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--color-text-main);
+  margin: 0;
+  font-weight: 500;
+}
+
+.features__description-highlight {
+  display: inline-block;
+  position: relative;
+  color: var(--color-blue-5);
+  font-weight: 900;
+  padding: 0 4px;
+}
+
+.features__description-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(90deg, rgba(255, 225, 56, 0.7), rgba(255, 199, 0, 0.5));
+  z-index: -1;
+  border-radius: 4px;
+}
+
+/* ===================================================
+   区切り装飾（軽め）
+   =================================================== */
+.features__divider {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.features.is-visible .features__divider {
+  opacity: 1;
+  transition-delay: 1.4s;
+}
+
+.features__divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(91, 164, 217, 0) 0%,
+    rgba(91, 164, 217, 0.5) 50%,
+    rgba(91, 164, 217, 0) 100%
+  );
+}
+
+.features__divider-diamond {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #FFE138, #FFC700);
+  transform: rotate(45deg);
+  box-shadow:
+    0 4px 12px rgba(255, 199, 0, 0.45),
+    inset -1px -1px 3px rgba(230, 168, 0, 0.5),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.7);
+  animation: featuresDiamondSpin 4s linear infinite;
+}
+
+@keyframes featuresDiamondSpin {
+  0% { transform: rotate(45deg); }
+  100% { transform: rotate(405deg); }
+}
+
+/* ===================================================
+   Section 15 - 2ステップフロー
+   =================================================== */
+.features__steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 0 auto 40px;
+  max-width: 900px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.features.is-visible .features__steps {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+
+/* ステップカード共通 */
+.features__step-card {
+  position: relative;
+  flex: 0 1 260px;
+  width: 260px;
+  min-width: 0;
+  max-width: 320px;
+  padding: 36px 24px 32px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FBFD 100%);
+  border: 2px solid rgba(91, 164, 217, 0.3);
+  border-radius: 24px;
+  box-shadow:
+    0 20px 50px rgba(46, 122, 184, 0.18),
+    0 8px 20px rgba(46, 122, 184, 0.1),
+    inset 0 2px 4px rgba(255, 255, 255, 0.9);
+  transform: perspective(1000px) rotateX(3deg);
+  transition: transform 0.4s ease;
+}
+
+.features__step-card:hover {
+  transform: perspective(1000px) rotateX(0deg) translateY(-6px);
+}
+
+.features__step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #FFE138 0%, #FFC700 50%, #FFE138 100%);
+  border-radius: 24px 24px 0 0;
+}
+
+/* ステップ番号 */
+.features__step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFE138 0%, #FFC700 50%, #E6A800 100%);
+  font-family: var(--font-en);
+  font-size: 26px;
+  font-weight: 900;
+  color: #FFFFFF;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 10px 24px rgba(255, 199, 0, 0.45),
+    0 0 20px rgba(255, 199, 0, 0.3),
+    inset -4px -4px 10px rgba(230, 168, 0, 0.3),
+    inset 3px 3px 8px rgba(255, 255, 255, 0.6);
+}
+
+.features__step-label {
+  display: inline-block;
+  font-family: var(--font-en);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: #FFFFFF;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #3B8FD9, #1E6FA0);
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.features__step-text {
+  font-family: var(--font-jp);
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--color-text-main);
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* 矢印 */
+.features__step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.features__step-arrow svg {
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 4px 16px rgba(255, 199, 0, 0.6)) drop-shadow(0 0 20px rgba(255, 199, 0, 0.4));
+}
+
+.features__step-arrow svg path {
+  stroke: url(#stepArrowGradient);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1.2s ease;
+}
+
+.features.is-visible .features__step-arrow svg path {
+  stroke-dashoffset: 0;
+  transition-delay: 1.3s;
+}
+
+/* 「たった2ステップ」バッジ */
+.features__steps-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-jp);
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--color-blue-5);
+  padding: 10px 24px;
+  background: #FFFFFF;
+  border: 2px solid rgba(255, 199, 0, 0.5);
+  border-radius: 9999px;
+  box-shadow:
+    0 8px 24px rgba(255, 199, 0, 0.25),
+    0 0 30px rgba(255, 199, 0, 0.2);
+  margin: 0 auto 32px; 
+}
+
+.features__steps-summary-sparkle {
+  color: #FFC700;
+  font-size: 1.1em;
+  animation: summarySparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes summarySparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+}
+
+/* Section 15 説明文 */
+.features__description--easy {
+  margin: 0 auto;
+}
+
+/* ===================================================
+   PC（768px〜）
+   =================================================== */
+@media (min-width: 768px) {
+  .features {
+    padding: 140px 48px;
+  }
+
+  .features__badge {
+    font-size: 13px;
+    padding: 12px 28px;
+    margin-bottom: 32px;
+  }
+
+  .features__title {
+    margin-bottom: 64px;
+  }
+
+  /* ベン図を大きく */
+  .features__venn {
+    height: 400px;
+    margin-bottom: 72px;
+  }
+
+  .features__venn-circle {
+    width: 300px;
+    height: 300px;
+    padding: 30px;
+  }
+
+  .features__venn-label {
+    font-size: 13px;
+    padding: 5px 14px;
+    margin-bottom: 10px;
+  }
+
+  .features__venn-name {
+    font-size: 24px;
+  }
+
+  .features__venn-center {
+    width: 150px;
+    height: 150px;
+  }
+
+  .features__venn-center-label {
+    font-size: 10px;
+  }
+
+  .features__venn-center-name {
+    font-size: 20px;
+  }
+
+  .features__venn-cross {
+    font-size: 280px;
+  }
+
+  .features__description {
+    margin-bottom: 120px;
+  }
+
+  .features__description-text {
+    font-size: 17px;
+  }
+
+  .features__divider {
+    margin-bottom: 100px;
+  }
+
+  /* 2ステップ */
+  .features__steps {
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .features__step-card {
+    padding: 48px 32px 40px;
+  }
+
+  .features__step-number {
+    width: 72px;
+    height: 72px;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .features__step-label {
+    font-size: 12px;
+  }
+
+  .features__step-text {
+    font-size: 28px;
+  }
+
+  .features__step-arrow svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .features__steps-summary {
+    font-size: 16px;
+    padding: 12px 32px;
+    margin-bottom: 40px;
+  }
+}
