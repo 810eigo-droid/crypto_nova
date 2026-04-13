@@ -1,0 +1,422 @@
+/* ===================================================
+   section-10-reveal.css
+   Section 10-11: シンプル宣言 + Crypto Nova 登場（統合版）
+   =================================================== */
+
+.reveal {
+  position: relative;
+  padding: 100px 24px;
+  background:
+    /* 微細な格子テクスチャ */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 60px,
+      rgba(91, 164, 217, 0.03) 60px,
+      rgba(91, 164, 217, 0.03) 61px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 60px,
+      rgba(91, 164, 217, 0.03) 60px,
+      rgba(91, 164, 217, 0.03) 61px
+    ),
+    /* メインの背景：白〜薄水色 */
+    linear-gradient(
+      180deg,
+      #FAFBFC 0%,
+      #EBF5FF 50%,
+      #DCEEFB 100%
+    );
+  overflow: hidden;
+}
+
+/* ---------- 左右の波線（SVG装飾） ---------- */
+.reveal__waves {
+  position: absolute;
+  top: 0;
+  width: 30%;
+  max-width: 280px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.reveal__waves--left {
+  left: 0;
+}
+
+.reveal__waves--right {
+  right: 0;
+  transform: scaleX(-1); /* 左右反転 */
+}
+
+.reveal__waves svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.reveal__waves path {
+  fill: none;
+  stroke: var(--color-blue-3);
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0;
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  transition: stroke-dashoffset 2.5s ease, opacity 0.8s ease;
+}
+
+.reveal.is-visible .reveal__waves path {
+  opacity: 0.7;
+  stroke-dashoffset: 0;
+}
+
+.reveal.is-visible .reveal__waves path:nth-child(1) { transition-delay: 0.2s; }
+.reveal.is-visible .reveal__waves path:nth-child(2) { transition-delay: 0.4s; }
+.reveal.is-visible .reveal__waves path:nth-child(3) { transition-delay: 0.6s; }
+
+/* 波線がゆっくり揺れる */
+.reveal__waves path {
+  animation: waveSway 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.reveal__waves path:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.reveal__waves path:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes waveSway {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+
+/* ---------- 背景の有機的な形（blob） ---------- */
+.reveal__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.reveal__blob--1 {
+  width: 400px;
+  height: 400px;
+  top: 10%;
+  left: -10%;
+  background: radial-gradient(
+    circle,
+    rgba(91, 164, 217, 0.25) 0%,
+    rgba(91, 164, 217, 0) 70%
+  );
+  animation: blobFloat 8s ease-in-out infinite;
+}
+
+.reveal__blob--2 {
+  width: 350px;
+  height: 350px;
+  bottom: 15%;
+  right: -8%;
+  background: radial-gradient(
+    circle,
+    rgba(184, 216, 242, 0.4) 0%,
+    rgba(184, 216, 242, 0) 70%
+  );
+  animation: blobFloat 8s ease-in-out 2s infinite;
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* ---------- インナー ---------- */
+.reveal__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ===================================================
+   上半分：シンプル宣言
+   =================================================== */
+.reveal__statement {
+  font-family: var(--font-jp);
+  font-size: clamp(20px, 5.5vw, 32px);
+  font-weight: 900;
+  line-height: 1.7;
+  color: var(--color-text-main);
+  margin: 0 0 32px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.is-visible .reveal__statement {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.reveal__statement-highlight {
+  display: inline-block;
+  position: relative;
+  color: var(--color-blue-5);
+}
+
+.reveal__statement-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #FFE138, #FFC700);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s ease;
+}
+
+.reveal.is-visible .reveal__statement-highlight::after {
+  transform: scaleX(1);
+  transition-delay: 1.2s;
+}
+
+/* ---------- 区切りの装飾線 ---------- */
+.reveal__divider {
+  position: relative;
+  width: 1px;
+  height: 32px;
+  margin: 0 auto 32px;
+  background: linear-gradient(
+    180deg,
+    rgba(91, 164, 217, 0) 0%,
+    rgba(91, 164, 217, 0.6) 50%,
+    rgba(91, 164, 217, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.reveal.is-visible .reveal__divider {
+  opacity: 1;
+  transition-delay: 1.5s;
+}
+
+.reveal__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 12px rgba(227, 184, 90, 0.6);
+  animation: dividerDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dividerDotPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+}
+
+/* ===================================================
+   下半分：Crypto Nova 降臨
+   =================================================== */
+.reveal__intro {
+  font-family: var(--font-jp);
+  font-size: clamp(15px, 4vw, 20px);
+  font-weight: 700;
+  line-height: 1.8;
+  color: var(--color-text-sub);
+  margin: 0 0 32px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.is-visible .reveal__intro {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.8s;
+}
+
+/* ---------- ロゴ降臨ブロック ---------- */
+.reveal__logo {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reveal.is-visible .reveal__logo {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 2.2s;
+}
+
+/* ロゴ周りの放射光 */
+.reveal__logo::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 225, 56, 0.35) 0%,
+    rgba(255, 199, 0, 0.15) 30%,
+    rgba(255, 199, 0, 0.05) 50%,
+    rgba(255, 199, 0, 0) 70%
+  );
+  z-index: -1;
+  opacity: 0;
+  animation: logoBurst 3s ease 2.4s forwards;
+}
+
+@keyframes logoBurst {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ロゴ周りの光が脈打つ（出現後） */
+.reveal.is-visible .reveal__logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 225, 56, 0.25) 0%,
+    rgba(255, 199, 0, 0) 60%
+  );
+  z-index: -1;
+  animation: logoPulse 2.5s ease-in-out 3.4s infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+.reveal__logo-icon {
+  width: 200px;
+  height: 200px;
+  display: block;
+  filter: drop-shadow(0 8px 20px rgba(227, 184, 90, 0.5));
+  animation: logoIconRotate 8s linear infinite;
+  animation-delay: 3.4s;
+}
+
+@keyframes logoIconRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.reveal__logo-textwrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  line-height: 1;
+}
+
+.reveal__logo-text {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 7vw, 44px);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-blue-5), var(--color-blue-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.02em;
+}
+
+.reveal__logo-ruby {
+  font-family: var(--font-jp);
+  font-size: clamp(11px, 2.5vw, 13px);
+  font-weight: 700;
+  color: var(--color-text-sub);
+  letter-spacing: 0.2em;
+}
+
+/* ---------- 締めの「です。」 ---------- */
+.reveal__closing {
+  font-family: var(--font-jp);
+  font-size: clamp(15px, 4vw, 20px);
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.is-visible .reveal__closing {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 3.2s;
+}
+
+/* ===================================================
+   PC（768px〜）
+   =================================================== */
+@media (min-width: 768px) {
+  .reveal {
+    padding: 140px 48px;
+  }
+
+  .reveal__waves {
+    width: 25%;
+    max-width: 320px;
+  }
+
+  .reveal__statement {
+    margin-bottom: 48px;
+  }
+
+  .reveal__divider {
+    height: 48px;
+    margin-bottom: 48px;
+  }
+
+  .reveal__logo-icon {
+    width: 400px;
+    height: 400px;
+  }
+
+  .reveal__logo::before {
+    width: 440px;
+    height: 440px;
+  }
+
+  .reveal.is-visible .reveal__logo::after {
+    width: 320px;
+    height: 320px;
+  }
+}
