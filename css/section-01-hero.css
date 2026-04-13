@@ -371,6 +371,20 @@
     width: 85%;
     max-width: 530px;
   }
+  .hero__person {
+    width: 85%;
+    max-width: 530px;
+  }
+
+  /* ← ここに追加 ↓ */
+  .hero__sub-highlight {
+    white-space: nowrap;
+  }
+
+  .hero__sub-highlight .sp-only {
+    display: none;
+  }
+  /* ← ここまで ↑ */
 }
 
 /* --- タブレット --- */
