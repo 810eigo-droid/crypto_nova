@@ -980,4 +980,7 @@
     height: 30px;
     font-size: 16px;
   }
+  .feature__contrast-number {
+    font-size: 60px;
+  }
 }
