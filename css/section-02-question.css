@@ -26,14 +26,14 @@
 
 /* --- 男性画像 --- */
 .question__visual {
-  width: 90%;
-  max-width: 400px;
+  width: 95%;
+  max-width: 460px;
   flex: 0 0 auto;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  padding: 40px 30px;
+  padding: 40px 0px 0;
 }
 
 /* 大きな円形の背景（濃い青のグラデーション） */

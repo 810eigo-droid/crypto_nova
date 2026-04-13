@@ -26,12 +26,12 @@ body {
 
 /* --- ヘッダー --- */
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 12px 20px;
+  padding: 6px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,12 +61,27 @@ body {
 
 .header__logo-text {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
+  line-height: 1;
   background: linear-gradient(135deg, var(--color-blue-4), var(--color-blue-3));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+.header__logo-textwrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 2px;
+}
+
+.header__logo-ruby {
+  font-family: var(--font-jp);
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--color-text-sub);
+  letter-spacing: 0.15em;
 }
 
 .header__cta {
