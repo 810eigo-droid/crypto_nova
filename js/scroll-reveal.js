@@ -44,5 +44,6 @@ document.querySelectorAll('.turning-point').forEach(section => {
 document.querySelectorAll('.reveal').forEach(section => observer.observe(section));
 document.querySelectorAll('.feature').forEach(section => observer.observe(section));
 document.querySelectorAll('.features').forEach(section => observer.observe(section));
+document.querySelectorAll('.recommend').forEach(section => observer.observe(section));
 // 今後セクション追加時はここに追加
 // document.querySelectorAll('.anxiety').forEach(section => observer.observe(section));

@@ -14,7 +14,7 @@
 
 /* --- 背景グラデーション --- */
 .hero__gradient {
-  position: fixed; top: 0
+  position: absolute;
   inset: 0;
   z-index: 0;
   background: linear-gradient(
@@ -146,11 +146,9 @@
   color: rgba(255,255,255,0.9);
   animation: fadeInUp 0.8s ease 0.7s both;
 }
+
 /* ===================================================
    サブコピー ハイライト：全部盛りアニメーション
-   1. 一文字ずつ跳ねながら黄色に変化
-   2. 虹色グラデーションが流れ続ける
-   3. 時々キラッと光る
    =================================================== */
 
 .hero__sub-highlight {
@@ -159,7 +157,6 @@
   position: relative;
 }
 
-/* 各文字の基本設定 */
 .hero__sub-highlight .char {
   display: inline-block;
   opacity: 0;
@@ -182,14 +179,11 @@
     rainbowFlow 4s linear 3.5s infinite;
 }
 
-/* 「分析アプリ」だけ大きく強調 */
 .hero__sub-highlight .char--emphasis {
   font-size: 1.2em;
   font-weight: 900;
 }
 
-/* 一文字ずつ遅延させる */
-/* 一文字ずつ遅延 */
 .hero__sub-highlight .char:nth-child(1)  { animation-delay: 0.3s, 2s; }
 .hero__sub-highlight .char:nth-child(2)  { animation-delay: 0.38s, 2s; }
 .hero__sub-highlight .char:nth-child(3)  { animation-delay: 0.46s, 2s; }
@@ -204,14 +198,12 @@
 .hero__sub-highlight .char:nth-child(12) { animation-delay: 1.18s, 2s; }
 .hero__sub-highlight .char:nth-child(13) { animation-delay: 1.26s, 2s; }
 .hero__sub-highlight .char:nth-child(14) { animation-delay: 1.34s, 2s; }
-/* 「分析アプリ」：少し間を空けて強調登場 */
 .hero__sub-highlight .char:nth-child(15) { animation-delay: 1.5s, 2s; }
 .hero__sub-highlight .char:nth-child(16) { animation-delay: 1.58s, 2s; }
 .hero__sub-highlight .char:nth-child(17) { animation-delay: 1.66s, 2s; }
 .hero__sub-highlight .char:nth-child(18) { animation-delay: 1.74s, 2s; }
 .hero__sub-highlight .char:nth-child(19) { animation-delay: 1.82s, 2s; }
 
-/* 跳ねて登場 */
 @keyframes charBounce {
   0% {
     opacity: 0;
@@ -227,17 +219,11 @@
   }
 }
 
-/* 虹色が流れ続ける */
 @keyframes rainbowFlow {
-  0% {
-    background-position: 0% 0;
-  }
-  100% {
-    background-position: 300% 0;
-  }
+  0% { background-position: 0% 0; }
+  100% { background-position: 300% 0; }
 }
 
-/* キラッと光るシャイン効果 */
 .hero__sub-highlight::after {
   content: '';
   position: absolute;
@@ -256,16 +242,11 @@
 }
 
 @keyframes shine {
-  0% {
-    left: -100%;
-  }
-  20% {
-    left: 200%;
-  }
-  100% {
-    left: 200%;
-  }
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
 }
+
 /* --- CTAボタン --- */
 .hero__cta {
   display: inline-flex;
@@ -326,7 +307,7 @@
 }
 
 /* ===================================================
-   PC（1024px〜）
+   PC（768px〜）
    =================================================== */
 @media (min-width: 768px) {
 
@@ -335,17 +316,6 @@
     flex-direction: row;
     align-items: center;
     padding-top: 0;
-  }
-
-  .hero__gradient {
-    background: linear-gradient(
-      105deg,
-      #EBF5FF 0%,
-      #B8D8F2 20%,
-      #5BA4D9 50%,
-      #2E7AB8 75%,
-      #1A5A8A 100%
-    );
   }
 
   /* 左側：テキスト上部 */

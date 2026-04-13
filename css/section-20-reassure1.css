@@ -1,0 +1,849 @@
+/* ============================================
+   Section 20-21: 不安払拭（統合版）
+   濃紺背景 + 警告打ち消し + 不安の正体3キャラ変換
+   ============================================ */
+
+.reassure {
+  position: relative;
+  background: linear-gradient(180deg, #0F1A30 0%, #1A2744 50%, #0F1A30 100%);
+  padding: 80px 20px 100px;
+  overflow: hidden;
+}
+
+/* 上下のグラデライン区切り */
+.reassure::before,
+.reassure::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold) 50%, transparent 100%);
+  opacity: 0.4;
+}
+.reassure::before { top: 0; }
+.reassure::after { bottom: 0; }
+
+/* ============================================
+   背景の浮遊ドット
+   ============================================ */
+.reassure__bg-dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.reassure__dot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: reassureFloat 8s ease-in-out infinite;
+}
+.reassure__dot--1 {
+  width: 14px; height: 14px;
+  background: var(--color-yellow);
+  top: 8%; left: 7%;
+  box-shadow: 0 0 20px rgba(255, 199, 0, 0.6);
+}
+.reassure__dot--2 {
+  width: 10px; height: 10px;
+  background: var(--color-blue-3);
+  top: 18%; right: 9%;
+  animation-delay: -2s;
+  box-shadow: 0 0 16px rgba(91, 164, 217, 0.6);
+}
+.reassure__dot--3 {
+  width: 16px; height: 16px;
+  background: var(--color-yellow);
+  bottom: 22%; left: 10%;
+  animation-delay: -4s;
+  box-shadow: 0 0 22px rgba(255, 199, 0, 0.5);
+}
+.reassure__dot--4 {
+  width: 8px; height: 8px;
+  background: var(--color-blue-2);
+  bottom: 12%; right: 14%;
+  animation-delay: -1s;
+  box-shadow: 0 0 14px rgba(184, 216, 242, 0.6);
+}
+.reassure__dot--5 {
+  width: 12px; height: 12px;
+  background: var(--color-gold);
+  top: 50%; left: 4%;
+  animation-delay: -5s;
+  box-shadow: 0 0 18px rgba(227, 184, 90, 0.6);
+}
+.reassure__dot--6 {
+  width: 10px; height: 10px;
+  background: var(--color-yellow-light);
+  top: 45%; right: 5%;
+  animation-delay: -3s;
+  box-shadow: 0 0 16px rgba(255, 225, 56, 0.6);
+}
+
+@keyframes reassureFloat {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+}
+
+/* ============================================
+   背景のキラキラ星
+   ============================================ */
+.reassure__stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.reassure__star {
+  position: absolute;
+  color: var(--color-gold-light);
+  font-size: 18px;
+  opacity: 0;
+  animation: reassureStarTwinkle 3s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(242, 216, 148, 0.8);
+}
+.reassure__star--1 { top: 6%;  left: 22%; animation-delay: 0s; }
+.reassure__star--2 { top: 30%; right: 24%; animation-delay: 0.8s; font-size: 14px; }
+.reassure__star--3 { bottom: 32%; left: 26%; animation-delay: 1.6s; font-size: 22px; }
+.reassure__star--4 { bottom: 10%; right: 28%; animation-delay: 2.4s; }
+.reassure__star--5 { top: 60%; left: 50%; animation-delay: 1.2s; font-size: 12px; }
+
+@keyframes reassureStarTwinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+/* ============================================
+   インナー
+   ============================================ */
+.reassure__inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+/* ============================================
+   上半分（怖くない）
+   ============================================ */
+.reassure__top {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* 警告ストライプ + 打ち消し */
+.reassure__warning-wrap {
+  position: relative;
+  width: 240px;
+  height: 60px;
+  margin: 0 auto 30px;
+}
+
+.reassure__warning-stripe {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    #FFC700 0px,
+    #FFC700 12px,
+    #1A2744 12px,
+    #1A2744 24px
+  );
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  opacity: 0.55;
+}
+
+/* 打ち消しアイコン（中央の警告マーク + 斜線） */
+.reassure__warning-cancel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 26, 48, 0.9);
+  border: 3px solid var(--color-coral);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.reassure__warning-icon {
+  font-size: 26px;
+  filter: grayscale(0.3);
+  opacity: 0.8;
+}
+
+/* 斜線（打ち消し線） */
+.reassure__warning-slash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 4px;
+  background: var(--color-coral);
+  border-radius: 2px;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  box-shadow: 0 0 12px rgba(232, 131, 92, 0.7);
+}
+
+/* 引用バッジ */
+.reassure__quote-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 30px;
+  font-family: var(--font-jp);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text-white);
+}
+
+.reassure__quote-mark {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--color-gold-light);
+  line-height: 0;
+  position: relative;
+  top: 6px;
+}
+
+.reassure__quote-sub {
+  margin: 12px 0 30px;
+  font-size: 14px;
+  color: var(--color-blue-2);
+  font-weight: 600;
+}
+
+/* メインメッセージ */
+.reassure__message {
+  margin-top: 30px;
+}
+
+.reassure__message-line {
+  margin: 0 0 8px;
+  font-family: var(--font-jp);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--color-text-white);
+  line-height: 1.7;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.reassure__highlight {
+  color: var(--color-blue-2);
+  position: relative;
+  padding: 0 4px;
+}
+
+.reassure__highlight-yellow {
+  color: var(--color-yellow);
+  font-weight: 800;
+  position: relative;
+  background: linear-gradient(transparent 65%, rgba(255, 199, 0, 0.25) 65%);
+  padding: 0 2px;
+}
+
+/* ============================================
+   区切り装飾
+   ============================================ */
+.reassure__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 40px auto 50px;
+  max-width: 320px;
+}
+
+.reassure__divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold) 50%, transparent 100%);
+}
+
+.reassure__divider-diamond {
+  color: var(--color-gold);
+  font-size: 14px;
+  text-shadow: 0 0 12px rgba(227, 184, 90, 0.8);
+  animation: reassureDiamondSpin 4s linear infinite;
+}
+
+@keyframes reassureDiamondSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ============================================
+   下半分（不安の正体 → 解決）
+   ============================================ */
+.reassure__bottom {
+  text-align: center;
+}
+
+.reassure__lead {
+  margin: 0 0 8px;
+  font-family: var(--font-jp);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-blue-2);
+}
+
+.reassure__hellip {
+  letter-spacing: 0.1em;
+  color: var(--color-gold-light);
+}
+
+.reassure__lead-title {
+  margin: 0 0 8px;
+  font-family: var(--font-jp);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-text-white);
+  line-height: 1.4;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.reassure__lead-sub {
+  margin: 0 0 50px;
+  font-family: var(--font-jp);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-blue-2);
+}
+
+/* 不安の正体ブロック */
+.reassure__truth {
+  position: relative;
+}
+
+.reassure__truth-label {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 24px;
+  background: rgba(232, 131, 92, 0.15);
+  border: 1px solid rgba(232, 131, 92, 0.5);
+  border-radius: 24px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.reassure__truth-label-en {
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--color-coral-light);
+}
+
+.reassure__truth-label-jp {
+  font-family: var(--font-jp);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-white);
+}
+
+/* ============================================
+   BEFORE：2人のキャラ（横並び）
+   ============================================ */
+.reassure__before {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.reassure__char-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 160px;
+}
+
+/* 画像エリア（3:4比率を厳守） */
+.reassure__char-imgwrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* キャラの周りの霧（モヤモヤ感） */
+.reassure__char-fog {
+  position: absolute;
+  inset: 5%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(140, 150, 180, 0.35) 0%,
+    rgba(140, 150, 180, 0.15) 50%,
+    rgba(140, 150, 180, 0) 80%
+  );
+  border-radius: 50%;
+  filter: blur(12px);
+  animation: reassureFogPulse 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes reassureFogPulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 0.9; }
+}
+
+/* キャラ画像本体 */
+.reassure__char-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 2;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5)) grayscale(0.15);
+  animation: reassureCharFloat 4s ease-in-out infinite;
+}
+
+.reassure__char-card--01 .reassure__char-img {
+  animation-delay: 0s;
+}
+.reassure__char-card--02 .reassure__char-img {
+  animation-delay: -2s;
+}
+
+@keyframes reassureCharFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ラベル */
+.reassure__char-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.reassure__char-num {
+  font-family: var(--font-en);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-gold);
+  letter-spacing: 0.05em;
+}
+
+.reassure__char-text {
+  font-family: var(--font-jp);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-white);
+  white-space: nowrap;
+}
+
+/* ============================================
+   矢印（変換の流れ）
+   ============================================ */
+.reassure__arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 10px auto 30px;
+  position: relative;
+}
+
+.reassure__arrow-line {
+  width: 3px;
+  height: 50px;
+  background: linear-gradient(180deg, var(--color-coral) 0%, var(--color-yellow) 50%, var(--color-yellow-light) 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 16px rgba(255, 199, 0, 0.6);
+  animation: reassureArrowGlow 2s ease-in-out infinite;
+}
+
+@keyframes reassureArrowGlow {
+  0%, 100% { box-shadow: 0 0 16px rgba(255, 199, 0, 0.6); }
+  50% { box-shadow: 0 0 28px rgba(255, 199, 0, 1); }
+}
+
+.reassure__arrow-head {
+  font-size: 24px;
+  color: var(--color-yellow);
+  text-shadow: 0 0 16px rgba(255, 199, 0, 0.9);
+  animation: reassureArrowBounce 2s ease-in-out infinite;
+}
+
+@keyframes reassureArrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.reassure__arrow-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gold-light);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 8px rgba(242, 216, 148, 0.6);
+  margin-top: 4px;
+}
+
+/* ============================================
+   AFTER：解決後のキャラ
+   ============================================ */
+.reassure__after {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+/* 後ろの放射光 */
+.reassure__after-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 199, 0, 0.4) 0%,
+    rgba(255, 199, 0, 0.15) 40%,
+    rgba(255, 199, 0, 0) 70%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(20px);
+  animation: reassureGlowPulse 3s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes reassureGlowPulse {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.reassure__char-card--03 {
+  position: relative;
+  width: 200px;
+  z-index: 1;
+}
+
+.reassure__char-imgwrap--after {
+  /* AFTERの画像は霧なし、代わりに黄色円 */
+}
+
+.reassure__char-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(
+    circle,
+    rgba(255, 199, 0, 0.5) 0%,
+    rgba(255, 199, 0, 0.25) 50%,
+    rgba(255, 199, 0, 0) 75%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(8px);
+  animation: reassureCirclePulse 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes reassureCirclePulse {
+  0%, 100% { opacity: 0.85; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+}
+
+/* AFTER画像はグレースケール解除（明るい） */
+.reassure__char-card--03 .reassure__char-img {
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 24px rgba(255, 199, 0, 0.4));
+  animation-delay: -1s;
+}
+
+/* AFTER周りのキラキラ */
+.reassure__after-sparkle {
+  position: absolute;
+  color: var(--color-yellow);
+  font-size: 20px;
+  pointer-events: none;
+  text-shadow: 0 0 14px rgba(255, 199, 0, 0.9);
+  animation: reassureSparkle 2.5s ease-in-out infinite;
+  z-index: 3;
+}
+.reassure__after-sparkle--1 {
+  top: 8%; left: -4%;
+  animation-delay: 0s;
+}
+.reassure__after-sparkle--2 {
+  top: 30%; right: -6%;
+  animation-delay: 0.8s;
+  font-size: 16px;
+}
+.reassure__after-sparkle--3 {
+  bottom: 18%; left: 4%;
+  animation-delay: 1.6s;
+  font-size: 24px;
+}
+
+@keyframes reassureSparkle {
+  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(180deg); }
+}
+
+/* AFTERラベル */
+.reassure__char-label--after {
+  background: linear-gradient(135deg, rgba(255, 199, 0, 0.25) 0%, rgba(255, 225, 56, 0.15) 100%);
+  border-color: rgba(255, 199, 0, 0.6);
+  box-shadow: 0 4px 16px rgba(255, 199, 0, 0.25);
+}
+
+.reassure__char-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--color-yellow);
+  color: var(--color-navy-2);
+  font-size: 13px;
+  font-weight: 900;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 199, 0, 0.6);
+}
+
+.reassure__char-card--03 .reassure__char-text {
+  font-size: 14px;
+  color: var(--color-yellow-light);
+}
+
+/* ============================================
+   締めメッセージ
+   ============================================ */
+.reassure__conclusion {
+  margin-top: 30px;
+  padding: 24px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 199, 0, 0.25);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reassure__conclusion-line {
+  margin: 0 0 4px;
+  font-family: var(--font-jp);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-white);
+  line-height: 1.5;
+}
+
+.reassure__conclusion-line--big {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-yellow);
+  margin: 6px 0;
+}
+
+.reassure__conclusion-quote {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--color-gold-light);
+  position: relative;
+  top: 4px;
+}
+
+/* ============================================
+   PC（768px以上）
+   ============================================ */
+@media (min-width: 768px) {
+
+  .reassure {
+    padding: 110px 40px 130px;
+  }
+
+  /* 上半分 */
+  .reassure__top {
+    margin-bottom: 80px;
+  }
+
+  .reassure__warning-wrap {
+    width: 320px;
+    height: 76px;
+    margin-bottom: 40px;
+  }
+
+  .reassure__warning-cancel {
+    width: 72px;
+    height: 72px;
+  }
+
+  .reassure__warning-icon {
+    font-size: 32px;
+  }
+
+  .reassure__warning-slash {
+    width: 90px;
+    height: 5px;
+  }
+
+  .reassure__quote-badge {
+    font-size: 22px;
+    padding: 14px 32px;
+  }
+
+  .reassure__quote-mark {
+    font-size: 36px;
+    top: 8px;
+  }
+
+  .reassure__quote-sub {
+    font-size: 16px;
+    margin: 16px 0 40px;
+  }
+
+  .reassure__message-line {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  /* 区切り */
+  .reassure__divider {
+    margin: 60px auto 70px;
+    max-width: 480px;
+  }
+  .reassure__divider-diamond {
+    font-size: 18px;
+  }
+
+  /* 下半分 */
+  .reassure__lead {
+    font-size: 19px;
+  }
+
+  .reassure__lead-title {
+    font-size: 34px;
+    margin-bottom: 12px;
+  }
+
+  .reassure__lead-sub {
+    font-size: 17px;
+    margin-bottom: 70px;
+  }
+
+  .reassure__truth-label {
+    padding: 12px 32px;
+    margin-bottom: 40px;
+  }
+  .reassure__truth-label-en {
+    font-size: 13px;
+  }
+  .reassure__truth-label-jp {
+    font-size: 17px;
+  }
+
+  /* BEFORE：2人を大きく */
+  .reassure__before {
+    gap: 60px;
+    margin-bottom: 50px;
+  }
+
+  .reassure__char-card {
+    width: 240px;
+    gap: 16px;
+  }
+
+  .reassure__char-label {
+    padding: 12px 20px;
+    gap: 10px;
+  }
+  .reassure__char-num {
+    font-size: 16px;
+  }
+  .reassure__char-text {
+    font-size: 16px;
+  }
+
+  /* 矢印 */
+  .reassure__arrow {
+    margin: 20px auto 40px;
+  }
+  .reassure__arrow-line {
+    height: 70px;
+    width: 4px;
+  }
+  .reassure__arrow-head {
+    font-size: 32px;
+  }
+  .reassure__arrow-label {
+    font-size: 16px;
+  }
+
+  /* AFTER */
+  .reassure__after {
+    margin-bottom: 50px;
+  }
+
+  .reassure__after-glow {
+    width: 400px;
+    height: 400px;
+  }
+
+  .reassure__char-card--03 {
+    width: 280px;
+  }
+
+  .reassure__after-sparkle--1 { font-size: 28px; }
+  .reassure__after-sparkle--2 { font-size: 22px; }
+  .reassure__after-sparkle--3 { font-size: 32px; }
+
+  .reassure__char-card--03 .reassure__char-text {
+    font-size: 17px;
+  }
+
+  .reassure__char-check {
+    width: 26px;
+    height: 26px;
+    font-size: 16px;
+  }
+
+  /* 締め */
+  .reassure__conclusion {
+    margin-top: 40px;
+    padding: 32px 40px;
+    max-width: 600px;
+  }
+
+  .reassure__conclusion-line {
+    font-size: 20px;
+  }
+
+  .reassure__conclusion-line--big {
+    font-size: 32px;
+  }
+
+  .reassure__conclusion-quote {
+    font-size: 36px;
+    top: 6px;
+  }
+}

@@ -32,7 +32,9 @@
   <link rel="stylesheet" href="css/section-12-feature.css">
   <link rel="stylesheet" href="css/section-14-features.css">
   <link rel="stylesheet" href="css/section-16-demo.css">
-  <!-- 今後セクション追加時はここに1行ずつ追加 -->
+  <link rel="stylesheet" href="css/section-18-recommend.css">
+  <link rel="stylesheet" href="css/section-20-reassure.css">
+    <!-- 今後セクション追加時はここに1行ずつ追加 -->
   <!-- <link rel="stylesheet" href="css/section-02-question.css"> -->
 </head>
 <body>
@@ -725,6 +727,299 @@
 
   </div>
 </section>  
+
+<!-- ============================================
+     Section 18: こんな方におすすめ
+     index.html の Section 16 (.demo) の直後に挿入
+     ※ Section 17（実績）は素材待ちのため後で間に挿入
+============================================ -->
+<section class="recommend" id="recommend">
+  <!-- 背景の浮遊ドット -->
+  <div class="recommend__bg-dots">
+    <span class="recommend__dot recommend__dot--1"></span>
+    <span class="recommend__dot recommend__dot--2"></span>
+    <span class="recommend__dot recommend__dot--3"></span>
+    <span class="recommend__dot recommend__dot--4"></span>
+    <span class="recommend__dot recommend__dot--5"></span>
+    <span class="recommend__dot recommend__dot--6"></span>
+  </div>
+
+  <!-- 背景のキラキラ星 -->
+  <div class="recommend__stars">
+    <span class="recommend__star recommend__star--1">✦</span>
+    <span class="recommend__star recommend__star--2">✦</span>
+    <span class="recommend__star recommend__star--3">✦</span>
+    <span class="recommend__star recommend__star--4">✦</span>
+    <span class="recommend__star recommend__star--5">✦</span>
+  </div>
+
+  <div class="recommend__inner">
+    <!-- バッジ -->
+    <div class="recommend__badge">FOR YOU</div>
+
+    <!-- タイトル -->
+    <h2 class="recommend__title">
+      こんな方に<br class="sp-only">おすすめです
+    </h2>
+
+    <!-- メインコンテンツ：3人画像 + リスト -->
+    <div class="recommend__main">
+
+      <!-- 3人の人物画像エリア -->
+      <div class="recommend__people-wrap">
+        <!-- 後ろの黄色い円（パルス） -->
+        <div class="recommend__people-circle"></div>
+
+        <!-- 周りに舞うキラキラ星 -->
+        <span class="recommend__people-sparkle recommend__people-sparkle--1">✦</span>
+        <span class="recommend__people-sparkle recommend__people-sparkle--2">✦</span>
+        <span class="recommend__people-sparkle recommend__people-sparkle--3">✦</span>
+        <span class="recommend__people-sparkle recommend__people-sparkle--4">✦</span>
+
+        <!-- 3人画像 -->
+        <img src="section18-three-people.webp"
+             alt="Crypto Novaを使う3人の投資家"
+             class="recommend__people">
+      </div>
+
+      <!-- チェックリスト -->
+      <ul class="recommend__list">
+        <li class="recommend__item">
+          <span class="recommend__check">✓</span>
+          <span class="recommend__text">仮想通貨投資をこれから始めたい方</span>
+        </li>
+        <li class="recommend__item">
+          <span class="recommend__check">✓</span>
+          <span class="recommend__text">ビットコイン以外の銘柄にも興味がある方</span>
+        </li>
+        <li class="recommend__item">
+          <span class="recommend__check">✓</span>
+          <span class="recommend__text">情報が多すぎて迷っている方</span>
+        </li>
+        <li class="recommend__item">
+          <span class="recommend__check">✓</span>
+          <span class="recommend__text">効率よくチャンスを見つけたい方</span>
+        </li>
+        <li class="recommend__item">
+          <span class="recommend__check">✓</span>
+          <span class="recommend__text">仮想通貨投資を仕事にしたい方</span>
+        </li>
+        <li class="recommend__item">
+          <span class="recommend__check">✓</span>
+          <span class="recommend__text">夢を掴みたい方</span>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     Section 20-21: 不安払拭（統合版）
+     「怖くない」→「不安の正体」→「Crypto Novaが解決」
+     画像4枚（背景あり、カード風枠で表示）
+     index.html の Section 19 の直後に挿入
+
+     画像役割:
+       01 = AFTER「データで判断できる」(パイチャート + ドヤ顔)
+       02 = AFTER「見れば分かる」(電球 + 親指立て)
+       03 = BEFORE「分からない」(?マーク + 困った顔)
+       04 = BEFORE「判断できない」(両手を上げて迷う) ★新規
+============================================ -->
+<section class="reassure" id="reassure">
+
+  <!-- 背景の浮遊ドット -->
+  <div class="reassure__bg-dots">
+    <span class="reassure__dot reassure__dot--1"></span>
+    <span class="reassure__dot reassure__dot--2"></span>
+    <span class="reassure__dot reassure__dot--3"></span>
+    <span class="reassure__dot reassure__dot--4"></span>
+    <span class="reassure__dot reassure__dot--5"></span>
+    <span class="reassure__dot reassure__dot--6"></span>
+  </div>
+
+  <!-- 背景のキラキラ星 -->
+  <div class="reassure__stars">
+    <span class="reassure__star reassure__star--1">✦</span>
+    <span class="reassure__star reassure__star--2">✦</span>
+    <span class="reassure__star reassure__star--3">✦</span>
+    <span class="reassure__star reassure__star--4">✦</span>
+    <span class="reassure__star reassure__star--5">✦</span>
+  </div>
+
+  <div class="reassure__inner">
+
+    <!-- ========================================
+         上半分：怖くない（旧Section 20）
+    ======================================== -->
+    <div class="reassure__top">
+
+      <!-- 警告ストライプ（打ち消し演出） -->
+      <div class="reassure__warning-wrap">
+        <div class="reassure__warning-stripe"></div>
+        <div class="reassure__warning-cancel">
+          <span class="reassure__warning-icon">⚠</span>
+          <span class="reassure__warning-slash"></span>
+        </div>
+      </div>
+
+      <!-- 引用バッジ -->
+      <div class="reassure__quote-badge">
+        <span class="reassure__quote-mark reassure__quote-mark--left">"</span>
+        仮想通貨って怖そう
+        <span class="reassure__quote-mark reassure__quote-mark--right">"</span>
+      </div>
+      <p class="reassure__quote-sub">と思う方へ</p>
+
+      <!-- メインメッセージ -->
+      <div class="reassure__message">
+        <p class="reassure__message-line">仮想通貨は<span class="reassure__highlight">特別なもの</span>ではありません。</p>
+        <p class="reassure__message-line">株やFXと同じ、</p>
+        <p class="reassure__message-line">価格が変動する<span class="reassure__highlight-yellow">投資のひとつ</span>です。</p>
+      </div>
+
+    </div>
+
+    <!-- ========================================
+         区切り装飾（金色ライン + 回転ダイヤ）
+    ======================================== -->
+    <div class="reassure__divider">
+      <div class="reassure__divider-line"></div>
+      <div class="reassure__divider-diamond">◆</div>
+      <div class="reassure__divider-line"></div>
+    </div>
+
+    <!-- ========================================
+         下半分：不安の正体 → 解決（旧Section 21）
+    ======================================== -->
+    <div class="reassure__bottom">
+
+      <p class="reassure__lead">
+        ただし違いは<span class="reassure__hellip">…</span>
+      </p>
+      <h3 class="reassure__lead-title">
+        情報が<span class="reassure__highlight-yellow">整理されていない</span>こと
+      </h3>
+      <p class="reassure__lead-sub">だから不安になります</p>
+
+      <!-- 不安の正体ブロック -->
+      <div class="reassure__truth">
+
+        <!-- BEFOREラベル -->
+        <div class="reassure__phase-label reassure__phase-label--before">
+          <span class="reassure__phase-en">THE TRUTH</span>
+          <span class="reassure__phase-jp">不安の正体はこれです</span>
+        </div>
+
+        <!-- BEFORE：2人のキャラカード -->
+        <div class="reassure__char-grid reassure__char-grid--before">
+          <!-- 03: 分からない -->
+          <div class="reassure__char-card reassure__char-card--before">
+            <div class="reassure__char-frame">
+              <div class="reassure__char-fog"></div>
+              <img src="section20-character-03.webp"
+                   alt="分からないキャラクター"
+                   class="reassure__char-img">
+              <div class="reassure__char-corner-tl"></div>
+              <div class="reassure__char-corner-tr"></div>
+              <div class="reassure__char-corner-bl"></div>
+              <div class="reassure__char-corner-br"></div>
+            </div>
+            <div class="reassure__char-label">
+              <span class="reassure__char-num">01</span>
+              <span class="reassure__char-text">分からない</span>
+            </div>
+          </div>
+
+          <!-- 04: 判断できない（新規） -->
+          <div class="reassure__char-card reassure__char-card--before">
+            <div class="reassure__char-frame">
+              <div class="reassure__char-fog"></div>
+              <img src="section20-character-04.webp"
+                   alt="判断できないキャラクター"
+                   class="reassure__char-img">
+              <div class="reassure__char-corner-tl"></div>
+              <div class="reassure__char-corner-tr"></div>
+              <div class="reassure__char-corner-bl"></div>
+              <div class="reassure__char-corner-br"></div>
+            </div>
+            <div class="reassure__char-label">
+              <span class="reassure__char-num">02</span>
+              <span class="reassure__char-text">判断できない</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 矢印（変換の流れ） -->
+        <div class="reassure__arrow">
+          <div class="reassure__arrow-line"></div>
+          <div class="reassure__arrow-head">▼</div>
+          <div class="reassure__arrow-label">Crypto Nova</div>
+        </div>
+
+        <!-- AFTERラベル -->
+        <div class="reassure__phase-label reassure__phase-label--after">
+          <span class="reassure__phase-en">THE ANSWER</span>
+          <span class="reassure__phase-jp">"見れば分かる状態"へ</span>
+        </div>
+
+        <!-- AFTER：2人のキャラカード（明るい仕上げ） -->
+        <div class="reassure__char-grid reassure__char-grid--after">
+          <div class="reassure__after-glow"></div>
+
+          <!-- 01: データで判断 -->
+          <div class="reassure__char-card reassure__char-card--after">
+            <div class="reassure__char-frame reassure__char-frame--after">
+              <span class="reassure__after-sparkle reassure__after-sparkle--1">✦</span>
+              <span class="reassure__after-sparkle reassure__after-sparkle--2">✦</span>
+              <img src="section20-character-01.webp"
+                   alt="データで判断できるキャラクター"
+                   class="reassure__char-img">
+              <div class="reassure__char-corner-tl reassure__char-corner-tl--gold"></div>
+              <div class="reassure__char-corner-tr reassure__char-corner-tr--gold"></div>
+              <div class="reassure__char-corner-bl reassure__char-corner-bl--gold"></div>
+              <div class="reassure__char-corner-br reassure__char-corner-br--gold"></div>
+            </div>
+            <div class="reassure__char-label reassure__char-label--after">
+              <span class="reassure__char-check">✓</span>
+              <span class="reassure__char-text">データで判断</span>
+            </div>
+          </div>
+
+          <!-- 02: 見れば分かる -->
+          <div class="reassure__char-card reassure__char-card--after">
+            <div class="reassure__char-frame reassure__char-frame--after">
+              <span class="reassure__after-sparkle reassure__after-sparkle--1">✦</span>
+              <span class="reassure__after-sparkle reassure__after-sparkle--2">✦</span>
+              <img src="section20-character-02.webp"
+                   alt="見れば分かるキャラクター"
+                   class="reassure__char-img">
+              <div class="reassure__char-corner-tl reassure__char-corner-tl--gold"></div>
+              <div class="reassure__char-corner-tr reassure__char-corner-tr--gold"></div>
+              <div class="reassure__char-corner-bl reassure__char-corner-bl--gold"></div>
+              <div class="reassure__char-corner-br reassure__char-corner-br--gold"></div>
+            </div>
+            <div class="reassure__char-label reassure__char-label--after">
+              <span class="reassure__char-check">✓</span>
+              <span class="reassure__char-text">見れば分かる</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 締めメッセージ -->
+        <div class="reassure__conclusion">
+          <p class="reassure__conclusion-line">Crypto Novaはそれを、</p>
+          <p class="reassure__conclusion-line reassure__conclusion-line--big">
+            <span class="reassure__conclusion-quote">"</span>見れば分かる状態<span class="reassure__conclusion-quote">"</span>
+          </p>
+          <p class="reassure__conclusion-line">に変えるツールです。</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <!-- JavaScript -->
   <script src="js/particles.js"></script>

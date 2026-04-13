@@ -1,0 +1,375 @@
+/* ============================================
+   Section 18: こんな方におすすめ
+   濃紺背景 + 3人画像（900×600透過）+ チェックリスト
+   Section 4のデザイン言語継承（黄色丸 + 星 + 濃紺）
+   ============================================ */
+
+.recommend {
+  position: relative;
+  background: linear-gradient(180deg, #0F1A30 0%, #1A2744 50%, #0F1A30 100%);
+  padding: 80px 20px 100px;
+  overflow: hidden;
+}
+
+/* 上下のグラデライン区切り */
+.recommend::before,
+.recommend::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold) 50%, transparent 100%);
+  opacity: 0.4;
+}
+.recommend::before { top: 0; }
+.recommend::after { bottom: 0; }
+
+/* sp-only ヘルパー */
+.recommend .sp-only { display: inline; }
+
+/* ============================================
+   背景の浮遊ドット（Section 4の言語継承）
+   ============================================ */
+.recommend__bg-dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.recommend__dot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: recommendFloat 8s ease-in-out infinite;
+}
+.recommend__dot--1 {
+  width: 14px; height: 14px;
+  background: var(--color-yellow);
+  top: 12%; left: 8%;
+  box-shadow: 0 0 20px rgba(255, 199, 0, 0.6);
+}
+.recommend__dot--2 {
+  width: 10px; height: 10px;
+  background: var(--color-blue-3);
+  top: 20%; right: 10%;
+  animation-delay: -2s;
+  box-shadow: 0 0 16px rgba(91, 164, 217, 0.6);
+}
+.recommend__dot--3 {
+  width: 16px; height: 16px;
+  background: var(--color-yellow);
+  bottom: 25%; left: 12%;
+  animation-delay: -4s;
+  box-shadow: 0 0 22px rgba(255, 199, 0, 0.5);
+}
+.recommend__dot--4 {
+  width: 8px; height: 8px;
+  background: var(--color-blue-2);
+  bottom: 15%; right: 15%;
+  animation-delay: -1s;
+  box-shadow: 0 0 14px rgba(184, 216, 242, 0.6);
+}
+.recommend__dot--5 {
+  width: 12px; height: 12px;
+  background: var(--color-gold);
+  top: 50%; left: 5%;
+  animation-delay: -5s;
+  box-shadow: 0 0 18px rgba(227, 184, 90, 0.6);
+}
+.recommend__dot--6 {
+  width: 10px; height: 10px;
+  background: var(--color-yellow-light);
+  top: 45%; right: 6%;
+  animation-delay: -3s;
+  box-shadow: 0 0 16px rgba(255, 225, 56, 0.6);
+}
+
+@keyframes recommendFloat {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+}
+
+/* ============================================
+   背景のキラキラ星
+   ============================================ */
+.recommend__stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.recommend__star {
+  position: absolute;
+  color: var(--color-gold-light);
+  font-size: 18px;
+  opacity: 0;
+  animation: recommendStarTwinkle 3s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(242, 216, 148, 0.8);
+}
+.recommend__star--1 { top: 8%;  left: 18%; animation-delay: 0s; }
+.recommend__star--2 { top: 28%; right: 20%; animation-delay: 0.8s; font-size: 14px; }
+.recommend__star--3 { bottom: 30%; left: 22%; animation-delay: 1.6s; font-size: 22px; }
+.recommend__star--4 { bottom: 12%; right: 25%; animation-delay: 2.4s; }
+.recommend__star--5 { top: 55%; left: 50%; animation-delay: 1.2s; font-size: 12px; }
+
+@keyframes recommendStarTwinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+/* ============================================
+   インナー
+   ============================================ */
+.recommend__inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+/* バッジ */
+.recommend__badge {
+  display: block;
+  width: fit-content;
+  padding: 6px 18px;
+  background: var(--grad-gold);
+  color: var(--color-navy-2);
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  border-radius: 20px;
+  margin: 0 auto 18px;
+  box-shadow: 0 4px 16px rgba(227, 184, 90, 0.4);
+}
+
+/* タイトル */
+.recommend__title {
+  text-align: center;
+  font-family: var(--font-jp);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-text-white);
+  line-height: 1.4;
+  margin: 0 0 50px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* メインコンテンツ */
+.recommend__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* ============================================
+   3人画像エリア（バストアップ・900×600）
+   ============================================ */
+.recommend__people-wrap {
+  position: relative;
+  width: 110%;
+  max-width: 600px;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 後ろの黄色い円（パルス） */
+.recommend__people-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 78%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(
+    circle,
+    rgba(255, 199, 0, 0.55) 0%,
+    rgba(255, 199, 0, 0.30) 40%,
+    rgba(255, 199, 0, 0) 70%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(8px);
+  animation: recommendCirclePulse 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes recommendCirclePulse {
+  0%, 100% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+/* 周りに舞う星 */
+.recommend__people-sparkle {
+  position: absolute;
+  color: var(--color-yellow);
+  font-size: 22px;
+  pointer-events: none;
+  text-shadow: 0 0 14px rgba(255, 199, 0, 0.9);
+  animation: recommendSparkle 2.5s ease-in-out infinite;
+  z-index: 3;
+}
+.recommend__people-sparkle--1 {
+  top: 5%; left: -2%;
+  animation-delay: 0s;
+}
+.recommend__people-sparkle--2 {
+  top: 15%; right: 0%;
+  animation-delay: 0.7s;
+  font-size: 18px;
+}
+.recommend__people-sparkle--3 {
+  bottom: 18%; left: 2%;
+  animation-delay: 1.4s;
+  font-size: 26px;
+}
+.recommend__people-sparkle--4 {
+  bottom: 10%; right: 4%;
+  animation-delay: 2.1s;
+  font-size: 20px;
+}
+
+@keyframes recommendSparkle {
+  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(180deg); }
+}
+
+/* 3人画像本体 */
+.recommend__people {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 2;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.5));
+  animation: recommendPeopleFloat 5s ease-in-out infinite;
+}
+
+@keyframes recommendPeopleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ============================================
+   チェックリスト
+   ============================================ */
+.recommend__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.recommend__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.recommend__item:hover {
+  transform: translateX(6px);
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 199, 0, 0.4);
+}
+
+.recommend__check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-yellow);
+  color: var(--color-navy-2);
+  font-weight: 900;
+  font-size: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(255, 199, 0, 0.5);
+}
+
+.recommend__text {
+  font-family: var(--font-jp);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-white);
+  line-height: 1.5;
+}
+
+/* ============================================
+   PC（768px以上）
+   ============================================ */
+@media (min-width: 768px) {
+  .recommend {
+    padding: 110px 40px 130px;
+  }
+
+  .recommend .sp-only { display: none; }
+
+  .recommend__badge {
+    font-size: 13px;
+    padding: 7px 22px;
+  }
+
+  .recommend__title {
+    font-size: 42px;
+    margin-bottom: 70px;
+  }
+
+  /* メイン2カラム化 */
+  .recommend__main {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+  }
+
+  /* 3人画像大型化 */
+  .recommend__people-wrap {
+    max-width: 620px;
+    flex-shrink: 0;
+  }
+
+  .recommend__people-sparkle--1 { font-size: 28px; }
+  .recommend__people-sparkle--2 { font-size: 22px; }
+  .recommend__people-sparkle--3 { font-size: 32px; }
+  .recommend__people-sparkle--4 { font-size: 24px; }
+
+  /* リスト */
+  .recommend__list {
+    max-width: 480px;
+    gap: 16px;
+  }
+
+  .recommend__item {
+    padding: 18px 22px;
+    gap: 18px;
+  }
+
+  .recommend__check {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .recommend__text {
+    font-size: 17px;
+  }
+}
