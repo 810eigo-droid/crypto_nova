@@ -256,20 +256,32 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 22px;
-  background: rgba(15, 26, 48, 0.55);
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
-  border-radius: 30px;
-  font-size: 14px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
   color: #FFFFFF;
   font-weight: 700;
   text-shadow:
-    0 2px 8px rgba(15, 26, 48, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 14px rgba(15, 26, 48, 0.3);
+    0 2px 8px rgba(15, 26, 48, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   margin-bottom: 4px;
   animation: fadeInUp 0.8s ease 1.0s both;
+}
+
+.hero__trust-text svg {
+  color: #FFE138;
+  filter: drop-shadow(0 2px 4px rgba(15, 26, 48, 0.5));
+}
+
+.hero__trust-text span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .hero__trust-text svg {
@@ -363,9 +375,9 @@
   gap: 10px;
   font-family: var(--font-jp);
   font-size: 17px;
-  font-weight: 800;
-  color: #1A2744;
-  padding: 18px 44px;
+  font-weight: 700;
+  color: #FFFFFF;
+  padding: 16px 44px;
   border-radius: 9999px;
   text-decoration: none;
   border: none;
@@ -373,74 +385,39 @@
   margin-top: 14px;
   letter-spacing: 0.05em;
 
-  /* 金色グラデーション */
- background: linear-gradient(180deg,
-    #F2D894 0%,
-    #E3B85A 30%,
-    #C99A3F 70%,
-    #A07820 100%);
+  /* シンプルなブルーグラデーション */
+  background: linear-gradient(180deg, #4A9FD4 0%, #2373A8 100%);
 
-  /* 3D立体的な影 */
+  /* 控えめな影 */
   box-shadow:
-    inset 0 2px 4px rgba(255, 240, 200, 0.6),
-    inset 0 -3px 6px rgba(120, 80, 0, 0.5),
-    0 6px 0 #8B6914,
-    0 12px 24px rgba(139, 105, 20, 0.5),
-    0 0 30px rgba(227, 184, 90, 0.45);
+    0 4px 12px rgba(35, 115, 168, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.1);
 
-  transform: translateY(0);
-  transition: all 0.15s ease-out;
+  transition: all 0.2s ease-out;
 
-  /* 脈動アニメ */
-  animation: heroCtaPulse 2.5s ease-in-out infinite,
-             fadeInUp 0.8s ease 1.4s both;
-}
-
-/* 脈動 */
-@keyframes heroCtaPulse {
-  0%, 100% {
-    box-shadow:
-      inset 0 2px 4px rgba(255, 240, 200, 0.6),
-      inset 0 -3px 6px rgba(120, 80, 0, 0.5),
-      0 6px 0 #8B6914,
-      0 12px 24px rgba(139, 105, 20, 0.5),
-      0 0 30px rgba(227, 184, 90, 0.45);
-  }
-  50% {
-    box-shadow:
-      inset 0 2px 4px rgba(255, 240, 200, 0.7),
-      inset 0 -3px 6px rgba(120, 80, 0, 0.5),
-      0 6px 0 #8B6914,
-      0 14px 30px rgba(139, 105, 20, 0.6),
-      0 0 50px rgba(227, 184, 90, 0.75);
-  }
+  animation: fadeInUp 0.8s ease 1.4s both;
 }
 
 /* ホバー：少し沈む */
+/* ホバー：少し明るく */
 .hero__cta:hover {
-  transform: translateY(2px);
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #5BB0E5 0%, #2E81B8 100%);
   box-shadow:
-    inset 0 2px 4px rgba(255, 240, 200, 0.6),
-    inset 0 -3px 6px rgba(120, 80, 0, 0.5),
-    0 4px 0 #8B6914,
-    0 8px 18px rgba(139, 105, 20, 0.5),
-    0 0 40px rgba(227, 184, 90, 0.6);
+    0 6px 16px rgba(35, 115, 168, 0.45),
+    0 2px 4px rgba(0, 0, 0, 0.12);
 }
 
 .hero__cta:active {
-  transform: translateY(5px);
+  transform: translateY(1px);
   box-shadow:
-    inset 0 2px 4px rgba(255, 240, 200, 0.6),
-    inset 0 -3px 6px rgba(120, 80, 0, 0.5),
-    0 1px 0 #8B6914,
-    0 4px 10px rgba(139, 105, 20, 0.4),
-    0 0 30px rgba(227, 184, 90, 0.45);
+    0 2px 6px rgba(35, 115, 168, 0.35);
 }
 
 .hero__cta-text {
   position: relative;
   z-index: 1;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .hero__cta-arrow {
@@ -495,8 +472,7 @@
 
   /* スマホ・PC対応バッジ */
   .hero__trust-text {
-    font-size: 15px;
-    padding: 11px 24px;
+    font-size: 17px;
   }
 
   /* プレゼント PC調整 */
@@ -550,6 +526,11 @@
     display: none;
   }
 }
+/* プレゼントリボン PC時は左寄せ */
+  .hero__present-ribbon {
+    left: 24px;
+    transform: translateX(0);
+  }
 
 /* --- タブレット --- */
 @media (min-width: 576px) and (max-width: 767px) {
