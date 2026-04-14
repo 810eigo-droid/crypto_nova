@@ -1,0 +1,551 @@
+/* ============================================
+   Section 19: はじめ方（STEP 1〜5）
+   白→薄水色グラデ + タイムライン + ポップな動き
+   ============================================ */
+
+.howto {
+  position: relative;
+  padding: 90px 20px 120px;
+  background: linear-gradient(180deg,
+    #FFFFFF 0%,
+    #F8FBFF 40%,
+    #EBF5FF 100%);
+  overflow: hidden;
+}
+
+/* sp-only ヘルパー */
+.howto .sp-only { display: inline; }
+
+/* ============================================
+   背景装飾：浮遊する円
+   ============================================ */
+.howto__bg-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.howto__shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+  filter: blur(1px);
+}
+
+.howto__shape--1 {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: -40px;
+  background: radial-gradient(circle, rgba(91, 164, 217, 0.3) 0%, rgba(91, 164, 217, 0) 70%);
+  animation: howtoFloat 15s ease-in-out infinite;
+}
+
+.howto__shape--2 {
+  width: 80px;
+  height: 80px;
+  top: 40%;
+  right: -20px;
+  background: radial-gradient(circle, rgba(255, 225, 56, 0.25) 0%, rgba(255, 225, 56, 0) 70%);
+  animation: howtoFloat 12s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+.howto__shape--3 {
+  width: 140px;
+  height: 140px;
+  bottom: 20%;
+  left: -50px;
+  background: radial-gradient(circle, rgba(227, 184, 90, 0.2) 0%, rgba(227, 184, 90, 0) 70%);
+  animation: howtoFloat 18s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+.howto__shape--4 {
+  width: 100px;
+  height: 100px;
+  bottom: 10%;
+  right: -30px;
+  background: radial-gradient(circle, rgba(91, 164, 217, 0.25) 0%, rgba(91, 164, 217, 0) 70%);
+  animation: howtoFloat 14s ease-in-out infinite;
+  animation-delay: -6s;
+}
+
+@keyframes howtoFloat {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(20px, -25px); }
+  66% { transform: translate(-15px, 15px); }
+}
+
+/* ============================================
+   インナー
+   ============================================ */
+.howto__inner {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+/* ============================================
+   ヘッダー
+   ============================================ */
+.howto__header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.howto__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #FFE138 0%, #E3B85A 100%);
+  color: var(--color-navy-2);
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(255, 199, 0, 0.35);
+  animation: howtoBadgeBounce 2.5s ease-in-out infinite;
+}
+
+@keyframes howtoBadgeBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.howto__title {
+  margin: 0 0 12px;
+  font-family: var(--font-jp);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--color-text-main);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+.howto__title-accent {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-blue-4) 0%, var(--color-blue-5) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.15em;
+}
+
+.howto__title-accent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 8px;
+  background: rgba(255, 225, 56, 0.4);
+  border-radius: 4px;
+  z-index: -1;
+  transform: skewX(-8deg);
+}
+
+.howto__subtitle {
+  margin: 0;
+  font-family: var(--font-jp);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-sub);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   タイムライン
+   ============================================ */
+.howto__steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+/* 縦線（タイムライン） */
+.howto__steps::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 28px;
+  width: 3px;
+  background: linear-gradient(180deg,
+    rgba(91, 164, 217, 0.3) 0%,
+    rgba(91, 164, 217, 0.6) 50%,
+    rgba(91, 164, 217, 0.3) 100%);
+  border-radius: 2px;
+}
+
+/* ============================================
+   各STEP
+   ============================================ */
+.howto__step {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+  padding-left: 0;
+}
+
+.howto__step:last-child {
+  margin-bottom: 0;
+}
+
+/* STEP番号（丸） */
+.howto__step-number {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-blue-3) 0%, var(--color-blue-5) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  box-shadow:
+    0 8px 20px rgba(30, 111, 160, 0.35),
+    0 0 0 4px #FFFFFF,
+    0 0 0 6px rgba(91, 164, 217, 0.2);
+}
+
+.howto__step-number-label {
+  font-family: var(--font-en);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+  margin-bottom: -2px;
+}
+
+.howto__step-number-value {
+  font-family: var(--font-en);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* STEPの丸を少しバウンド（遅延違いで順番に動く） */
+.howto__step[data-step="1"] .howto__step-number { animation: howtoNumberBounce 4s ease-in-out infinite; animation-delay: 0s; }
+.howto__step[data-step="2"] .howto__step-number { animation: howtoNumberBounce 4s ease-in-out infinite; animation-delay: 0.5s; }
+.howto__step[data-step="3"] .howto__step-number { animation: howtoNumberBounce 4s ease-in-out infinite; animation-delay: 1s; background: linear-gradient(135deg, #FFE138 0%, #E3B85A 100%); color: var(--color-navy-2); box-shadow: 0 8px 20px rgba(255, 199, 0, 0.4), 0 0 0 4px #FFFFFF, 0 0 0 6px rgba(255, 225, 56, 0.3); }
+.howto__step[data-step="4"] .howto__step-number { animation: howtoNumberBounce 4s ease-in-out infinite; animation-delay: 1.5s; }
+.howto__step[data-step="5"] .howto__step-number { animation: howtoNumberBounce 4s ease-in-out infinite; animation-delay: 2s; }
+
+@keyframes howtoNumberBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.03); }
+}
+
+/* STEPカード */
+.howto__step-card {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 22px 22px 20px;
+  background: #FFFFFF;
+  border: 1px solid rgba(91, 164, 217, 0.18);
+  border-radius: 16px;
+  box-shadow:
+    0 6px 20px rgba(15, 26, 48, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+.howto__step-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 30px rgba(15, 26, 48, 0.1),
+    0 0 0 1px rgba(91, 164, 217, 0.3) inset;
+}
+
+/* カードの左側に太い色の帯 */
+.howto__step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--color-blue-3) 0%, var(--color-blue-5) 100%);
+}
+
+.howto__step[data-step="3"] .howto__step-card::before {
+  background: linear-gradient(180deg, #FFE138 0%, #E3B85A 100%);
+}
+
+/* シマー効果 */
+.howto__step-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 100%);
+  pointer-events: none;
+  animation: howtoShine 6s ease-in-out infinite;
+  transform: skewX(-20deg);
+}
+
+.howto__step[data-step="2"] .howto__step-shine { animation-delay: 1s; }
+.howto__step[data-step="3"] .howto__step-shine { animation-delay: 2s; }
+.howto__step[data-step="4"] .howto__step-shine { animation-delay: 3s; }
+.howto__step[data-step="5"] .howto__step-shine { animation-delay: 4s; }
+
+@keyframes howtoShine {
+  0% { left: -100%; }
+  30% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* アイコン */
+.howto__step-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(91, 164, 217, 0.1) 0%, rgba(91, 164, 217, 0.2) 100%);
+  border-radius: 14px;
+  color: var(--color-blue-5);
+  animation: howtoIconFloat 4s ease-in-out infinite;
+}
+
+.howto__step-icon--1 { animation-delay: 0s; }
+.howto__step-icon--2 { animation-delay: 0.5s; }
+.howto__step-icon--3 {
+  animation-delay: 1s;
+  background: linear-gradient(135deg, rgba(255, 225, 56, 0.15) 0%, rgba(227, 184, 90, 0.25) 100%);
+  color: #8B6914;
+}
+.howto__step-icon--4 { animation-delay: 1.5s; }
+.howto__step-icon--5 { animation-delay: 2s; }
+
+@keyframes howtoIconFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(-3deg); }
+}
+
+.howto__step-card:hover .howto__step-icon {
+  animation-play-state: paused;
+  transform: scale(1.08) rotate(-5deg);
+  transition: transform 0.3s ease;
+}
+
+/* コンテンツ */
+.howto__step-content {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.howto__step-title {
+  margin: 0 0 8px;
+  font-family: var(--font-jp);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+.howto__step-desc {
+  margin: 0;
+  font-family: var(--font-jp);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text-sub);
+}
+
+/* 「無料」タグ */
+.howto__step-tag {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #FFE138 0%, #E3B85A 100%);
+  color: var(--color-navy-2);
+  font-family: var(--font-jp);
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 3px 10px rgba(255, 199, 0, 0.4);
+  animation: howtoTagPulse 2s ease-in-out infinite;
+}
+
+@keyframes howtoTagPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* ============================================
+   フッター装飾
+   ============================================ */
+.howto__footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 70px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.howto__footer-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(91, 164, 217, 0.5) 50%,
+    transparent 100%);
+}
+
+.howto__footer-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-jp);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-blue-5);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.howto__footer-text svg {
+  color: var(--color-gold);
+}
+
+/* ============================================
+   PC（768px以上）
+   ============================================ */
+@media (min-width: 768px) {
+
+  .howto {
+    padding: 120px 40px 160px;
+  }
+
+  .howto .sp-only { display: none; }
+
+  .howto__inner {
+    max-width: 860px;
+  }
+
+  /* 背景装飾を大きく */
+  .howto__shape--1 { width: 200px; height: 200px; }
+  .howto__shape--2 { width: 140px; height: 140px; }
+  .howto__shape--3 { width: 240px; height: 240px; }
+  .howto__shape--4 { width: 160px; height: 160px; }
+
+  /* ヘッダー */
+  .howto__header {
+    margin-bottom: 90px;
+  }
+
+  .howto__badge {
+    font-size: 13px;
+    padding: 10px 24px;
+  }
+
+  .howto__title {
+    font-size: 42px;
+    margin-bottom: 16px;
+  }
+
+  .howto__subtitle {
+    font-size: 16px;
+  }
+
+  /* タイムライン */
+  .howto__steps::before {
+    left: 36px;
+  }
+
+  .howto__step {
+    gap: 28px;
+    margin-bottom: 50px;
+  }
+
+  /* STEP番号 */
+  .howto__step-number {
+    width: 74px;
+    height: 74px;
+    box-shadow:
+      0 10px 28px rgba(30, 111, 160, 0.4),
+      0 0 0 5px #FFFFFF,
+      0 0 0 8px rgba(91, 164, 217, 0.2);
+  }
+
+  .howto__step-number-label {
+    font-size: 9px;
+  }
+
+  .howto__step-number-value {
+    font-size: 28px;
+  }
+
+  .howto__step[data-step="3"] .howto__step-number {
+    box-shadow:
+      0 10px 28px rgba(255, 199, 0, 0.4),
+      0 0 0 5px #FFFFFF,
+      0 0 0 8px rgba(255, 225, 56, 0.3);
+  }
+
+  /* カード */
+  .howto__step-card {
+    padding: 28px 32px 28px 28px;
+    gap: 22px;
+  }
+
+  .howto__step-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .howto__step-icon svg {
+    width: 56px;
+    height: 56px;
+  }
+
+  .howto__step-title {
+    font-size: 21px;
+    margin-bottom: 10px;
+  }
+
+  .howto__step-desc {
+    font-size: 15px;
+  }
+
+  .howto__step-tag {
+    font-size: 12px;
+    padding: 5px 14px;
+    margin-top: 12px;
+  }
+
+  /* フッター */
+  .howto__footer {
+    margin-top: 90px;
+  }
+
+  .howto__footer-text {
+    font-size: 14px;
+  }
+}

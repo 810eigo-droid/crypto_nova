@@ -343,8 +343,9 @@
 .turning-point__answer-body {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 14px;
+  padding-left: 20px;
   position: relative;
   z-index: 1;
 }

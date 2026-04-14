@@ -1,0 +1,510 @@
+/* ============================================
+   Section 24: 最終CTA
+   金色背景 + 濃紺巨大ボタン（豪華バージョン）
+   ============================================ */
+
+.finalcta {
+  position: relative;
+  background:
+    radial-gradient(ellipse at top, #FFE9B0 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, #F5D78A 0%, transparent 60%),
+    linear-gradient(135deg,
+      #F2D894 0%,
+      #E3B85A 35%,
+      #D4A04A 65%,
+      #E3B85A 100%);
+  background-size: 100% 100%, 100% 100%, 200% 200%;
+  padding: 100px 20px 120px;
+  overflow: hidden;
+  animation: finalctaBgShift 15s ease-in-out infinite;
+}
+
+@keyframes finalctaBgShift {
+  0%, 100% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+  50% { background-position: 0% 0%, 0% 0%, 100% 100%; }
+}
+
+/* 上下のグラデライン */
+.finalcta::before,
+.finalcta::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #1A2744 50%, transparent 100%);
+  opacity: 0.5;
+  z-index: 5;
+}
+.finalcta::before { top: 0; }
+.finalcta::after { bottom: 0; }
+
+/* sp-only ヘルパー */
+.finalcta .sp-only { display: inline; }
+
+/* ============================================
+   背景の装飾光線
+   ============================================ */
+.finalcta__rays {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.finalcta__ray {
+  position: absolute;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0) 100%);
+  transform-origin: top center;
+  animation: finalctaRayPulse 6s ease-in-out infinite;
+}
+
+.finalcta__ray--1 {
+  top: -20%;
+  left: 10%;
+  width: 180px;
+  height: 140%;
+  transform: rotate(-15deg);
+  animation-delay: 0s;
+}
+.finalcta__ray--2 {
+  top: -20%;
+  left: 35%;
+  width: 120px;
+  height: 130%;
+  transform: rotate(10deg);
+  animation-delay: -2s;
+  opacity: 0.7;
+}
+.finalcta__ray--3 {
+  top: -20%;
+  right: 25%;
+  width: 150px;
+  height: 130%;
+  transform: rotate(-8deg);
+  animation-delay: -4s;
+  opacity: 0.6;
+}
+.finalcta__ray--4 {
+  top: -20%;
+  right: 8%;
+  width: 200px;
+  height: 140%;
+  transform: rotate(18deg);
+  animation-delay: -1s;
+}
+
+@keyframes finalctaRayPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ============================================
+   浮遊する金色粒子
+   ============================================ */
+.finalcta__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.finalcta__particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 240, 180, 0.6) 50%, rgba(255, 240, 180, 0) 80%);
+  border-radius: 50%;
+  filter: blur(0.5px);
+  animation: finalctaParticleRise 14s linear infinite;
+  opacity: 0;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+}
+
+.finalcta__particle--1 { left: 8%;  bottom: -10px; animation-delay: 0s; }
+.finalcta__particle--2 { left: 22%; bottom: -10px; width: 6px; height: 6px; animation-delay: -2s; }
+.finalcta__particle--3 { left: 38%; bottom: -10px; width: 10px; height: 10px; animation-delay: -4s; }
+.finalcta__particle--4 { left: 52%; bottom: -10px; animation-delay: -6s; }
+.finalcta__particle--5 { left: 65%; bottom: -10px; width: 7px; height: 7px; animation-delay: -8s; }
+.finalcta__particle--6 { left: 78%; bottom: -10px; width: 9px; height: 9px; animation-delay: -10s; }
+.finalcta__particle--7 { left: 90%; bottom: -10px; width: 6px; height: 6px; animation-delay: -1s; }
+.finalcta__particle--8 { left: 15%; bottom: -10px; animation-delay: -7s; }
+
+@keyframes finalctaParticleRise {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-110vh) translateX(15px); opacity: 0; }
+}
+
+/* ============================================
+   キラキラ星
+   ============================================ */
+.finalcta__stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.finalcta__star {
+  position: absolute;
+  color: #FFFFFF;
+  font-size: 18px;
+  opacity: 0;
+  animation: finalctaStarTwinkle 3s ease-in-out infinite;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 1);
+}
+
+.finalcta__star--1 { top: 8%;  left: 18%; animation-delay: 0s; }
+.finalcta__star--2 { top: 25%; right: 22%; animation-delay: 0.6s; font-size: 14px; }
+.finalcta__star--3 { bottom: 30%; left: 24%; animation-delay: 1.2s; font-size: 22px; }
+.finalcta__star--4 { bottom: 15%; right: 26%; animation-delay: 1.8s; }
+.finalcta__star--5 { top: 50%; left: 8%; animation-delay: 2.4s; font-size: 16px; }
+.finalcta__star--6 { top: 60%; right: 10%; animation-delay: 0.3s; font-size: 20px; }
+
+@keyframes finalctaStarTwinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+/* ============================================
+   インナー
+   ============================================ */
+.finalcta__inner {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  z-index: 2;
+  text-align: center;
+}
+
+/* 上部装飾 */
+.finalcta__crown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 auto 30px;
+  max-width: 280px;
+}
+
+.finalcta__crown-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #1A2744 50%, transparent 100%);
+}
+
+.finalcta__crown-diamond {
+  color: #1A2744;
+  font-size: 16px;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+  animation: finalctaDiamondSpin 4s linear infinite;
+}
+
+@keyframes finalctaDiamondSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ============================================
+   メインタイトル
+   ============================================ */
+.finalcta__title {
+  margin: 0 0 16px;
+  font-family: var(--font-jp);
+  font-size: 32px;
+  font-weight: 900;
+  color: #0F1A30;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.6);
+}
+
+.finalcta__sub {
+  margin: 0 0 50px;
+  font-family: var(--font-jp);
+  font-size: 15px;
+  font-weight: 700;
+  color: #2A3550;
+  line-height: 1.5;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================
+   巨大ボタン
+   ============================================ */
+.finalcta__button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 22px 24px;
+  background: linear-gradient(135deg, #1A2744 0%, #0F1A30 50%, #1A2744 100%);
+  border: 3px solid #FFFFFF;
+  border-radius: 80px;
+  text-decoration: none;
+  box-shadow:
+    0 12px 40px rgba(15, 26, 48, 0.5),
+    0 0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 50px rgba(255, 255, 255, 0.6),
+    inset 0 2px 10px rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  animation: finalctaButtonPulse 2s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes finalctaButtonPulse {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow:
+      0 12px 40px rgba(15, 26, 48, 0.5),
+      0 0 0 2px rgba(255, 255, 255, 0.4),
+      0 0 50px rgba(255, 255, 255, 0.6),
+      inset 0 2px 10px rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    transform: translateY(-4px);
+    box-shadow:
+      0 18px 50px rgba(15, 26, 48, 0.6),
+      0 0 0 2px rgba(255, 255, 255, 0.6),
+      0 0 70px rgba(255, 255, 255, 0.9),
+      inset 0 2px 10px rgba(255, 255, 255, 0.2);
+  }
+}
+
+.finalcta__button:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* ボタン内の光るシマー */
+.finalcta__button-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%);
+  animation: finalctaShimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes finalctaShimmer {
+  0% { left: -100%; }
+  60%, 100% { left: 200%; }
+}
+
+.finalcta__button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #FFE138 0%, #FFC700 100%);
+  color: #0F1A30;
+  font-size: 22px;
+  font-weight: 900;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(255, 199, 0, 0.7);
+  position: relative;
+  z-index: 1;
+  animation: finalctaIconBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes finalctaIconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+.finalcta__button-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.finalcta__button-label {
+  font-family: var(--font-jp);
+  font-size: 17px;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  text-shadow: 0 0 12px rgba(255, 199, 0, 0.5);
+}
+
+.finalcta__button-sublabel {
+  font-family: var(--font-en);
+  font-size: 9px;
+  font-weight: 700;
+  color: #FFE138;
+  letter-spacing: 0.2em;
+}
+
+.finalcta__button-arrow {
+  font-size: 20px;
+  font-weight: 900;
+  color: #FFC700;
+  text-shadow: 0 0 12px rgba(255, 199, 0, 0.8);
+  position: relative;
+  z-index: 1;
+  animation: finalctaArrowPush 1.5s ease-in-out infinite;
+}
+
+@keyframes finalctaArrowPush {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+
+/* ============================================
+   安心バッジ3つ
+   ============================================ */
+.finalcta__badges {
+  list-style: none;
+  padding: 0;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 320px;
+}
+
+.finalcta__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1.5px solid rgba(15, 26, 48, 0.25);
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(120, 90, 30, 0.15);
+}
+
+.finalcta__badge-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #1A2744;
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(15, 26, 48, 0.4);
+}
+
+.finalcta__badge-text {
+  font-family: var(--font-jp);
+  font-size: 14px;
+  font-weight: 800;
+  color: #0F1A30;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   PC（768px以上）
+   ============================================ */
+@media (min-width: 768px) {
+
+  .finalcta {
+    padding: 140px 40px 160px;
+  }
+
+  .finalcta .sp-only { display: none; }
+
+  .finalcta__inner {
+    max-width: 980px;
+  }
+
+  /* 装飾光線大きく */
+  .finalcta__ray--1 { width: 280px; }
+  .finalcta__ray--2 { width: 200px; }
+  .finalcta__ray--3 { width: 240px; }
+  .finalcta__ray--4 { width: 320px; }
+
+  /* 上部装飾 */
+  .finalcta__crown {
+    margin-bottom: 40px;
+    max-width: 360px;
+  }
+
+  .finalcta__crown-diamond {
+    font-size: 20px;
+  }
+
+  /* タイトル */
+  .finalcta__title {
+    font-size: 56px;
+    margin-bottom: 24px;
+  }
+
+  .finalcta__sub {
+    font-size: 19px;
+    margin-bottom: 70px;
+  }
+
+  /* 巨大ボタン */
+  .finalcta__button {
+    max-width: 560px;
+    padding: 32px 40px;
+    gap: 20px;
+    border-width: 4px;
+  }
+
+  .finalcta__button-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 30px;
+  }
+
+  .finalcta__button-label {
+    font-size: 26px;
+  }
+
+  .finalcta__button-sublabel {
+    font-size: 11px;
+  }
+
+  .finalcta__button-arrow {
+    font-size: 28px;
+  }
+
+  /* バッジ横並び */
+  .finalcta__badges {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+    max-width: none;
+    margin-top: 50px;
+  }
+
+  .finalcta__badge {
+    padding: 14px 22px;
+  }
+
+  .finalcta__badge-check {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+
+  .finalcta__badge-text {
+    font-size: 16px;
+  }
+}

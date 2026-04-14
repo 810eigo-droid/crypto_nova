@@ -1,0 +1,448 @@
+/* ============================================
+   FOOTER
+   白背景 + カード風キャラ画像 + お問い合わせ + 留意事項
+   ============================================ */
+
+.footer {
+  position: relative;
+  background: #FFFFFF;
+  padding: 70px 20px 40px;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--color-yellow) 30%,
+    var(--color-gold) 50%,
+    var(--color-yellow) 70%,
+    transparent 100%);
+}
+
+.footer__inner {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+/* ============================================
+   画像 + お問い合わせグループ（スマホ：縦並び）
+   ============================================ */
+.footer__contact-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* ============================================
+   キャラ画像（カード風フレーム）
+   ============================================ */
+.footer__char-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  margin: 0;
+}
+
+.footer__char-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #FAFBFC;
+  border: 4px solid #FFFFFF;
+  box-shadow:
+    0 12px 32px rgba(15, 26, 48, 0.18),
+    0 0 0 1px rgba(15, 26, 48, 0.06);
+  transform: rotate(-1deg);
+  transition: transform 0.4s ease;
+}
+
+.footer__char-frame:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.footer__char-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer__char-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--color-gold);
+  border-style: solid;
+  z-index: 2;
+  filter: drop-shadow(0 0 4px rgba(227, 184, 90, 0.6));
+}
+.footer__char-corner--tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+.footer__char-corner--tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+.footer__char-corner--bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+.footer__char-corner--br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+.footer__char-caption {
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-text-sub);
+  letter-spacing: 0.08em;
+}
+
+/* ============================================
+   お問い合わせ
+   ============================================ */
+.footer__contact {
+  text-align: center;
+  width: 100%;
+}
+
+.footer__contact-title {
+  margin: 0 0 20px;
+  font-family: var(--font-jp);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  letter-spacing: 0.08em;
+  position: relative;
+  display: inline-block;
+}
+
+.footer__contact-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-yellow) 0%, var(--color-gold) 100%);
+  border-radius: 2px;
+}
+
+.footer__tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin: 28px 0 12px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.footer__tel:hover {
+  transform: scale(1.03);
+  background: rgba(255, 199, 0, 0.08);
+}
+
+.footer__tel-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer__tel-number {
+  font-family: var(--font-en);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--color-blue-5);
+  letter-spacing: 0.02em;
+}
+
+.footer__tel-hours {
+  margin: 0 0 4px;
+  font-family: var(--font-jp);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.footer__tel-note {
+  margin: 0 0 24px;
+  font-family: var(--font-jp);
+  font-size: 11px;
+  color: var(--color-text-sub);
+}
+
+.footer__mail-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, var(--color-blue-4) 0%, var(--color-blue-5) 100%);
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: var(--font-jp);
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(30, 111, 160, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer__mail-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(30, 111, 160, 0.45);
+}
+
+.footer__mail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   区切り線
+   ============================================ */
+.footer__divider {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(15, 26, 48, 0.15) 50%,
+    transparent 100%);
+  margin: 0 0 40px;
+}
+
+/* ============================================
+   留意事項
+   ============================================ */
+.footer__notice {
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F4F8 100%);
+  border: 1px solid rgba(15, 26, 48, 0.08);
+  border-radius: 12px;
+  padding: 22px 22px 20px;
+  margin-bottom: 36px;
+}
+
+.footer__notice-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.footer__notice-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--color-yellow);
+  color: var(--color-navy-2);
+  font-family: var(--font-en);
+  font-size: 14px;
+  font-weight: 900;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(255, 199, 0, 0.4);
+}
+
+.footer__notice-label {
+  font-family: var(--font-jp);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  letter-spacing: 0.05em;
+}
+
+.footer__notice-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__notice-list li {
+  position: relative;
+  padding-left: 14px;
+  font-family: var(--font-jp);
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--color-text-main);
+}
+
+.footer__notice-list li::before {
+  content: '・';
+  position: absolute;
+  left: 0;
+  color: var(--color-gold);
+  font-weight: 700;
+}
+
+/* ============================================
+   リンク
+   ============================================ */
+.footer__links {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.footer__link {
+  font-family: var(--font-jp);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-blue-4);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.footer__link:hover {
+  color: var(--color-blue-5);
+  border-bottom-color: var(--color-gold);
+}
+
+/* ============================================
+   コピーライト
+   ============================================ */
+.footer__copyright {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-en);
+  font-size: 11px;
+  color: var(--color-text-sub);
+  letter-spacing: 0.03em;
+}
+
+/* ============================================
+   PC（768px以上）
+   ============================================ */
+@media (min-width: 768px) {
+
+  .footer {
+    padding: 90px 40px 50px;
+  }
+
+  .footer__inner {
+    max-width: 920px;
+  }
+
+  /* PC版：画像とお問い合わせを横並び */
+  .footer__contact-group {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 50px;
+  }
+
+  /* キャラ画像を大きく */
+  .footer__char-wrap {
+    max-width: 400px;
+    flex-shrink: 0;
+  }
+
+  .footer__char-corner {
+    width: 22px;
+    height: 22px;
+  }
+  .footer__char-corner--tl { top: 12px; left: 12px; }
+  .footer__char-corner--tr { top: 12px; right: 12px; }
+  .footer__char-corner--bl { bottom: 12px; left: 12px; }
+  .footer__char-corner--br { bottom: 12px; right: 12px; }
+
+  .footer__char-caption {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+
+  /* お問い合わせ */
+  .footer__contact {
+    width: auto;
+    text-align: left;
+    flex-shrink: 0;
+  }
+
+  .footer__contact-title {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+
+  .footer__contact-title::after {
+    left: 0;
+    transform: none;
+  }
+
+  .footer__tel {
+    margin-top: 24px;
+  }
+
+  .footer__tel-number {
+    font-size: 48px;
+  }
+
+  .footer__tel-hours {
+    font-size: 15px;
+  }
+
+  .footer__tel-note {
+    font-size: 12px;
+    margin-bottom: 28px;
+  }
+
+  .footer__mail-btn {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  /* 区切り */
+  .footer__divider {
+    margin-bottom: 50px;
+  }
+
+  /* 留意事項 */
+  .footer__notice {
+    padding: 28px 32px;
+    margin-bottom: 44px;
+  }
+
+  .footer__notice-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 16px;
+  }
+
+  .footer__notice-label {
+    font-size: 16px;
+  }
+
+  .footer__notice-list li {
+    font-size: 13px;
+  }
+
+  /* リンク */
+  .footer__link {
+    font-size: 14px;
+  }
+
+  /* コピーライト */
+  .footer__copyright {
+    font-size: 12px;
+  }
+}

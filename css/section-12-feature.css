@@ -422,6 +422,7 @@
   z-index: 1;
   width: 75%;
   max-width: 720px;
+  margin-left: auto;
   aspect-ratio: 8 / 5;
   background: linear-gradient(135deg, #FFFFFF 0%, #EBF5FF 100%);
   border: 2px solid rgba(255, 255, 255, 0.6);
@@ -450,9 +451,9 @@
 .feature__mockup-sp {
   position: absolute;
   z-index: 2;
-  right: 5%;
+  left: 5%;
   top: 50%;
-  transform: translateY(-50%) perspective(1200px) rotateY(-5deg);
+  transform: translateY(-50%) perspective(1200px) rotateY(5deg);
   width: 28%;
   max-width: 220px;
   aspect-ratio: 14 / 29;
