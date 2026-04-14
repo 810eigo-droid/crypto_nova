@@ -35,6 +35,7 @@
   <link rel="stylesheet" href="css/section-18-recommend.css">
   <link rel="stylesheet" href="css/section-19-howto.css">
   <link rel="stylesheet" href="css/section-20-reassure.css">
+  <link rel="stylesheet" href="css/section-21-truth.css">
   <link rel="stylesheet" href="css/section-22-future.css">
   <link rel="stylesheet" href="css/section-23-urgency.css">
   <link rel="stylesheet" href="css/section-24-finalcta.css">
@@ -47,16 +48,16 @@
   <!-- SECTION 1: HERO -->
   <section class="hero" id="hero">
     <!-- HEADER -->
-  <header class="header">
-  <div class="header__logo">
-  <img src="icon.webp" alt="Crypto Nova" class="header__logo-icon">
-  <div class="header__logo-textwrap">
-    <span class="header__logo-text">Crypto Nova</span>
-    <span class="header__logo-ruby">クリプトノバ</span>
-  </div>
-</div>
-  <a href="#cta" class="header__cta">今すぐ始める</a>
-</header>
+    <header class="header">
+      <div class="header__logo">
+        <img src="icon.webp" alt="Crypto Nova" class="header__logo-icon">
+        <div class="header__logo-textwrap">
+          <span class="header__logo-text">Crypto Nova</span>
+          <span class="header__logo-ruby">クリプト・ノヴァ</span>
+        </div>
+      </div>
+      <a href="#cta" class="header__cta">今すぐ始める</a>
+    </header>
 
     <div class="hero__gradient"></div>
 
@@ -93,28 +94,38 @@
       </div>
 
       <div class="hero__text-bottom">
-        <a href="#cta" class="hero__cta">
-          今すぐアプリを見る
-          <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-
+        <!-- スマホ・PC対応バッジ（情報訴求のみ） -->
         <div class="hero__trust-text">
           <span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5L5.5 10.5L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5L5.5 10.5L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             スマホ・PC対応
           </span>
-          <span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5L5.5 10.5L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            マニュアル完備
-          </span>
         </div>
+
+        <!-- プレゼント告知（横長コンパクト） -->
+        <div class="hero__present">
+          <div class="hero__present-ribbon">
+            <span class="hero__present-ribbon-icon">🎁</span>
+            <span class="hero__present-ribbon-text">PRESENT</span>
+          </div>
+          <p class="hero__present-text">
+            無名のアルトコインの購入方法、換金の手順までを初心者にも分かりやすく丁寧に解説した<span class="hero__present-highlight">完全マニュアルをプレゼント中！</span>
+          </p>
+        </div>
+
+        <!-- メインCTA：金色3D立体ボタン -->
+        <a href="#cta" class="hero__cta hero__cta--gold">
+          <span class="hero__cta-text">今すぐアプリを見る</span>
+          <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
 
     </div>
 
   </section>
+
   <!-- SECTION 2: 問いかけ -->
   <section class="question" id="question">
     <div class="question__inner">
@@ -412,7 +423,7 @@
       <img src="icon.webp" alt="Crypto Nova" class="reveal__logo-icon">
       <div class="reveal__logo-textwrap">
         <span class="reveal__logo-text">Crypto Nova</span>
-        <span class="reveal__logo-ruby">クリプトノバ</span>
+        <span class="reveal__logo-ruby">クリプト・ノヴァ</span>
       </div>
     </div>
 
@@ -510,7 +521,7 @@
       <div class="feature__contrast-card feature__contrast-card--many">
         <span class="feature__contrast-label">BEFORE</span>
         <p class="feature__contrast-number" data-count-to="1800000" data-count-suffix="+">0</p>
-        <p class="feature__contrast-unit">種類 以上</p>
+        <p class="feature__contrast-unit">万個 以上</p>
         <p class="feature__contrast-desc">膨大な仮想通貨の海</p>
       </div>
 
@@ -1003,16 +1014,8 @@
 </section>
 
 <!-- ============================================
-     Section 20-21: 不安払拭（統合版）
-     「怖くない」→「不安の正体」→「Crypto Novaが解決」
-     画像4枚（背景あり、カード風枠で表示）
-     index.html の Section 19 の直後に挿入
-
-     画像役割:
-       01 = AFTER「データで判断できる」(パイチャート + ドヤ顔)
-       02 = AFTER「見れば分かる」(電球 + 親指立て)
-       03 = BEFORE「分からない」(?マーク + 困った顔)
-       04 = BEFORE「判断できない」(両手を上げて迷う) ★新規
+     Section 20: 仮想通貨って怖そうと思う方へ
+     （旧統合版から下半分を削除）
 ============================================ -->
 <section class="reassure" id="reassure">
 
@@ -1037,9 +1040,7 @@
 
   <div class="reassure__inner">
 
-    <!-- ========================================
-         上半分：怖くない（旧Section 20）
-    ======================================== -->
+    <!-- 怖くない -->
     <div class="reassure__top">
 
       <!-- 警告ストライプ（打ち消し演出） -->
@@ -1068,20 +1069,15 @@
 
     </div>
 
-    <!-- ========================================
-         区切り装飾（金色ライン + 回転ダイヤ）
-    ======================================== -->
+    <!-- 区切り装飾（金色ライン + 回転ダイヤ） -->
     <div class="reassure__divider">
       <div class="reassure__divider-line"></div>
       <div class="reassure__divider-diamond">◆</div>
       <div class="reassure__divider-line"></div>
     </div>
 
-    <!-- ========================================
-         下半分：不安の正体 → 解決（旧Section 21）
-    ======================================== -->
+    <!-- 下部：つなぎ文 -->
     <div class="reassure__bottom">
-
       <p class="reassure__lead">
         ただし違いは<span class="reassure__hellip">…</span>
       </p>
@@ -1089,120 +1085,92 @@
         情報が<span class="reassure__highlight-yellow">整理されていない</span>こと
       </h3>
       <p class="reassure__lead-sub">だから不安になります</p>
+    </div>
 
-      <!-- 不安の正体ブロック -->
-      <div class="reassure__truth">
+  </div>
+</section>
 
-        <!-- BEFOREラベル -->
-        <div class="reassure__phase-label reassure__phase-label--before">
-          <span class="reassure__phase-en">THE TRUTH</span>
-          <span class="reassure__phase-jp">不安の正体はこれです</span>
-        </div>
+<!-- ============================================
+     Section 21: 不安の正体 → 見れば分かる状態へ
+     （クライアント依頼のリデザイン版）
+============================================ -->
+<section class="truth" id="truth">
 
-        <!-- BEFORE：2人のキャラカード -->
-        <div class="reassure__char-grid reassure__char-grid--before">
-          <!-- 03: 分からない -->
-          <div class="reassure__char-card reassure__char-card--before">
-            <div class="reassure__char-frame">
-              <div class="reassure__char-fog"></div>
-              <img src="section20-character-03.webp"
-                   alt="分からないキャラクター"
-                   class="reassure__char-img">
-              <div class="reassure__char-corner-tl"></div>
-              <div class="reassure__char-corner-tr"></div>
-              <div class="reassure__char-corner-bl"></div>
-              <div class="reassure__char-corner-br"></div>
-            </div>
-            <div class="reassure__char-label">
-              <span class="reassure__char-num">01</span>
-              <span class="reassure__char-text">分からない</span>
-            </div>
-          </div>
+  <!-- 斜めストライプ装飾 -->
+  <div class="truth__stripes" aria-hidden="true"></div>
 
-          <!-- 04: 判断できない（新規） -->
-          <div class="reassure__char-card reassure__char-card--before">
-            <div class="reassure__char-frame">
-              <div class="reassure__char-fog"></div>
-              <img src="section20-character-04.webp"
-                   alt="判断できないキャラクター"
-                   class="reassure__char-img">
-              <div class="reassure__char-corner-tl"></div>
-              <div class="reassure__char-corner-tr"></div>
-              <div class="reassure__char-corner-bl"></div>
-              <div class="reassure__char-corner-br"></div>
-            </div>
-            <div class="reassure__char-label">
-              <span class="reassure__char-num">02</span>
-              <span class="reassure__char-text">判断できない</span>
-            </div>
-          </div>
-        </div>
+  <!-- 浮遊ドット -->
+  <div class="truth__dots" aria-hidden="true">
+    <span class="truth__dot truth__dot--1"></span>
+    <span class="truth__dot truth__dot--2"></span>
+    <span class="truth__dot truth__dot--3"></span>
+    <span class="truth__dot truth__dot--4"></span>
+  </div>
 
-        <!-- 矢印（変換の流れ） -->
-        <div class="reassure__arrow">
-          <div class="reassure__arrow-line"></div>
-          <div class="reassure__arrow-head">▼</div>
-          <div class="reassure__arrow-label">Crypto Nova</div>
-        </div>
+  <div class="truth__inner">
 
-        <!-- AFTERラベル -->
-        <div class="reassure__phase-label reassure__phase-label--after">
-          <span class="reassure__phase-en">THE ANSWER</span>
-          <span class="reassure__phase-jp">"見れば分かる状態"へ</span>
-        </div>
+    <!-- THE TRUTH バッジ -->
+    <div class="truth__badge">
+      <span class="truth__badge-label">THE TRUTH</span>
+      <span class="truth__badge-text">不安の正体はこれです</span>
+    </div>
 
-        <!-- AFTER：2人のキャラカード（明るい仕上げ） -->
-        <div class="reassure__char-grid reassure__char-grid--after">
-          <div class="reassure__after-glow"></div>
+    <!-- 不安の正体（3段） -->
+    <div class="truth__problem">
+      <p class="truth__problem-line truth__problem-line--big">わからない</p>
+      <p class="truth__problem-line truth__problem-line--small">だから</p>
+      <p class="truth__problem-line truth__problem-line--big">判断できない</p>
+    </div>
 
-          <!-- 01: データで判断 -->
-          <div class="reassure__char-card reassure__char-card--after">
-            <div class="reassure__char-frame reassure__char-frame--after">
-              <span class="reassure__after-sparkle reassure__after-sparkle--1">✦</span>
-              <span class="reassure__after-sparkle reassure__after-sparkle--2">✦</span>
-              <img src="section20-character-01.webp"
-                   alt="データで判断できるキャラクター"
-                   class="reassure__char-img">
-              <div class="reassure__char-corner-tl reassure__char-corner-tl--gold"></div>
-              <div class="reassure__char-corner-tr reassure__char-corner-tr--gold"></div>
-              <div class="reassure__char-corner-bl reassure__char-corner-bl--gold"></div>
-              <div class="reassure__char-corner-br reassure__char-corner-br--gold"></div>
-            </div>
-            <div class="reassure__char-label reassure__char-label--after">
-              <span class="reassure__char-check">✓</span>
-              <span class="reassure__char-text">データで判断</span>
-            </div>
-          </div>
+    <!-- 区切り -->
+    <div class="truth__divider">
+      <div class="truth__divider-line"></div>
+      <div class="truth__divider-star">✦</div>
+      <div class="truth__divider-line"></div>
+    </div>
 
-          <!-- 02: 見れば分かる -->
-          <div class="reassure__char-card reassure__char-card--after">
-            <div class="reassure__char-frame reassure__char-frame--after">
-              <span class="reassure__after-sparkle reassure__after-sparkle--1">✦</span>
-              <span class="reassure__after-sparkle reassure__after-sparkle--2">✦</span>
-              <img src="section20-character-02.webp"
-                   alt="見れば分かるキャラクター"
-                   class="reassure__char-img">
-              <div class="reassure__char-corner-tl reassure__char-corner-tl--gold"></div>
-              <div class="reassure__char-corner-tr reassure__char-corner-tr--gold"></div>
-              <div class="reassure__char-corner-bl reassure__char-corner-bl--gold"></div>
-              <div class="reassure__char-corner-br reassure__char-corner-br--gold"></div>
-            </div>
-            <div class="reassure__char-label reassure__char-label--after">
-              <span class="reassure__char-check">✓</span>
-              <span class="reassure__char-text">見れば分かる</span>
-            </div>
-          </div>
-        </div>
+    <!-- Crypto Novaの答え -->
+    <div class="truth__answer">
+      <p class="truth__answer-text">
+        <span class="truth__answer-brand">Crypto Nova</span>は、それを
+      </p>
+      <p class="truth__answer-main">
+        <span class="truth__answer-quote">"</span>見れば分かる状態<span class="truth__answer-quote">"</span>に変える<br class="sp-only">アプリです！
+      </p>
+    </div>
 
-        <!-- 締めメッセージ -->
-        <div class="reassure__conclusion">
-          <p class="reassure__conclusion-line">Crypto Novaはそれを、</p>
-          <p class="reassure__conclusion-line reassure__conclusion-line--big">
-            <span class="reassure__conclusion-quote">"</span>見れば分かる状態<span class="reassure__conclusion-quote">"</span>
-          </p>
-          <p class="reassure__conclusion-line">に変えるツールです。</p>
-        </div>
+    <!-- 警告バナー + 説明 -->
+    <div class="truth__alert-block">
+      <div class="truth__alert-banner">
+        <img src="section21-warning-banner.png"
+             alt="警告「ヘルプ」をご覧ください！"
+             class="truth__alert-banner-img">
+      </div>
+      <p class="truth__alert-text">
+        <span class="truth__alert-text-nai">ない</span>仮想通貨を<br class="sp-only">見つけるだけ。
+      </p>
+    </div>
 
+    <!-- スマホ比較画像（2枚） -->
+    <div class="truth__comparison">
+      <div class="truth__comparison-item truth__comparison-item--before">
+        <img src="section21-phone-before.png"
+             alt="警告ありの画面"
+             class="truth__comparison-img">
+        <div class="truth__comparison-label truth__comparison-label--before">警告あり</div>
+      </div>
+
+      <div class="truth__comparison-arrow">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M6 16H26M26 16L18 8M26 16L18 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="truth__comparison-item truth__comparison-item--after">
+        <img src="section21-phone-after.png"
+             alt="警告なしの画面"
+             class="truth__comparison-img">
+        <div class="truth__comparison-label truth__comparison-label--after">警告なし</div>
       </div>
     </div>
 

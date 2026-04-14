@@ -1,0 +1,617 @@
+/* ============================================
+   Section 21: 不安の正体 → 見れば分かる状態へ
+   （クライアント依頼のリデザイン版）
+   濃紺ベース + 警告バナー + 比較画像
+   ============================================ */
+
+.truth {
+  position: relative;
+  padding: 100px 20px 120px;
+  background: linear-gradient(180deg,
+    #0F1A30 0%,
+    #1A2744 30%,
+    #1A5A8A 70%,
+    #2E7AB8 100%);
+  overflow: hidden;
+}
+
+/* sp-only ヘルパー */
+.truth .sp-only { display: inline; }
+
+/* ============================================
+   斜めストライプ装飾
+   ============================================ */
+.truth__stripes {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 40px,
+    rgba(255, 255, 255, 0.02) 40px,
+    rgba(255, 255, 255, 0.02) 42px
+  );
+  pointer-events: none;
+}
+
+/* ============================================
+   浮遊ドット
+   ============================================ */
+.truth__dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.truth__dot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: truthDotFloat 12s ease-in-out infinite;
+}
+
+.truth__dot--1 {
+  width: 100px; height: 100px;
+  top: 8%; left: -30px;
+  background: radial-gradient(circle, rgba(232, 131, 92, 0.25) 0%, transparent 70%);
+}
+.truth__dot--2 {
+  width: 140px; height: 140px;
+  top: 40%; right: -40px;
+  background: radial-gradient(circle, rgba(255, 199, 0, 0.2) 0%, transparent 70%);
+  animation-delay: -4s;
+}
+.truth__dot--3 {
+  width: 80px; height: 80px;
+  bottom: 30%; left: 10%;
+  background: radial-gradient(circle, rgba(91, 164, 217, 0.3) 0%, transparent 70%);
+  animation-delay: -7s;
+}
+.truth__dot--4 {
+  width: 120px; height: 120px;
+  bottom: 10%; right: 15%;
+  background: radial-gradient(circle, rgba(227, 184, 90, 0.25) 0%, transparent 70%);
+  animation-delay: -2s;
+}
+
+@keyframes truthDotFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(25px, -30px); }
+}
+
+/* ============================================
+   インナー
+   ============================================ */
+.truth__inner {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  z-index: 2;
+  text-align: center;
+}
+
+/* ============================================
+   バッジ（THE TRUTH）
+   ============================================ */
+.truth__badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, rgba(232, 131, 92, 0.15) 0%, rgba(232, 131, 92, 0.05) 100%);
+  border: 1px solid rgba(232, 131, 92, 0.5);
+  border-radius: 40px;
+  margin-bottom: 50px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(232, 131, 92, 0.2);
+}
+
+.truth__badge-label {
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-coral);
+  letter-spacing: 0.2em;
+  margin-bottom: 4px;
+}
+
+.truth__badge-text {
+  font-family: var(--font-jp);
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   不安の正体（3段）
+   ============================================ */
+.truth__problem {
+  margin-bottom: 60px;
+}
+
+.truth__problem-line {
+  margin: 0;
+  font-family: var(--font-jp);
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  text-shadow:
+    0 2px 20px rgba(15, 26, 48, 0.8),
+    0 0 30px rgba(232, 131, 92, 0.3);
+}
+
+.truth__problem-line--big {
+  font-size: 42px;
+}
+
+.truth__problem-line--small {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 16px 0;
+  position: relative;
+}
+
+/* 「だから」の上下に矢印 */
+.truth__problem-line--small::before,
+.truth__problem-line--small::after {
+  content: '↓';
+  display: block;
+  font-size: 24px;
+  color: var(--color-coral);
+  opacity: 0.8;
+  margin: 4px 0;
+  animation: truthArrowPulse 2s ease-in-out infinite;
+}
+
+.truth__problem-line--small::before {
+  margin-bottom: 8px;
+}
+
+.truth__problem-line--small::after {
+  margin-top: 8px;
+  animation-delay: 1s;
+}
+
+@keyframes truthArrowPulse {
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(3px); }
+}
+
+/* ============================================
+   区切り装飾
+   ============================================ */
+.truth__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 400px;
+  margin: 0 auto 50px;
+}
+
+.truth__divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 225, 56, 0.6) 50%,
+    transparent 100%);
+}
+
+.truth__divider-star {
+  font-size: 16px;
+  color: var(--color-yellow);
+  text-shadow: 0 0 14px rgba(255, 225, 56, 0.8);
+  animation: truthStarSpin 8s linear infinite;
+}
+
+@keyframes truthStarSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Crypto Novaの答え
+   ============================================ */
+.truth__answer {
+  margin-bottom: 60px;
+}
+
+.truth__answer-text {
+  margin: 0 0 12px;
+  font-family: var(--font-jp);
+  font-size: 17px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+}
+
+.truth__answer-brand {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15em;
+  background: linear-gradient(135deg, #FFE138 0%, #E3B85A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 2px;
+  filter: drop-shadow(0 2px 6px rgba(255, 199, 0, 0.4));
+}
+
+.truth__answer-main {
+  margin: 0;
+  font-family: var(--font-jp);
+  font-size: 26px;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 2px 16px rgba(15, 26, 48, 0.8),
+    0 0 40px rgba(255, 225, 56, 0.3);
+}
+
+.truth__answer-quote {
+  color: var(--color-yellow);
+  font-family: var(--font-display);
+  font-size: 1.1em;
+  text-shadow: 0 0 14px rgba(255, 225, 56, 0.8);
+  padding: 0 2px;
+}
+
+/* ============================================
+   警告バナー + 説明文
+   ============================================ */
+.truth__alert-block {
+  margin-bottom: 60px;
+  padding: 28px 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.truth__alert-block::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 200%;
+  background: radial-gradient(ellipse at center,
+    rgba(255, 199, 0, 0.1) 0%,
+    transparent 60%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: truthAlertGlow 4s ease-in-out infinite;
+}
+
+@keyframes truthAlertGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.truth__alert-banner {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 20px;
+  animation: truthBannerPulse 2.5s ease-in-out infinite;
+}
+
+.truth__alert-banner-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 6px 20px rgba(220, 53, 69, 0.5));
+}
+
+@keyframes truthBannerPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.truth__alert-text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-jp);
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 12px rgba(15, 26, 48, 0.7);
+}
+
+.truth__alert-text-nai {
+  display: inline-block;
+  color: var(--color-yellow);
+  font-size: 1.2em;
+  font-weight: 900;
+  text-shadow:
+    0 0 20px rgba(255, 225, 56, 0.8),
+    0 2px 12px rgba(15, 26, 48, 0.8);
+  padding: 0 2px;
+  position: relative;
+}
+
+.truth__alert-text-nai::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-yellow) 50%, transparent 100%);
+  border-radius: 2px;
+}
+
+/* ============================================
+   スマホ比較画像（2枚）
+   ============================================ */
+.truth__comparison {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* 四隅の金色コーナー */
+.truth__comparison::before,
+.truth__comparison::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--color-yellow);
+  pointer-events: none;
+}
+
+.truth__comparison::before {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 8px;
+}
+
+.truth__comparison::after {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: 8px;
+}
+
+/* 各画像アイテム */
+.truth__comparison-item {
+  flex: 1;
+  max-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.truth__comparison-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* BEFORE画像：少し暗く、コーラル枠 */
+.truth__comparison-item--before .truth__comparison-img {
+  filter: brightness(0.85) saturate(0.9);
+  border: 2px solid rgba(232, 131, 92, 0.5);
+}
+
+/* AFTER画像：明るく、金色枠、脈打ち */
+.truth__comparison-item--after .truth__comparison-img {
+  filter: brightness(1.05) saturate(1.1);
+  border: 2px solid var(--color-yellow);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(255, 199, 0, 0.3);
+  animation: truthPhonePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes truthPhonePulse {
+  0%, 100% {
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(255, 199, 0, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.5),
+      0 0 45px rgba(255, 199, 0, 0.6);
+  }
+}
+
+/* ラベル */
+.truth__comparison-label {
+  display: inline-block;
+  padding: 6px 14px;
+  font-family: var(--font-jp);
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.truth__comparison-label--before {
+  background: rgba(232, 131, 92, 0.2);
+  border: 1px solid rgba(232, 131, 92, 0.6);
+  color: var(--color-coral-light);
+}
+
+.truth__comparison-label--after {
+  background: linear-gradient(135deg, #FFE138 0%, #E3B85A 100%);
+  color: var(--color-navy-2);
+  box-shadow: 0 4px 12px rgba(255, 199, 0, 0.4);
+}
+
+/* 矢印 */
+.truth__comparison-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-yellow);
+  filter: drop-shadow(0 0 12px rgba(255, 225, 56, 0.8));
+  animation: truthArrowSlide 2s ease-in-out infinite;
+  margin-bottom: 30px;
+}
+
+@keyframes truthArrowSlide {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+
+/* ============================================
+   PC（768px以上）
+   ============================================ */
+@media (min-width: 768px) {
+
+  .truth {
+    padding: 140px 40px 160px;
+  }
+
+  .truth .sp-only { display: none; }
+
+  .truth__inner {
+    max-width: 900px;
+  }
+
+  .truth__badge {
+    padding: 16px 40px;
+    margin-bottom: 70px;
+  }
+
+  .truth__badge-label {
+    font-size: 13px;
+  }
+
+  .truth__badge-text {
+    font-size: 20px;
+  }
+
+  .truth__problem {
+    margin-bottom: 80px;
+  }
+
+  .truth__problem-line--big {
+    font-size: 72px;
+  }
+
+  .truth__problem-line--small {
+    font-size: 28px;
+    margin: 20px 0;
+  }
+
+  .truth__problem-line--small::before,
+  .truth__problem-line--small::after {
+    font-size: 32px;
+    margin: 6px 0;
+  }
+
+  .truth__divider {
+    margin-bottom: 70px;
+    max-width: 500px;
+  }
+
+  .truth__divider-star {
+    font-size: 20px;
+  }
+
+  .truth__answer {
+    margin-bottom: 80px;
+  }
+
+  .truth__answer-text {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .truth__answer-main {
+    font-size: 40px;
+    line-height: 1.5;
+  }
+
+  .truth__alert-block {
+    padding: 40px 40px;
+    margin-bottom: 80px;
+  }
+
+  .truth__alert-banner {
+    margin-bottom: 28px;
+    max-width: 550px;
+  }
+
+  .truth__alert-text {
+    font-size: 26px;
+  }
+
+  .truth__alert-text-nai {
+    font-size: 1.25em;
+  }
+
+  .truth__comparison {
+    gap: 30px;
+    padding: 40px 30px;
+  }
+
+  .truth__comparison::before,
+  .truth__comparison::after {
+    width: 36px;
+    height: 36px;
+  }
+
+  .truth__comparison::before { top: 14px; left: 14px; }
+  .truth__comparison::after { bottom: 14px; right: 14px; }
+
+  .truth__comparison-item {
+    max-width: 240px;
+    gap: 14px;
+  }
+
+  .truth__comparison-label {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+
+  .truth__comparison-arrow {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 40px;
+  }
+
+  .truth__comparison-arrow svg {
+    width: 48px;
+    height: 48px;
+  }
+}
