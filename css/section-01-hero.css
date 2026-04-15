@@ -256,10 +256,10 @@
   align-items: center;
   gap: 10px;
   font-family: var(--font-jp);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 800;
   color: #1A2744;
-  padding: 18px 44px;
+  padding: 14px 32px;
   border-radius: 9999px;
   text-decoration: none;
   border: none;
