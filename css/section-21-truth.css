@@ -423,7 +423,10 @@
 /* BEFORE画像：少し暗く、コーラル枠 */
 .truth__comparison-item--before .truth__comparison-img {
   filter: brightness(0.85) saturate(0.9);
-  border: 2px solid rgba(232, 131, 92, 0.5);
+  border: 2px solid #DC3545;
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(220, 53, 69, 0.3);
 }
 
 /* AFTER画像：明るく、金色枠、脈打ち */
@@ -462,15 +465,19 @@
 }
 
 .truth__comparison-label--before {
-  background: rgba(232, 131, 92, 0.2);
-  border: 1px solid rgba(232, 131, 92, 0.6);
-  color: var(--color-coral-light);
+  background: linear-gradient(135deg, #DC3545 0%, #B02A37 100%);
+  border: 1px solid #DC3545;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.5);
+  font-size: 14px;
 }
 
 .truth__comparison-label--after {
   background: linear-gradient(135deg, #FFE138 0%, #E3B85A 100%);
   color: var(--color-navy-2);
   box-shadow: 0 4px 12px rgba(255, 199, 0, 0.4);
+  font-size: 14px;
+  padding: 6px 14px;
 }
 
 /* 矢印 */

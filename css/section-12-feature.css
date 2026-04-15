@@ -451,15 +451,15 @@
 .feature__mockup-sp {
   position: absolute;
   z-index: 2;
-  left: 5%;
+  left: 0%;
   top: 50%;
   transform: translateY(-50%) perspective(1200px) rotateY(5deg);
-  width: 28%;
-  max-width: 220px;
+  width: 25%;
+  max-width: 260px;
   aspect-ratio: 14 / 29;
   background: linear-gradient(135deg, #FFFFFF 0%, #EBF5FF 100%);
   border: 2px solid rgba(255, 255, 255, 0.7);
-  border-radius: 24px;
+  border-radius: 25px;
   box-shadow:
     0 30px 60px rgba(15, 26, 48, 0.55),
     0 15px 30px rgba(15, 26, 48, 0.35),
@@ -677,11 +677,11 @@
 /* 巨大数字 */
 .feature__contrast-number {
   font-family: var(--font-en);
-  font-size: clamp(40px, 11vw, 72px);
+  font-size: clamp(34px, 9.5vw, 64px);
   font-weight: 900;
   line-height: 1;
   margin: 0 0 8px 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 
 .feature__contrast-card--many .feature__contrast-number {
@@ -851,11 +851,14 @@
     margin-bottom: 100px;
   }
 
+  @media (min-width: 768px) {
   .feature__mockup-sp {
-    right: 3%;
+    left: 0%;
+    right: auto;
     width: 25%;
     max-width: 260px;
   }
+}
 
   .feature__divider {
     margin-bottom: 100px;
@@ -871,7 +874,7 @@
   }
 
   .feature__contrast-card {
-    padding: 48px 32px 40px;
+    padding: 36px 16px 32px;
   }
 
   .feature__contrast-arrow svg {
