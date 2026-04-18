@@ -64,7 +64,7 @@
 
 /* --- テキスト上部（バッジ・キャッチ） --- */
 .hero__text-top {
-  padding: 24px 24px 12px;
+  padding: 24px 16px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,13 +78,13 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-  margin-top: -20px;
+  margin-top: -25px;
 }
 
 .hero__person {
   position: relative;
   width: 85%;
-  max-width: 360px;
+  max-width: 260px;
   animation: fadeInUp 1s ease 0.6s both;
 }
 
@@ -96,7 +96,7 @@
 
 /* --- CTAエリア下部 --- */
 .hero__text-bottom {
-  padding: 12px 24px 32px;
+  padding: 10px 20px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,6 +119,7 @@
   font-weight: 500;
   color: var(--color-blue-5);
   margin-bottom: 16px;
+  margin-top: -25px;
   animation: fadeInDown 0.8s ease 0.3s both;
 }
 
@@ -137,7 +138,7 @@
   line-height: 1.5;
   color: var(--color-text-white);
   text-shadow: 0 2px 20px rgba(15, 26, 48, 0.15);
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   animation: fadeInUp 0.8s ease 0.5s both;
 }
 
@@ -264,7 +265,7 @@
   text-decoration: none;
   border: none;
   cursor: pointer;
-  margin-top: 14px;
+  margin-top: -20px;
   letter-spacing: 0.05em;
 
   /* PRESENTリボンと同じ黄色グラデ */
