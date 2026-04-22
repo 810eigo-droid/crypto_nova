@@ -1,6 +1,6 @@
 /* ============================================
-   Section 17: 実績（論より証拠）
-   濃紺ベース + 信頼感 + TOP3ハイライト + グリッド
+   Section 17: 実績（論より証拠）v2
+   濃紺ベース + ワクワクする素早い動き
    ============================================ */
 
 .results {
@@ -38,7 +38,30 @@
 .results .sp-only { display: inline; }
 
 /* ============================================
-   背景の光の粒子
+   カメラフラッシュ（周期的にピカッと光る）
+   ============================================ */
+.results__flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+  animation: resultsFlash 8s ease-in-out infinite;
+}
+
+@keyframes resultsFlash {
+  0%, 88%, 100% { opacity: 0; }
+  90% { opacity: 1; }
+  92% { opacity: 0.3; }
+  94% { opacity: 0.9; }
+  96% { opacity: 0; }
+}
+
+/* ============================================
+   背景の光の粒子（素早く動く）
    ============================================ */
 .results__particles {
   position: absolute;
@@ -51,7 +74,7 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(2px);
-  animation: resultsParticleFloat 14s ease-in-out infinite;
+  animation: resultsParticleFloat 6s ease-in-out infinite;
 }
 
 .results__particle--1 {
@@ -63,40 +86,39 @@
   width: 80px; height: 80px;
   top: 30%; right: -20px;
   background: radial-gradient(circle, rgba(227, 184, 90, 0.25) 0%, transparent 70%);
-  animation-delay: -3s;
+  animation-delay: -1.5s;
 }
 .results__particle--3 {
   width: 140px; height: 140px;
   top: 55%; left: 5%;
   background: radial-gradient(circle, rgba(255, 199, 0, 0.15) 0%, transparent 70%);
-  animation-delay: -6s;
+  animation-delay: -3s;
 }
 .results__particle--4 {
   width: 100px; height: 100px;
   bottom: 20%; right: 10%;
   background: radial-gradient(circle, rgba(91, 164, 217, 0.25) 0%, transparent 70%);
-  animation-delay: -9s;
+  animation-delay: -4.5s;
 }
 .results__particle--5 {
   width: 60px; height: 60px;
   top: 70%; left: 40%;
   background: radial-gradient(circle, rgba(255, 225, 56, 0.2) 0%, transparent 70%);
-  animation-delay: -4s;
+  animation-delay: -2s;
 }
 .results__particle--6 {
   width: 90px; height: 90px;
   bottom: 10%; left: 30%;
   background: radial-gradient(circle, rgba(227, 184, 90, 0.2) 0%, transparent 70%);
-  animation-delay: -11s;
+  animation-delay: -5.5s;
 }
 
 @keyframes resultsParticleFloat {
-  0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(20px, -30px); }
-  66% { transform: translate(-15px, 20px); }
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -60px) scale(1.2); }
 }
 
-/* グリッドライン装飾 */
+/* グリッドライン装飾（ずれるアニメ） */
 .results__grid-lines {
   position: absolute;
   inset: 0;
@@ -107,6 +129,12 @@
     linear-gradient(90deg, rgba(91, 164, 217, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
   opacity: 0.6;
+  animation: resultsGridShift 20s linear infinite;
+}
+
+@keyframes resultsGridShift {
+  from { background-position: 0 0; }
+  to { background-position: 40px 40px; }
 }
 
 /* ============================================
@@ -120,7 +148,7 @@
 }
 
 /* ============================================
-   ヘッダー
+   ヘッダー（登場アニメ）
    ============================================ */
 .results__header {
   text-align: center;
@@ -139,6 +167,12 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(227, 184, 90, 0.2);
+  animation: resultsBadgeDrop 0.6s cubic-bezier(0.34, 1.8, 0.64, 1) both;
+}
+
+@keyframes resultsBadgeDrop {
+  0% { opacity: 0; transform: translateY(-30px) scale(0.7); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .results__badge-dot {
@@ -147,12 +181,12 @@
   border-radius: 50%;
   background: linear-gradient(135deg, #FFE138, #E3B85A);
   box-shadow: 0 0 12px rgba(255, 199, 0, 0.9);
-  animation: resultsBadgePulse 1.8s ease-in-out infinite;
+  animation: resultsBadgePulse 1s ease-in-out infinite;
 }
 
 @keyframes resultsBadgePulse {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.8; }
+  50% { transform: scale(1.6); opacity: 0.7; }
 }
 
 .results__badge-label {
@@ -180,6 +214,12 @@
   line-height: 1.4;
   letter-spacing: 0.02em;
   text-shadow: 0 4px 20px rgba(15, 26, 48, 0.6);
+  animation: resultsTitleSlide 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+}
+
+@keyframes resultsTitleSlide {
+  0% { opacity: 0; transform: translateY(-20px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .results__title-accent {
@@ -189,6 +229,14 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 2px 10px rgba(255, 199, 0, 0.4));
+  animation: resultsAccentShake 0.6s ease-out 0.8s both;
+}
+
+@keyframes resultsAccentShake {
+  0% { opacity: 0; transform: scale(0) rotate(-10deg); }
+  60% { opacity: 1; transform: scale(1.15) rotate(3deg); }
+  80% { transform: scale(0.95) rotate(-2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
 .results__subtitle {
@@ -198,6 +246,12 @@
   font-weight: 600;
   color: rgba(255, 255, 255, 0.65);
   letter-spacing: 0.05em;
+  animation: resultsSubtitleFade 0.6s ease-out 1.2s both;
+}
+
+@keyframes resultsSubtitleFade {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================
@@ -213,17 +267,28 @@
   justify-content: center;
   gap: 10px;
   margin-bottom: 30px;
+  animation: resultsLabelZoom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s both;
+}
+
+@keyframes resultsLabelZoom {
+  0% { opacity: 0; transform: scale(0.5); letter-spacing: -0.1em; }
+  100% { opacity: 1; transform: scale(1); letter-spacing: 0.25em; }
 }
 
 .results__top3-crown {
   font-size: 26px;
   filter: drop-shadow(0 2px 8px rgba(255, 199, 0, 0.6));
-  animation: resultsCrownBounce 2.5s ease-in-out infinite;
+  animation: resultsCrownDance 1.2s ease-in-out infinite;
 }
 
-@keyframes resultsCrownBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+.results__top3-crown:last-child {
+  animation-delay: 0.6s;
+}
+
+@keyframes resultsCrownDance {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(-8deg); }
+  75% { transform: translateY(-6px) rotate(8deg); }
 }
 
 .results__top3-text {
@@ -257,16 +322,69 @@
     0 20px 50px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  transform-style: preserve-3d;
+  animation: resultsCardBounceIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) var(--delay, 0s) both;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 1位カード：金色グロー強め */
+@keyframes resultsCardBounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.7) rotate(-5deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.05) rotate(2deg);
+  }
+  80% {
+    transform: translateY(5px) scale(0.98) rotate(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+/* TOP3 ホバー：傾く + 浮く + 金色ライン */
+.results__top3-card:hover {
+  transform: translateY(-8px) rotateX(5deg) rotateY(-2deg) scale(1.02);
+  border-color: var(--color-yellow);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(255, 199, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* 波紋エフェクト（1位のみ） */
+.results__top3-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 199, 0, 0.4);
+  border-radius: 20px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: resultsRipple 2s ease-out infinite;
+  opacity: 0;
+}
+
+@keyframes resultsRipple {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* 1位カード */
 .results__top3-card--first {
   border-color: #FFC700;
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.3),
     0 0 40px rgba(255, 199, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  animation: resultsTop1Glow 3s ease-in-out infinite;
+  animation:
+    resultsCardBounceIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) var(--delay, 0s) both,
+    resultsTop1Glow 1.5s ease-in-out 1s infinite;
 }
 
 @keyframes resultsTop1Glow {
@@ -279,7 +397,7 @@
   50% {
     box-shadow:
       0 20px 50px rgba(0, 0, 0, 0.3),
-      0 0 60px rgba(255, 199, 0, 0.5),
+      0 0 80px rgba(255, 199, 0, 0.7),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
 }
@@ -292,7 +410,7 @@
   border-color: rgba(205, 127, 50, 0.6);
 }
 
-/* シマー効果（1位のみ） */
+/* シマー効果（1位のみ・素早く） */
 .results__top3-card--first::before {
   content: '';
   position: absolute;
@@ -302,20 +420,21 @@
   height: 100%;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.2) 50%,
     transparent 100%);
-  animation: resultsTop1Shine 4s ease-in-out infinite;
+  animation: resultsTop1Shine 2s ease-in-out infinite;
   pointer-events: none;
   transform: skewX(-20deg);
+  z-index: 1;
 }
 
 @keyframes resultsTop1Shine {
   0% { left: -100%; }
-  30% { left: 150%; }
-  100% { left: 150%; }
+  50% { left: 200%; }
+  100% { left: 200%; }
 }
 
-/* ランク */
+/* ランク（カウントアップ風） */
 .results__top3-rank {
   position: absolute;
   top: 14px;
@@ -324,6 +443,7 @@
   flex-direction: column;
   align-items: flex-end;
   line-height: 1;
+  z-index: 2;
 }
 
 .results__top3-rank-label {
@@ -344,6 +464,13 @@
   -webkit-text-fill-color: transparent;
   line-height: 0.9;
   filter: drop-shadow(0 2px 8px rgba(255, 199, 0, 0.4));
+  animation: resultsRankPop 0.5s cubic-bezier(0.34, 1.8, 0.64, 1) calc(var(--delay, 0s) + 0.3s) both;
+}
+
+@keyframes resultsRankPop {
+  0% { opacity: 0; transform: scale(0) rotate(-180deg); }
+  70% { transform: scale(1.3) rotate(20deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
 .results__top3-card--second .results__top3-rank-num {
@@ -360,10 +487,10 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* コイン画像 */
+/* コイン画像（回転しながら登場 + 常時微回転） */
 .results__top3-coin {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -377,6 +504,28 @@
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation:
+    resultsCoinSpin 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--delay, 0s) + 0.2s) both,
+    resultsCoinFloat 3s ease-in-out calc(var(--delay, 0s) + 1s) infinite;
+}
+
+@keyframes resultsCoinSpin {
+  0% { opacity: 0; transform: scale(0) rotate(-360deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes resultsCoinFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-6px) rotate(3deg); }
+}
+
+.results__top3-card:hover .results__top3-coin {
+  animation: resultsCoinHoverSpin 0.6s linear infinite;
+}
+
+@keyframes resultsCoinHoverSpin {
+  from { transform: rotate(0deg) scale(1.1); }
+  to { transform: rotate(360deg) scale(1.1); }
 }
 
 .results__top3-coin-img {
@@ -389,9 +538,15 @@
 /* コイン名 */
 .results__top3-name {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   margin-bottom: 20px;
+  animation: resultsNameSlide 0.5s ease-out calc(var(--delay, 0s) + 0.5s) both;
+}
+
+@keyframes resultsNameSlide {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
 .results__top3-name-main {
@@ -413,10 +568,10 @@
   margin-top: 2px;
 }
 
-/* 価格 */
+/* 価格ボックス（シャッター風） */
 .results__top3-prices {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -426,6 +581,14 @@
   background: rgba(15, 26, 48, 0.4);
   border: 1px solid rgba(91, 164, 217, 0.2);
   border-radius: 12px;
+  overflow: hidden;
+  animation: resultsPricesShutter 0.6s cubic-bezier(0.5, 1.8, 0.5, 1) calc(var(--delay, 0s) + 0.7s) both;
+}
+
+@keyframes resultsPricesShutter {
+  0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  60% { opacity: 1; transform: scaleY(1.1); }
+  100% { opacity: 1; transform: scaleY(1); }
 }
 
 .results__top3-price {
@@ -457,6 +620,12 @@
   font-size: 18px;
   color: var(--color-yellow);
   text-shadow: 0 0 12px rgba(255, 199, 0, 0.5);
+  animation: resultsPeakGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes resultsPeakGlow {
+  0%, 100% { text-shadow: 0 0 12px rgba(255, 199, 0, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(255, 199, 0, 0.9); }
 }
 
 .results__top3-price-date {
@@ -466,31 +635,87 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
+/* 矢印（稲妻風） */
 .results__top3-arrow {
-  font-size: 16px;
+  font-size: 20px;
   color: var(--color-gold);
-  text-shadow: 0 0 12px rgba(227, 184, 90, 0.6);
-  animation: resultsArrowPulse 2s ease-in-out infinite;
+  text-shadow:
+    0 0 12px rgba(227, 184, 90, 0.6),
+    0 0 24px rgba(255, 199, 0, 0.4);
+  animation: resultsArrowLightning 1.2s ease-in-out infinite;
+  font-weight: 900;
 }
 
-@keyframes resultsArrowPulse {
-  0%, 100% { transform: translateY(0); opacity: 0.7; }
-  50% { transform: translateY(3px); opacity: 1; }
+@keyframes resultsArrowLightning {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    text-shadow:
+      0 0 12px rgba(227, 184, 90, 0.6),
+      0 0 24px rgba(255, 199, 0, 0.4);
+  }
+  20% {
+    transform: translateY(2px) scale(1.2);
+    text-shadow:
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 30px rgba(255, 199, 0, 1);
+  }
+  40% {
+    transform: translateY(4px) scale(1);
+  }
+  60% {
+    transform: translateY(3px) scale(1.15);
+    text-shadow:
+      0 0 18px rgba(255, 255, 255, 0.8),
+      0 0 28px rgba(255, 199, 0, 0.9);
+  }
 }
 
-/* 上昇率 */
+/* 上昇率（脈動 + キラキラ） */
 .results__top3-growth {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   padding: 14px 10px;
   background: linear-gradient(135deg, rgba(255, 225, 56, 0.12) 0%, rgba(227, 184, 90, 0.08) 100%);
   border: 1px solid rgba(255, 225, 56, 0.4);
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(255, 199, 0, 0.15);
+  overflow: hidden;
+  animation: resultsGrowthPop 0.6s cubic-bezier(0.34, 1.8, 0.64, 1) calc(var(--delay, 0s) + 0.9s) both;
+}
+
+@keyframes resultsGrowthPop {
+  0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+  70% { opacity: 1; transform: scale(1.1) translateY(-5px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* 上昇率の中を光がサッと走る */
+.results__top3-growth::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%);
+  animation: resultsGrowthShine 3s ease-in-out infinite;
+  pointer-events: none;
+  transform: skewX(-20deg);
+}
+
+@keyframes resultsGrowthShine {
+  0% { left: -100%; }
+  40% { left: 200%; }
+  100% { left: 200%; }
 }
 
 .results__top3-growth-percent {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-en);
   font-size: 13px;
   font-weight: 900;
@@ -503,6 +728,8 @@
 }
 
 .results__top3-growth-multi {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-jp);
   font-size: 18px;
   font-weight: 900;
@@ -512,6 +739,12 @@
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.02em;
   filter: drop-shadow(0 2px 6px rgba(255, 199, 0, 0.3));
+  animation: resultsGrowthMultiPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes resultsGrowthMultiPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
 }
 
 /* ============================================
@@ -551,16 +784,20 @@
   color: var(--color-yellow);
   font-size: 14px;
   text-shadow: 0 0 10px rgba(255, 199, 0, 0.7);
-  animation: resultsStarTwinkle 2s ease-in-out infinite;
+  animation: resultsStarSpin 1.5s linear infinite;
 }
 
-@keyframes resultsStarTwinkle {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
+.results__divider-star:last-child {
+  animation-direction: reverse;
+}
+
+@keyframes resultsStarSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ============================================
-   グリッド（残り15個）
+   グリッド（残り15個・順次表示）
    ============================================ */
 .results__grid {
   display: grid;
@@ -580,13 +817,48 @@
   border-radius: 14px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: resultsCardPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) calc(0.05s * var(--i, 0)) both;
 }
 
+@keyframes resultsCardPop {
+  0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+  70% { opacity: 1; transform: translateY(-4px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* カード ホバー（傾く + 光る） */
 .results__card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(227, 184, 90, 0.4);
-  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-4px) scale(1.03) rotateZ(-0.5deg);
+  border-color: var(--color-gold);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(227, 184, 90, 0.3);
+}
+
+/* カード内シマー */
+.results__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 199, 0, 0.1) 50%,
+    transparent 100%);
+  transition: left 0.6s ease;
+  pointer-events: none;
+  transform: skewX(-20deg);
+  z-index: 0;
+}
+
+.results__card:hover::before {
+  left: 150%;
 }
 
 .results__card-coin {
@@ -600,6 +872,14 @@
   border: 1px solid rgba(91, 164, 217, 0.3);
   border-radius: 50%;
   padding: 6px;
+  transition: transform 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.results__card:hover .results__card-coin {
+  transform: rotate(360deg) scale(1.1);
+  border-color: var(--color-gold);
 }
 
 .results__card-coin img {
@@ -615,6 +895,8 @@
   align-items: baseline;
   gap: 6px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 .results__card-name-main {
@@ -641,6 +923,8 @@
   font-size: 11px;
   color: rgba(255, 255, 255, 0.7);
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 .results__card-price {
@@ -656,6 +940,12 @@
 .results__card-arrow {
   color: var(--color-gold);
   font-size: 12px;
+  animation: resultsCardArrow 1.5s ease-in-out infinite;
+}
+
+@keyframes resultsCardArrow {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
 }
 
 .results__card-growth {
@@ -673,6 +963,8 @@
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.01em;
   word-break: break-all;
+  position: relative;
+  z-index: 1;
 }
 
 /* ============================================
@@ -822,7 +1114,7 @@
   }
 
   .results__top3-arrow {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .results__top3-growth {
