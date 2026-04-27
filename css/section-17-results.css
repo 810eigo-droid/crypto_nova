@@ -1319,3 +1319,312 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+/* ============================================
+   Section 17 追加スタイル（修正版）
+   - 日数バッジ
+   - エビデンスボタン
+   - 価格ラベル「Crypto Nova 抽出時」
+   - 上昇率を赤色に
+   - エビデンス画像モーダル
+============================================ */
+
+/* ===== エビデンス表記（タイトル下） ===== */
+.results__evidence-label {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #5BA8E0; /* スカイブルー */
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* ===== 日数バッジ（TOP3用） ===== */
+.results__top3-days {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  margin: 8px auto 12px;
+  padding: 6px 16px;
+  background: linear-gradient(135deg, #FFE138 0%, #FFC700 100%);
+  color: #1A2744;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(255, 199, 0, 0.4);
+  white-space: nowrap;
+}
+
+.results__top3-days-num {
+  font-size: 22px;
+  font-weight: 900;
+  color: #C92626;
+  margin: 0 2px;
+}
+
+/* ===== 日数バッジ（その他カード用） ===== */
+.results__card-days {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 3px;
+  margin: 6px auto 10px;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #FFE138 0%, #FFC700 100%);
+  color: #1A2744;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(255, 199, 0, 0.35);
+  white-space: nowrap;
+}
+
+.results__card-days-num {
+  font-size: 18px;
+  font-weight: 900;
+  color: #C92626;
+  margin: 0 2px;
+}
+
+/* ===== 上昇率を赤色に（修正③） ===== */
+.results__top3-growth-percent,
+.results__top3-growth-multi,
+.results__card-growth {
+  color: #FF3B30 !important;
+  text-shadow: 0 0 8px rgba(255, 59, 48, 0.3);
+}
+
+/* TOP3 のグロウス強調 */
+.results__top3-growth-percent {
+  font-weight: 900;
+}
+
+.results__top3-growth-multi {
+  font-weight: 700;
+}
+
+/* ===== エビデンスボタン ===== */
+.results__evidence-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: rgba(91, 168, 224, 0.15);
+  color: #5BA8E0;
+  border: 1px solid rgba(91, 168, 224, 0.5);
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.results__evidence-btn:hover {
+  background: rgba(91, 168, 224, 0.3);
+  border-color: #5BA8E0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(91, 168, 224, 0.3);
+}
+
+.results__evidence-btn:active {
+  transform: translateY(0);
+}
+
+.results__evidence-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: #5BA8E0;
+  color: #FFFFFF;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.results__evidence-btn--small {
+  padding: 6px 12px;
+  font-size: 11px;
+}
+
+.results__evidence-btn--small .results__evidence-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+}
+
+/* ===== カード内のレイアウト調整 ===== */
+.results__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.results__card-prices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.results__card-price-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.results__card-price-label {
+  font-size: 10px;
+  color: #93C5FD;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.results__card-arrow {
+  font-size: 18px;
+  color: #FFC700;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.results__card-date {
+  font-size: 10px;
+  color: #9CA3AF;
+}
+
+/* ===== エビデンスモーダル（拡大表示） ===== */
+.evidence-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.evidence-modal[aria-hidden="false"] {
+  display: flex;
+  animation: evidenceModalFadeIn 0.25s ease;
+}
+
+@keyframes evidenceModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.evidence-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.evidence-modal__container {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: evidenceModalScaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes evidenceModalScaleIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.evidence-modal__close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #1A2744;
+  border: 2px solid #E3B85A;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s ease;
+  z-index: 2;
+}
+
+.evidence-modal__close:hover {
+  transform: scale(1.1);
+}
+
+.evidence-modal__image-wrapper {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  max-height: calc(95vh - 80px);
+  border-radius: 8px;
+  /* ピンチアウト拡大可能に */
+  touch-action: pinch-zoom;
+}
+
+.evidence-modal__image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.evidence-modal__hint {
+  font-size: 11px;
+  color: #6B7280;
+  margin: 4px 0 0;
+  text-align: center;
+}
+
+/* ===== レスポンシブ調整 ===== */
+@media (min-width: 768px) {
+  .results__top3-days {
+    font-size: 15px;
+    padding: 8px 20px;
+  }
+  .results__top3-days-num {
+    font-size: 26px;
+  }
+  .results__card-days {
+    font-size: 12px;
+    padding: 5px 14px;
+  }
+  .results__card-days-num {
+    font-size: 20px;
+  }
+  .results__evidence-label {
+    font-size: 13px;
+  }
+}
