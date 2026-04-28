@@ -23,8 +23,8 @@
   let startMidY = 0;
   let mode = 'none'; // 'none' | 'pan' | 'pinch'
 
-  const MIN_SCALE = 1;
-  const MAX_SCALE = 5;
+  const MIN_SCALE = 0.5;
+  const MAX_SCALE = 8;
 
   function applyTransform() {
     modalImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
@@ -77,7 +77,7 @@
 
   wrapper.addEventListener('touchend', function(e) {
     if (e.touches.length === 0) {
-      if (scale <= 1) {
+      if (scale <= 0.5) {
         resetTransform();
       }
       mode = 'none';
@@ -125,7 +125,7 @@
     e.preventDefault();
     const delta = e.deltaY > 0 ? -0.15 : 0.15;
     scale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale + delta));
-    if (scale <= 1) {
+    if (scale <= 0.5) {
       translateX = 0;
       translateY = 0;
     }
