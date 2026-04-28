@@ -127,7 +127,7 @@
 /* --- 上部のアイコン（指差し）--- */
 .failure-answer__pointer {
   display: block;
-  width: 240px;
+  width: 140px;
   height: auto;
   margin: 0 auto 24px;
   filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.4));
@@ -212,7 +212,7 @@
   }
 
   .failure-answer__pointer {
-    width: 320px;
+    width: 180px;
     margin-bottom: 32px;
   }
 
