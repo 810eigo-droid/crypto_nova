@@ -1628,3 +1628,41 @@
     font-size: 13px;
   }
 }
+/* 修正②: 「証拠」をスカイブルーに */
+.results__title-evidence {
+  color: #5BA8E0;
+  text-shadow: 0 0 12px rgba(91, 168, 224, 0.4);
+}
+/* 黄色バッジとエビデンスボタンを中央配置 */
+.results__top3-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.results__top3-days {
+  display: inline-flex !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-self: center !important;
+}
+
+.results__evidence-btn {
+  display: inline-flex !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-self: center !important;
+}
+
+.results__card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.results__card-days {
+  display: inline-flex !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-self: center !important;
+}
