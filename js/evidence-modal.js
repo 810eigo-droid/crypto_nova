@@ -1,6 +1,8 @@
 /* ============================================
-   エビデンスモーダル制御 v3
-   ピンチ拡大・自由移動対応（改良版）
+   エビデンスモーダル制御 v4
+   - 拡大状態キープ
+   - 最初から大きめに表示
+   - ズームボタン対応
 ============================================ */
 
 (function() {
@@ -19,15 +21,22 @@
   let startX = 0;
   let startY = 0;
   let startDistance = 0;
-  let startMidX = 0;
-  let startMidY = 0;
-  let mode = 'none'; // 'none' | 'pan' | 'pinch'
+  let mode = 'none';
 
   const MIN_SCALE = 0.5;
   const MAX_SCALE = 8;
+  const INITIAL_SCALE = 1.5;
 
   function applyTransform() {
     modalImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+  }
+
+  function setInitialZoom() {
+    scale = INITIAL_SCALE;
+    translateX = 0;
+    translateY = 0;
+    lastScale = INITIAL_SCALE;
+    applyTransform();
   }
 
   function resetTransform() {
@@ -44,17 +53,14 @@
     return Math.sqrt(dx * dx + dy * dy);
   }
 
-  // ===== タッチイベントは wrapper に統一 =====
   wrapper.addEventListener('touchstart', function(e) {
     if (e.touches.length === 2) {
       mode = 'pinch';
       startDistance = getDistance(e.touches[0], e.touches[1]);
       lastScale = scale;
-      startMidX = (e.touches[0].clientX + e.touches[1].clientX) / 2 - translateX;
-      startMidY = (e.touches[0].clientY + e.touches[1].clientY) / 2 - translateY;
       e.preventDefault();
     } else if (e.touches.length === 1) {
-  mode = 'pan';
+      mode = 'pan';
       startX = e.touches[0].clientX - translateX;
       startY = e.touches[0].clientY - translateY;
       e.preventDefault();
@@ -77,24 +83,15 @@
 
   wrapper.addEventListener('touchend', function(e) {
     if (e.touches.length === 0) {
-      if (scale <= 0.5) {
-        resetTransform();
-      }
       mode = 'none';
       lastScale = scale;
     } else if (e.touches.length === 1) {
-      // ピンチ → パンへ切り替え
-      if (scale > 1) {
-        mode = 'pan';
-        startX = e.touches[0].clientX - translateX;
-        startY = e.touches[0].clientY - translateY;
-      } else {
-        mode = 'none';
-      }
+      mode = 'pan';
+      startX = e.touches[0].clientX - translateX;
+      startY = e.touches[0].clientY - translateY;
     }
   });
 
-  // ===== マウス操作（PC）=====
   let isMouseDown = false;
   let mouseStartX = 0;
   let mouseStartY = 0;
@@ -117,47 +114,64 @@
 
   document.addEventListener('mouseup', function() {
     isMouseDown = false;
-    modalImage.style.cursor = scale > 1 ? 'grab' : 'default';
+    modalImage.style.cursor = 'grab';
   });
 
-  // ===== ホイールズーム（PC）=====
   wrapper.addEventListener('wheel', function(e) {
     e.preventDefault();
-    const delta = e.deltaY > 0 ? -0.15 : 0.15;
+    const delta = e.deltaY > 0 ? -0.2 : 0.2;
     scale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale + delta));
-    if (scale <= 0.5) {
-      translateX = 0;
-      translateY = 0;
-    }
-    modalImage.style.cursor = scale > 1 ? 'grab' : 'default';
     applyTransform();
   }, { passive: false });
 
-  // ===== ダブルタップ =====
   let lastTap = 0;
   wrapper.addEventListener('touchend', function(e) {
     const now = Date.now();
     if (now - lastTap < 300 && e.changedTouches.length === 1 && mode === 'none') {
-      if (scale === 1) {
-        scale = 2.5;
+      if (scale > INITIAL_SCALE) {
+        setInitialZoom();
       } else {
-        resetTransform();
+        scale = 3;
+        applyTransform();
+        lastScale = scale;
       }
-      applyTransform();
     }
     lastTap = now;
   });
 
-  // ===== ボタン制御 =====
+  function zoomIn() {
+    scale = Math.min(MAX_SCALE, scale + 0.5);
+    applyTransform();
+    lastScale = scale;
+  }
+
+  function zoomOut() {
+    scale = Math.max(MIN_SCALE, scale - 0.5);
+    applyTransform();
+    lastScale = scale;
+  }
+
+  function zoomReset() {
+    setInitialZoom();
+  }
+
+  const btnZoomIn = document.getElementById('evidenceZoomIn');
+  const btnZoomOut = document.getElementById('evidenceZoomOut');
+  const btnZoomReset = document.getElementById('evidenceZoomReset');
+
+  if (btnZoomIn) btnZoomIn.addEventListener('click', zoomIn);
+  if (btnZoomOut) btnZoomOut.addEventListener('click', zoomOut);
+  if (btnZoomReset) btnZoomReset.addEventListener('click', zoomReset);
+
   document.querySelectorAll('.results__evidence-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       const imageSrc = this.getAttribute('data-evidence');
       if (!imageSrc) return;
       modalImage.src = imageSrc;
-      resetTransform();
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      setTimeout(setInitialZoom, 50);
     });
   });
 

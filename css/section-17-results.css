@@ -1704,3 +1704,39 @@
 .results__card-growth-multi {
   display: block !important;
 }
+/* ズームボタン */
+.evidence-modal__zoom-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.evidence-modal__zoom-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3B8FD9, #1E6FA0);
+  color: #FFFFFF;
+  border: none;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(30, 111, 160, 0.4);
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.evidence-modal__zoom-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(30, 111, 160, 0.6);
+}
+
+.evidence-modal__zoom-btn:active {
+  transform: scale(0.95);
+}
