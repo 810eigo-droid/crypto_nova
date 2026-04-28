@@ -1584,13 +1584,12 @@
 }
 
 .evidence-modal__image-wrapper {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   max-width: 100%;
   max-height: calc(95vh - 80px);
   border-radius: 8px;
-  /* ピンチアウト拡大可能に */
-  touch-action: pinch-zoom;
+  /* ピンチ + パン操作を許可 */
+  touch-action: none;
 }
 
 .evidence-modal__image {
@@ -1599,8 +1598,11 @@
   height: auto;
   user-select: none;
   -webkit-user-drag: none;
+  transform-origin: center center;
+  transition: transform 0.05s ease-out;
+  cursor: default;
+  touch-action: none;
 }
-
 .evidence-modal__hint {
   font-size: 11px;
   color: #6B7280;
