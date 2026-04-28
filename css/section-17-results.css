@@ -1666,3 +1666,34 @@
   margin-right: auto !important;
   align-self: center !important;
 }
+/* 修正④: コイン名と(シンボル)を2行に */
+.results__card-name {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.results__card-name-main {
+  display: block !important;
+}
+
+.results__card-name-symbol {
+  display: block !important;
+}
+
+/* 修正⑥: 上昇率と倍率を2行に */
+.results__card-growth {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.results__card-growth-percent {
+  display: block !important;
+}
+
+.results__card-growth-multi {
+  display: block !important;
+}
