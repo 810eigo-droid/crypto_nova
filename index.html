@@ -214,7 +214,7 @@
           <h2 class="alone__main">
             <span class="alone__main-line1">実はそれ、</span>
             <span class="alone__main-line2">
-              あなた<span class="alone__highlight">だけ</span>では<br>ありません。
+              <span class="alone__highlight">あなただけ</span>では<br>ありません。
             </span>
           </h2>
         </div>
@@ -739,8 +739,8 @@
 </section>  
 
 <!-- ============================================
-     Section 17: 実績（論より証拠）- 修正版
-     クライアント様修正指示書反映
+     Section 17: 実績（論より証拠）- 修正版v2
+     クライアント様修正指示書 20260428 反映
 ============================================ -->
 <section class="results" id="results">
 
@@ -769,12 +769,11 @@
         <span class="results__badge-label">RECORDS</span>
         <span class="results__badge-text">実績</span>
       </div>
+      <!-- ★ 修正②: 「論より証拠」の「証拠」をスカイブルーに、「。」削除、「エビデンス」削除 -->
       <h2 class="results__title">
-        論より証拠。<br class="sp-only"><span class="results__title-accent">実績あります！</span>
+        論より<span class="results__title-evidence">証拠</span><br class="sp-only"><span class="results__title-accent">実績あります！</span>
       </h2>
       <p class="results__subtitle">（随時、実績を更新中）</p>
-      <!-- ★ 追加: エビデンス表記（スカイブルー） -->
-      <p class="results__evidence-label">エビデンス</p>
     </div>
 
     <!-- 冒頭メッセージ -->
@@ -805,6 +804,8 @@
             <span class="results__top3-rank-label">NO.</span>
             <span class="results__top3-rank-num">01</span>
           </div>
+          <!-- ★ 修正③: 「わずか〇日後」をコイン名の上に移動 -->
+          <div class="results__top3-days">わずか<span class="results__top3-days-num">6</span>日後</div>
           <div class="results__top3-coin">
             <img src="coin_15.png" alt="STFX" class="results__top3-coin-img">
           </div>
@@ -812,8 +813,6 @@
             <span class="results__top3-name-main">STFX</span>
             <span class="results__top3-name-symbol">（STFX）</span>
           </div>
-          <!-- 日数バッジ -->
-          <div class="results__top3-days">わずか<span class="results__top3-days-num">6</span>日後</div>
           <div class="results__top3-prices">
             <div class="results__top3-price">
               <span class="results__top3-price-label">Crypto Nova 抽出時</span>
@@ -831,7 +830,6 @@
             <div class="results__top3-growth-percent">+2,300,000,000％</div>
             <div class="results__top3-growth-multi">約 2,300万倍</div>
           </div>
-          <!-- エビデンスボタン -->
           <button class="results__evidence-btn" data-evidence="evidence-15.png" aria-label="エビデンスを見る">
             <span class="results__evidence-icon">+</span>
             <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -844,6 +842,7 @@
             <span class="results__top3-rank-label">NO.</span>
             <span class="results__top3-rank-num">02</span>
           </div>
+          <div class="results__top3-days">わずか<span class="results__top3-days-num">8</span>日後</div>
           <div class="results__top3-coin">
             <img src="coin_12.png" alt="THE BALKAN DWARF" class="results__top3-coin-img">
           </div>
@@ -851,7 +850,6 @@
             <span class="results__top3-name-main">THE BALKAN DWARF</span>
             <span class="results__top3-name-symbol">（KEKEC）</span>
           </div>
-          <div class="results__top3-days">わずか<span class="results__top3-days-num">8</span>日後</div>
           <div class="results__top3-prices">
             <div class="results__top3-price">
               <span class="results__top3-price-label">Crypto Nova 抽出時</span>
@@ -881,6 +879,7 @@
             <span class="results__top3-rank-label">NO.</span>
             <span class="results__top3-rank-num">03</span>
           </div>
+          <div class="results__top3-days">わずか<span class="results__top3-days-num">11</span>日後</div>
           <div class="results__top3-coin">
             <img src="coin_11.png" alt="Chickencoin" class="results__top3-coin-img">
           </div>
@@ -888,7 +887,6 @@
             <span class="results__top3-name-main">Chickencoin</span>
             <span class="results__top3-name-symbol">（CHKN）</span>
           </div>
-          <div class="results__top3-days">わずか<span class="results__top3-days-num">11</span>日後</div>
           <div class="results__top3-prices">
             <div class="results__top3-price">
               <span class="results__top3-price-label">Crypto Nova 抽出時</span>
@@ -927,6 +925,7 @@
     </div>
 
     <!-- グリッド（4位〜18位、ランキング表示なし） -->
+    <!-- ★修正④⑤⑥: コイン名と(シンボル)の間に改行、日数バッジ位置移動、上昇率と倍率の間に改行 -->
     <div class="results__grid">
 
       <!-- 4: Aegis Ai -->
@@ -950,7 +949,10 @@
             <span class="results__card-date">2025年12月11日</span>
           </div>
         </div>
-        <div class="results__card-growth">+50,000,000,000％ 約5億倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+50,000,000,000％</span>
+          <span class="results__card-growth-multi">約5億倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-18.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -978,7 +980,10 @@
             <span class="results__card-date">2026年1月4日</span>
           </div>
         </div>
-        <div class="results__card-growth">+2,000,000％ 約2万倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+2,000,000％</span>
+          <span class="results__card-growth-multi">約2万倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-17.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1006,7 +1011,10 @@
             <span class="results__card-date">2025年11月5日</span>
           </div>
         </div>
-        <div class="results__card-growth">+1,700,000％ 約1.7万倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+1,700,000％</span>
+          <span class="results__card-growth-multi">約1.7万倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-13.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1034,7 +1042,10 @@
             <span class="results__card-date">2025年10月22日</span>
           </div>
         </div>
-        <div class="results__card-growth">+59,000,000％ 約59万倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+59,000,000％</span>
+          <span class="results__card-growth-multi">約59万倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-10.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1062,10 +1073,13 @@
             <span class="results__card-date">2025年8月9日</span>
           </div>
         </div>
-        <div class="results__card-growth">+5,500,000％ 約5.5万倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+5,500,000％</span>
+          <span class="results__card-growth-multi">約5.5万倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-03.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
-          <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
+          <span class="results__evidence-text">エビデンス(数値の根拠)を見る</span>
         </button>
       </div>
 
@@ -1090,7 +1104,10 @@
             <span class="results__card-date">2025年8月28日</span>
           </div>
         </div>
-        <div class="results__card-growth">+610,000,000,000％ 約61億倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+610,000,000,000％</span>
+          <span class="results__card-growth-multi">約61億倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-05.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1118,7 +1135,10 @@
             <span class="results__card-date">2025年8月24日</span>
           </div>
         </div>
-        <div class="results__card-growth">+230,000％ 約2,300倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+230,000％</span>
+          <span class="results__card-growth-multi">約2,300倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-01.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1146,7 +1166,10 @@
             <span class="results__card-date">2026年3月24日</span>
           </div>
         </div>
-        <div class="results__card-growth">+3,500,000,000,000,000％ 約35兆倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+3,500,000,000,000,000％</span>
+          <span class="results__card-growth-multi">約35兆倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-16.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1174,7 +1197,10 @@
             <span class="results__card-date">2025年11月15日</span>
           </div>
         </div>
-        <div class="results__card-growth">+24,500,000％ 約24.5万倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+24,500,000％</span>
+          <span class="results__card-growth-multi">約24.5万倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-04.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1202,7 +1228,10 @@
             <span class="results__card-date">2026年3月28日</span>
           </div>
         </div>
-        <div class="results__card-growth">+11,000,000％ 約11万倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+11,000,000％</span>
+          <span class="results__card-growth-multi">約11万倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-14.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1230,7 +1259,10 @@
             <span class="results__card-date">2026年2月6日</span>
           </div>
         </div>
-        <div class="results__card-growth">+1,300,000％ 約1.3万倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+1,300,000％</span>
+          <span class="results__card-growth-multi">約1.3万倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-08.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1258,7 +1290,10 @@
             <span class="results__card-date">2026年2月28日</span>
           </div>
         </div>
-        <div class="results__card-growth">+7,000,000％ 約7万倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+7,000,000％</span>
+          <span class="results__card-growth-multi">約7万倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-06.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1286,7 +1321,10 @@
             <span class="results__card-date">2026年3月17日</span>
           </div>
         </div>
-        <div class="results__card-growth">+560,000,000％ 約560万倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+560,000,000％</span>
+          <span class="results__card-growth-multi">約560万倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-09.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1314,7 +1352,10 @@
             <span class="results__card-date">2026年3月20日</span>
           </div>
         </div>
-        <div class="results__card-growth">+3,200,000,000,000,000％ 約3.2兆倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+3,200,000,000,000,000％</span>
+          <span class="results__card-growth-multi">約3.2兆倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-07.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1342,7 +1383,10 @@
             <span class="results__card-date">2026年4月20日</span>
           </div>
         </div>
-        <div class="results__card-growth">+290,000％ 約2,900倍</div>
+        <div class="results__card-growth">
+          <span class="results__card-growth-percent">+290,000％</span>
+          <span class="results__card-growth-multi">約2,900倍</span>
+        </div>
         <button class="results__evidence-btn results__evidence-btn--small" data-evidence="evidence-02.png" aria-label="エビデンスを見る">
           <span class="results__evidence-icon">+</span>
           <span class="results__evidence-text">エビデンス（数値の根拠）を見る</span>
@@ -1357,23 +1401,25 @@
       <p class="results__note-text">
         ■自社トラッキングシステムによる集計期間：2025年4月20日〜2025年11月30日
       </p>
-      <p class="results__note-updated">（更新日：2026年4月21日）</p>
+      <p class="results__note-updated">（更新日：2026年4月21日</p>
     </div>
 
   </div>
 </section>
 
 <!-- ============================================
-     エビデンス画像モーダル（拡大表示）
+     エビデンス画像モーダル（拡大表示）- 修正版
+     ★修正⑦: ヒントテキスト変更
+     ★修正⑧: ピンチ拡大後、自由に上下左右移動可能
 ============================================ -->
 <div class="evidence-modal" id="evidenceModal" aria-hidden="true">
   <div class="evidence-modal__overlay" data-close-modal></div>
   <div class="evidence-modal__container">
     <button class="evidence-modal__close" data-close-modal aria-label="閉じる">×</button>
-    <div class="evidence-modal__image-wrapper">
+    <div class="evidence-modal__image-wrapper" id="evidenceImageWrapper">
       <img src="" alt="エビデンス" class="evidence-modal__image" id="evidenceModalImage">
     </div>
-    <p class="evidence-modal__hint">ピンチ操作で拡大できます</p>
+    <p class="evidence-modal__hint">■自社トラッキングシステムによる集計期間：2025年4月20日〜2025年11月30日</p>
   </div>
 </div>
 <!-- ============================================
